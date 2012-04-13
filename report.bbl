@@ -1,0 +1,36 @@
+\begin{thebibliography}{GBH09}
+
+\bibitem[Alc11]{alchemyapi}
+AlchemyAPI.
+\newblock Sentiment analysis.
+\newblock \url{http://www.alchemyapi.com/api/sentiment/}, October~21, 2011.
+
+\bibitem[BLK09]{NLTK}
+Steven Bird, Edward Loper, and Ewan Klein.
+\newblock {\em Natural Language Processing with Python}.
+\newblock O'Reilly Media Inc, 2009.
+
+\bibitem[CLi12]{pattern}
+CLiPS.
+\newblock Pattern.en sentiment.
+\newblock \url{http://www.clips.ua.ac.be/pages/pattern-en#sentiment}, April~6,
+  2012.
+
+\bibitem[GBH09]{Go_Bhayani_Huang_2009}
+Alec Go, Richa Bhayani, and Lei Huang.
+\newblock Twitter sentiment classification using distant supervision.
+\newblock {\em Processing}, pages 1--6, 2009.
+
+\bibitem[HNP05]{hotho-etal-ldv-2005}
+Andreas Hotho, Andreas Nürnberger, and Gerhard Paaß.
+\newblock A brief survey of text mining.
+\newblock {\em LDV Forum - GLDV Journal for Computational Linguistics and
+  Language Technology}, 20(1):19--62, May 2005.
+
+\bibitem[@tw12]{twitterblog}
+@twitter.
+\newblock Twitter turns six.
+\newblock \url{http://blog.twitter.com/2012/03/twitter-turns-six.html},
+  March~21, 2012.
+
+\end{thebibliography}

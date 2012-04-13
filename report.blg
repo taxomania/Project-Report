@@ -1,0 +1,54 @@
+This is BibTeX, Version 0.99d (TeX Live 2011/MacPorts 2011_5)
+Capacity: max_strings=35307, hash_size=35307, hash_prime=30011
+The top-level auxiliary file: report.aux
+A level-1 auxiliary file: chapter1.aux
+A level-1 auxiliary file: chapter2.aux
+A level-1 auxiliary file: chapter3.aux
+A level-1 auxiliary file: chapter4.aux
+A level-1 auxiliary file: chapter5.aux
+A level-1 auxiliary file: chapter6.aux
+A level-1 auxiliary file: chapter7.aux
+The style file: alpha.bst
+A level-1 auxiliary file: appendix1.aux
+Database file #1: refs.bib
+You've used 6 entries,
+            2543 wiz_defined-function locations,
+            605 strings with 5330 characters,
+and the built_in function-call counts, 2102 in all, are:
+= -- 201
+> -- 99
+< -- 4
++ -- 34
+- -- 33
+* -- 136
+:= -- 356
+add.period$ -- 18
+call.type$ -- 6
+change.case$ -- 35
+chr.to.int$ -- 6
+cite$ -- 6
+duplicate$ -- 81
+empty$ -- 158
+format.name$ -- 42
+if$ -- 428
+int.to.chr$ -- 1
+int.to.str$ -- 0
+missing$ -- 4
+newline$ -- 33
+num.names$ -- 18
+pop$ -- 47
+preamble$ -- 1
+purify$ -- 42
+quote$ -- 0
+skip$ -- 73
+stack$ -- 0
+substring$ -- 74
+swap$ -- 11
+text.length$ -- 4
+text.prefix$ -- 3
+top$ -- 0
+type$ -- 44
+warning$ -- 0
+while$ -- 19
+width$ -- 9
+write$ -- 76

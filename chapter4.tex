@@ -1,0 +1,102 @@
+\chapter{Implementation}
+\label{cha:impl}
+This chapter outlines the main stages in implementating the designed system in code.
+%methodology here instead?
+
+% show reference to figure displayed in DESIGN chapter
+% software environment to be mentioned in each section
+
+The system to be developed is fairly representative of a Question-Answering(QA) system. QAs are data mining systems which use Information Retrieval(IR) and Information Extraction(IE) techniques to answer user queries. As such, this project was implemented in 3 stages, each corresponding to these subsystems in QA systems. The first of these was retrieving tweets, the IR phase of this project. Upon successful retrieval, information, the required features in this case, must be extracted and finally, these results must be displayed to the user in a simple, straightforward fashion. These stages will be further explored as follows:
+
+\section{Tweet Retrieval}
+Without tweets, there is no work to be done, and so retrieving tweets can be regarded as the most important part of this project. The main objective of this stage is to retrieve as many relevant tweets from Twitter as possible. To do this, the system will interact with the set of public APIs Twitter provides.
+
+\subsection{Twitter API}
+Twitter provides three public APIs for developers to use. These are the REST, Search and Streaming APIs. The system is designed to use all of these to fulfill the requirements of each use case.
+
+\subsubsection{Streaming API}
+The Streaming API allows the system to fulfill the requirements of having a fully automated system that constantly monitors Twitter for software-related posts.
+% MORE DETAIL HERE
+
+\subsubsection{Search and REST APIs}
+The Search and REST APIs on the other hand allows user interaction in that users will be able to perform queries that will return up to 100 of the latest tweets in the last 7 days corresponding said queries.
+%MORE DETAIL HERE
+
+
+% WHY JAVA
+% HOW IMPLEMENTED
+% SHOW KEYWORDS + DICTIONARY IN APPENDIX
+% STORAGE MYSQL
+
+\section{Feature Extraction}
+Once tweets have been retrieved from Twitter and stored in the MySQL database, they are now available for feature extaction, which can be regarded as the core stage in implementing the system. This subsystem involves using NLP techniques to extract the information shown in Table~\ref{features} from each tweet. This subsystem is implemented in Python 2.7 due to the raw power it possesses and also due to the decision to use the Natural Language ToolKit(NLTK)\cite{NLTK}.
+% NLTK
+
+There are many steps involved in implementing the feature extraction. These are explored in order of execution.
+
+\subsection{Sentiment Analysis}
+Sentiment analysis was recognised as one of the key features to be extracted from the initial design stages. It has been implemented using the Twitter Sentiment Bulk Classification Service API. This was chosen ahead of others such as AlchemyAPI\cite{alchemyapi} and the CLiPS Pattern modules. AlchemyAPI results were accurate, however with the massive number of tweets being streamed from the service it was not deemed feasible to continuously make calls to a web service to analyse them for sentiment, as the service only analyses individual tweets. As well as this, there is a limit of 10000 tweets per day and with the large numbers of tweets posted on Twitter on the daily basis, this was also an issue.
+
+While Pattern is an offline system, it states 72\% accuracy for movie reviews\cite{pattern}, while the Twitter Sentiment API is optimised for tweets and boasts 83\% accuracy\cite{Go_Bhayani_Huang_2009}. As well as this, the bulk classification service allows mass analysis with requests consisting of up to 10,000 tweets.
+
+The sentiment analysis of tweets is carried out before any of the other feature extraction work. As tweets have been retrieved and stored in the MySQL database, this part of the system selects 100 of the latest tweets, retrieving just the id and text, that have yet to be analysed and packs them into a JSON string object of the format:
+
+\begin{verbatim}
+{ "data": [ { "id": "1234", "text": "Google Chrome is awesome!" },
+            { "id": "1235", "text": "Safari 5.0.2 is out now" },
+            { "id": "1236", "text": "I really hate the new Firefox" } ] }
+\end{verbatim}
+
+This JSON string is then posted to the Twitter Sentiment API where classifications into the positive, negative and neutral classes are carried out by a Maximum Entropy classifier trained with tweets containing emoticons. The internal specifics of a Maximum Entropy classifier, however, is not in the scope of this project. % further reading? CITE? APPENDIX?
+
+Currently only 100 tweets are analysed at a time due to time constraints when users wish to run the program in real time. By using a small number, the data needing to be transferred is minimal and allows for a more interactive user experience.
+
+Using the previous example, the data is returned by the server in the following format, with a polarity field added to each analysed tweet with values 0, 2 and 4 corresponding to negative, neutral and positive respectively.
+\begin{verbatim}
+{ "data": [ 
+  { "id": "1234", "text": "Google Chrome is awesome!", "polarity": 4},
+  { "id": "1235", "text": "Safari 5.0.2 is out now", "polarity": 2 },
+  { "id": "1236", "text": "I really hate the new Firefox", "polarity": 0 } 
+] }
+\end{verbatim}
+
+Upon receipt of this response, the JSON formatted string is parsed and the corresponding record for the tweet previously stored in the MySQL database is updated with new values for sentiment score and the actual sentiment, using polarity and its semantic meaning respectively.
+
+\subsection{URL Extraction}
+Before extracting context and semantics from tweets, any URLs mentioned are found and removed. Assuming the tweet is software-related, these URLs are quite likely to be links to the software, or further reviews. This task is done using NLTK's \texttt{regexp\_tokenize} function with \url{http://[^ ]+} passed as the regular expression that finds URLs. If the tweet is later found not to contain any software, these URLs are discarded.
+%\subsection{Version}? OR LEAVE TILL NGRAM
+
+\subsection{Tokenisation}
+After URLs have been extracted and removed from the source text, the tweet is tokenised to produce an array of all the terms in the tweet.
+\subsection{Price Extraction}
+\subsection{Part-of-speech (POS) Tagging}
+\subsection{N-Gram Tagging}
+
+% MONGO DB
+\subsection{Bing API}
+The feature extraction subsystem utilises the Microsoft Bing API which returns web search queries. As the main tagging process checks the dictionary for matching software names, and the tweet retrieval engine uses both the dictionary and a set of keywords, there will be some pieces of software mentioned in the tweets that are not in the dictionary. As a result, these will be flagged as possible software names, and then queried on the Microsoft Bing search engine with the keywords ``movie'', ``music'', and ``software game''. These keywords were selected on the basis that the initial search key terms retrieved many tweets referring to music and films.
+\begin{verbatim}
+function bing_search(bing, term){
+    music = bing.search(term, music)
+    movie = bing.search(term, movie)
+    software = bing.search(term, software game)
+
+    if size(software) greater than size(movie) and size(music)
+        if references to software in title and description
+            return True
+    return False
+}
+\end{verbatim}
+If the number of results for software associated with the searched term is greater than corresponding results for films and music, the results are checked for identifiers of software in their headings. Therefore if any of the results suggests the searched term is a piece of software, that is assumed true.
+
+% BING.PY IN APPENDIX
+
+\section{Visualisation/Graphical User Interface(GUI)}
+The final stage of the project is to aggregate and present the results to the user in a GUI.
+Aggregating the results is the process of bringing together all the different data sources for data on a single output entity such as a piece of software. This aggregated data can then be used easily by the GUI to display understandable information to the user.
+The GUI of choice is a web application as opposed to a desktop application, as it allows for a more centralised system that users can easily connect to. It is also a more scalable solution as updates would not need to be pushed out to all users.
+
+\subsection{Aggregation}
+
+% SHOW MONGO FUNCTIONS
+\subsection{Web Application}
