@@ -13,37 +13,36 @@
 \contentsline {section}{\numberline {2.1}Text Mining}{8}
 \contentsline {section}{\numberline {2.2}Sentiment Analysis}{8}
 \contentsline {section}{\numberline {2.3}Twitter Mining}{8}
-\contentsline {section}{\numberline {2.4}Summary}{8}
 \contentsline {chapter}{\numberline {3}Design}{9}
 \contentsline {section}{\numberline {3.1}Methodology}{9}
 \contentsline {section}{\numberline {3.2}Use Cases}{9}
 \contentsline {subsection}{\numberline {3.2.1}Use Case 1}{9}
 \contentsline {subsection}{\numberline {3.2.2}Use Case 2}{9}
-\contentsline {section}{\numberline {3.3}General Architecture}{9}
-\contentsline {subsection}{\numberline {3.3.1}Retrieving Tweets}{9}
-\contentsline {subsection}{\numberline {3.3.2}Feature Extraction}{9}
-\contentsline {subsection}{\numberline {3.3.3}Visualisation}{9}
-\contentsline {chapter}{\numberline {4}Implementation}{10}
-\contentsline {section}{\numberline {4.1}Tweet Retrieval}{10}
-\contentsline {subsection}{\numberline {4.1.1}Twitter API}{10}
-\contentsline {subsubsection}{Streaming API}{10}
-\contentsline {subsubsection}{Search and REST APIs}{10}
-\contentsline {section}{\numberline {4.2}Feature Extraction}{11}
-\contentsline {subsection}{\numberline {4.2.1}Sentiment Analysis}{11}
-\contentsline {subsection}{\numberline {4.2.2}URL Extraction}{12}
-\contentsline {subsection}{\numberline {4.2.3}Tokenisation}{12}
-\contentsline {subsection}{\numberline {4.2.4}Price Extraction}{12}
-\contentsline {subsection}{\numberline {4.2.5}Part-of-speech (POS) Tagging}{12}
-\contentsline {subsection}{\numberline {4.2.6}N-Gram Tagging}{12}
-\contentsline {subsection}{\numberline {4.2.7}Bing API}{12}
-\contentsline {section}{\numberline {4.3}Visualisation/Graphical User Interface(GUI)}{12}
-\contentsline {subsection}{\numberline {4.3.1}Aggregation}{13}
-\contentsline {subsection}{\numberline {4.3.2}Web Application}{13}
-\contentsline {chapter}{\numberline {5}Testing and Results}{14}
-\contentsline {section}{\numberline {5.1}Testing}{14}
-\contentsline {section}{\numberline {5.2}Results}{14}
-\contentsline {subsection}{\numberline {5.2.1}GUI}{14}
-\contentsline {subsection}{\numberline {5.2.2}Discussion}{14}
-\contentsline {chapter}{\numberline {6}Evaluation}{15}
-\contentsline {chapter}{\numberline {7}Conclusions}{16}
-\contentsline {chapter}{\numberline {}Bibliography}{17}
+\contentsline {section}{\numberline {3.3}General Architecture}{10}
+\contentsline {subsection}{\numberline {3.3.1}Retrieving Tweets}{10}
+\contentsline {subsection}{\numberline {3.3.2}Feature Extraction}{10}
+\contentsline {subsection}{\numberline {3.3.3}Visualisation}{10}
+\contentsline {chapter}{\numberline {4}Implementation}{11}
+\contentsline {section}{\numberline {4.1}Tweet Retrieval}{11}
+\contentsline {subsection}{\numberline {4.1.1}Twitter API}{11}
+\contentsline {subsubsection}{Streaming API}{11}
+\contentsline {subsubsection}{Search and REST APIs}{11}
+\contentsline {section}{\numberline {4.2}Feature Extraction}{12}
+\contentsline {subsection}{\numberline {4.2.1}Sentiment Analysis}{12}
+\contentsline {subsection}{\numberline {4.2.2}URL Extraction}{13}
+\contentsline {subsection}{\numberline {4.2.3}Tokenisation}{13}
+\contentsline {subsection}{\numberline {4.2.4}Price Extraction}{13}
+\contentsline {subsection}{\numberline {4.2.5}Part-of-speech (POS) Tagging}{13}
+\contentsline {subsection}{\numberline {4.2.6}N-Gram Tagging}{13}
+\contentsline {subsection}{\numberline {4.2.7}Bing API}{13}
+\contentsline {section}{\numberline {4.3}Visualisation/Graphical User Interface(GUI)}{14}
+\contentsline {subsection}{\numberline {4.3.1}Aggregation}{14}
+\contentsline {subsection}{\numberline {4.3.2}Web Application}{14}
+\contentsline {chapter}{\numberline {5}Testing and Results}{15}
+\contentsline {section}{\numberline {5.1}Testing}{15}
+\contentsline {section}{\numberline {5.2}Results}{15}
+\contentsline {subsection}{\numberline {5.2.1}GUI}{15}
+\contentsline {subsection}{\numberline {5.2.2}Discussion}{15}
+\contentsline {chapter}{\numberline {6}Evaluation}{16}
+\contentsline {chapter}{\numberline {7}Conclusions}{17}
+\contentsline {chapter}{\numberline {}Bibliography}{18}
