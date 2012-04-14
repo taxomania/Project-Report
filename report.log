@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.3-1.40.12 (TeX Live 2011/MacPorts 2011_5) (format=pdflatex 2012.4.6)  13 APR 2012 20:15
+This is pdfTeX, Version 3.1415926-2.3-1.40.12 (TeX Live 2011/MacPorts 2011_5) (format=pdflatex 2012.4.6)  14 APR 2012 15:49
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -534,7 +534,7 @@ File: design.png Graphic file (type png)
  <use design.png>
 Package pdftex.def Info: design.png used on input line 26.
 (pdftex.def)             Requested size: 284.52756pt x 213.39682pt.
-) [10 <./design.png>]
+ (./stage1design.tex)) [10 <./design.png>]
 \openout2 = `chapter4.aux'.
 
  (./chapter4.tex
@@ -606,23 +606,24 @@ g . twitter . com / 2012 / 03 /
 (./chapter3.aux) (./chapter4.aux) (./chapter5.aux) (./chapter6.aux)
 (./chapter7.aux) (./appendix1.aux)) ) 
 Here is how much of TeX's memory you used:
- 3710 strings out of 494770
- 50407 string characters out of 3171574
- 108171 words of memory out of 3000000
- 6797 multiletter control sequences out of 15000+200000
+ 3714 strings out of 494770
+ 50465 string characters out of 3171574
+ 108182 words of memory out of 3000000
+ 6798 multiletter control sequences out of 15000+200000
  37313 words of font info for 55 fonts, out of 3000000 for 9000
  134 hyphenation exceptions out of 8191
- 38i,7n,32p,748b,270s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 38i,8n,32p,748b,270s stack positions out of 5000i,500n,10000p,200000b,50000s
 {/opt/local/share/texmf-texlive-dist/fonts
 /enc/dvips/base/8r.enc}</opt/local/share/texmf-texlive-dist/fonts/type1/public/
-amsfonts/cm/cmsy10.pfb></opt/local/share/texmf-texlive-dist/fonts/type1/urw/cou
-rier/ucrr8a.pfb></opt/local/share/texmf-texlive-dist/fonts/type1/urw/times/utmb
-8a.pfb></opt/local/share/texmf-texlive-dist/fonts/type1/urw/times/utmr8a.pfb></
-opt/local/share/texmf-texlive-dist/fonts/type1/urw/times/utmri8a.pfb>
-Output written on report.pdf (20 pages, 212007 bytes).
+amsfonts/cm/cmsy10.pfb></opt/local/share/texmf-texlive-dist/fonts/type1/public/
+amsfonts/latxfont/linew10.pfb></opt/local/share/texmf-texlive-dist/fonts/type1/
+urw/courier/ucrr8a.pfb></opt/local/share/texmf-texlive-dist/fonts/type1/urw/tim
+es/utmb8a.pfb></opt/local/share/texmf-texlive-dist/fonts/type1/urw/times/utmr8a
+.pfb></opt/local/share/texmf-texlive-dist/fonts/type1/urw/times/utmri8a.pfb>
+Output written on report.pdf (20 pages, 214484 bytes).
 PDF statistics:
- 94 PDF objects out of 1000 (max. 8388607)
- 63 compressed objects within 1 object stream
+ 98 PDF objects out of 1000 (max. 8388607)
+ 66 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
  11 words of extra memory for PDF output out of 10000 (max. 10000000)
 

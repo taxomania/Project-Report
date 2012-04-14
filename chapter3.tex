@@ -19,7 +19,7 @@ Upon fulfilling these core requirements, the systems should store these tweets i
 % MAY NEED UC DIAGRAMS
 
 \section{General Architecture}
-As previously explained, the system design follows a 3-stage approach, these being, tweet retrieval, feature extraction and visualisation for users. These stages are shown in the general archicture model displayed in Figure~\ref{fig:general}. These will be further explored in Sections~\ref{sec:arc1}, \ref{sec:arc2} and \ref{sec:arc3} respectively.
+As previously explained, the system design follows a 3-stage approach, these being tweet retrieval, feature extraction and visualisation for users. These stages are shown in the general archicture model displayed in Figure~\ref{fig:general}. These will be further explored in Sections~\ref{sec:arc1}, \ref{sec:arc2} and \ref{sec:arc3} respectively.
 
 \begin{figure}[h]
 \begin{center}
@@ -31,8 +31,18 @@ As previously explained, the system design follows a 3-stage approach, these bei
 
 \subsection{Retrieving Tweets}
 \label{sec:arc1}
-The first stage involves retrieving tweets from Twitter. The design for this stage follows the same concepts for each of the use cases defined.
+The first stage involves retrieving tweets from Twitter. The design for this stage follows the same concepts for each of the use cases defined. This can then be split further as seen in Figure~\ref{fig:phase1}.
+
+\begin{figure}[h]
+  \centering
+  \input{stage1design}
+  \caption{Design for tweet retrieval
+    \label{fig:phase1}}
+\end{figure}
+
+
 \subsection{Feature Extraction}
 \label{sec:arc2}
+
 \subsection{Visualisation}
 \label{sec:arc3}
