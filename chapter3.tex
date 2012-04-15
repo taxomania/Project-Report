@@ -3,15 +3,16 @@
 This chapter details the overall design of the system to be developed in this project. The software engineering methodology to be used will first be discussed, along with use cases, requirements and the architecture of the system. This will be followed up with notes on the class and database design diagrams. The decisions made with regards to some design choices will also be discussed in more detail.
 
 \section{Methodology}
+The software engineering methodology used in developing an application can have many effects on its final outcome. The development of this system will be carried out using principles taken from continuous integration and agile methods such as feature-driven development. There is always a working code repository available for deployment, and all new features to be implemented are to be worked on in clones of said repository. Upon completion of these minor implementations, they are tested to ensure everything is working correctly and assuming there are no issues, the changes are merged into the base repository. This methodology assures developers that if any major issues arise due to recent changes, they will be able to discard all changes and restart if they feel debugging would be a longer process. This ultimately allows for a faster development cycle and provides rigorous testing throughout the implementation process. This development methodology also allows for frequently changing requirements which is to be expected in any development task.
 
 \section{Use Cases}
 There are two main use cases for the proposed system. The following use case definitions apply only to the first stage of the system, i.e. retrieving and storing posts from Twitter. In both cases the system requirements converge, and will be explored below.
 
 \subsection[Use Case 1]{UC1 - Streaming Twitter}
-The first use case for the system requires a tool capable of continuously monitoring public tweets and storing these in a database. These tweets should be filtered by language and relevance, that is, tweets should be related to software. This use case will thus be referred to as streaming Twitter as that is its principle aim.
+The first use case for the system requires a tool capable of continuously monitoring public tweets and storing these in a database. These tweets should be filtered by language and relevance, that is, tweets should be related to software. These tweets need to be filtered by language to counter any issues faced in the feature extraction stage due to the complexities involved in NLP. This use case will thus be referred to as streaming Twitter as that is its principle aim.
 
 \subsection[Use Case 2]{UC2 - Searching Twitter}
-The second use case for the proposed system requires the ability to search Twitter for tweets concerning user-specified key terms, and as such will henceforth be referred to as searching Twitter. These key terms should also be related to software. An extra function required here should be to see which software tools have been mentioned most often, and these should be displayed to the users with the option to search again, or see the full analysis of these tools.
+The second use case for the proposed system requires the ability to search Twitter for tweets concerning user-specified key terms, and as such will henceforth be referred to as searching Twitter. These key terms should also be related to software. The returned tweets will also be filtered by language as in the streaming use case to counter the NLP complexities. An extra function required here should be to see which software tools have been mentioned most often, and these should be displayed to the users with the option to search again, or see the full analysis of these tools.
 
 
 Upon fulfilling these core requirements, the systems should store these tweets in a database for work in the remaining stages. The first of these is extracting the previously stated features from these tweets. These features must again be stored separately from the initial tweet data, as some tweets may contain information regarding more than one piece of software. Finally, all of this information must be aggregated and shown to users in the form of charts displaying sentiment, and all relevant information found alongside it.
@@ -31,7 +32,7 @@ As previously explained, the system design follows a 3-stage approach, these bei
 
 \subsection{Retrieving Tweets}
 \label{sec:arc1}
-The first stage involves retrieving tweets from Twitter. The design for this stage follows the same concepts for each of the use cases defined. This can then be split further as seen in Figure~\ref{fig:phase1}.
+The first stage involves retrieving tweets from Twitter. The design for this stage follows the same concepts for each of the use cases defined. This can then be split further as seen in Figure~\ref{fig:phase1}. The program should retrieve a set of search terms from a dictionary along with some keywords that may be associated with software. These are to be used to form a request for tweets from Twitter. Twitter will respond with the corresponding tweets and data, which are to be checked for language, to ensure they are in English. The remaining set of English tweets are then to be further parsed to extract the required information for storing these tweets in the database.
 
 \begin{figure}[h]
   \centering
@@ -40,9 +41,20 @@ The first stage involves retrieving tweets from Twitter. The design for this sta
     \label{fig:phase1}}
 \end{figure}
 
+% DB DESIGN HERE
+
 
 \subsection{Feature Extraction}
 \label{sec:arc2}
+The feature extraction stage will execute the task of extracting information from tweets. This will involve the stages described in \ref{sec:textmining} and its general design can be seen in Figure~\ref{fig:phase2}.
+
+\begin{figure}[h]
+  \centering
+  \input{stage2design}
+  \caption{Design for feature extraction
+    \label{fig:phase2}}
+\end{figure}
+% DB DESIGN HERE
 
 \subsection{Visualisation}
 \label{sec:arc3}
