@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.3-1.40.12 (TeX Live 2011/MacPorts 2011_5) (format=pdflatex 2012.4.6)  15 APR 2012 17:05
+This is pdfTeX, Version 3.1415926-2.3-1.40.12 (TeX Live 2011/MacPorts 2011_5) (format=pdflatex 2012.4.6)  15 APR 2012 17:34
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -620,7 +620,7 @@ amsfonts/latxfont/linew10.pfb></opt/local/share/texmf-texlive-dist/fonts/type1/
 urw/courier/ucrr8a.pfb></opt/local/share/texmf-texlive-dist/fonts/type1/urw/tim
 es/utmb8a.pfb></opt/local/share/texmf-texlive-dist/fonts/type1/urw/times/utmr8a
 .pfb></opt/local/share/texmf-texlive-dist/fonts/type1/urw/times/utmri8a.pfb>
-Output written on report.pdf (21 pages, 219349 bytes).
+Output written on report.pdf (21 pages, 219652 bytes).
 PDF statistics:
  101 PDF objects out of 1000 (max. 8388607)
  68 compressed objects within 1 object stream
