@@ -21,6 +21,12 @@ Alec Go, Richa Bhayani, and Lei Huang.
 \newblock Twitter sentiment classification using distant supervision.
 \newblock {\em Processing}, pages 1--6, 2009.
 
+\bibitem[GL09]{Gupta_Lehal_2009}
+Vishal Gupta and Gurpreet~S Lehal.
+\newblock A survey of text mining techniques and applications.
+\newblock {\em Journal of Emerging Technologies in Web Intelligence},
+  1(1):60--76, 2009.
+
 \bibitem[HNP05]{hotho-etal-ldv-2005}
 Andreas Hotho, Andreas Nürnberger, and Gerhard Paaß.
 \newblock A brief survey of text mining.

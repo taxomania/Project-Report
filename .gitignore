@@ -1,4 +1,5 @@
 .DS_STORE
 *.aux
+*.swp
 screen.ps
 when-changed.py
