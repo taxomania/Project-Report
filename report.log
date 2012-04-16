@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.3-1.40.12 (TeX Live 2011/MacPorts 2011_5) (format=pdflatex 2012.4.6)  16 APR 2012 21:14
+This is pdfTeX, Version 3.1415926-2.3-1.40.12 (TeX Live 2011/MacPorts 2011_5) (format=pdflatex 2012.4.6)  16 APR 2012 21:43
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -530,11 +530,11 @@ Chapter 3.
 
 
 
-] <design.png, id=43, 642.4pt x 481.8pt>
+] <design.png, id=43, 463.7325pt x 272.01625pt>
 File: design.png Graphic file (type png)
  <use design.png>
 Package pdftex.def Info: design.png used on input line 27.
-(pdftex.def)             Requested size: 284.52756pt x 213.39682pt.
+(pdftex.def)             Requested size: 341.43306pt x 200.28026pt.
  [11 <./design.png>] (./stage1design.tex) (./stage2design.tex)) [12]
 \openout2 = `chapter4.aux'.
 
@@ -621,10 +621,10 @@ amsfonts/latxfont/linew10.pfb></opt/local/share/texmf-texlive-dist/fonts/type1/
 urw/courier/ucrr8a.pfb></opt/local/share/texmf-texlive-dist/fonts/type1/urw/tim
 es/utmb8a.pfb></opt/local/share/texmf-texlive-dist/fonts/type1/urw/times/utmr8a
 .pfb></opt/local/share/texmf-texlive-dist/fonts/type1/urw/times/utmri8a.pfb>
-Output written on report.pdf (22 pages, 144896 bytes).
+Output written on report.pdf (22 pages, 158669 bytes).
 PDF statistics:
- 104 PDF objects out of 1000 (max. 8388607)
- 70 compressed objects within 1 object stream
+ 102 PDF objects out of 1000 (max. 8388607)
+ 69 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
  11 words of extra memory for PDF output out of 10000 (max. 10000000)
 
