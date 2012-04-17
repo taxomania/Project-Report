@@ -8,10 +8,10 @@ The information available in the world is growing exponentially, and the majorit
 ``Text mining is the process of extracting interesting information and knowledge from unstructured text"\cite{hotho-etal-ldv-2005} and its applications tend to work in two steps, first using an Information Retrieval(IR) application to narrow the search space, and then they extract significant parts of the retrieved texts\cite{Polajnar2006}. This general process usually involves structuring a source text by means of parsing and other linguistic analysis, then finding patterns in this structured data and then interpreting this output.
 
 Text mining is fundamentally different from standard web searching in that web searches rely primarily on information that is already known. However, the goal of text mining is to discover interesting, previously unknown information\cite{Gupta_Lehal_2009}.
-There is however one key issue introduced by text mining; natural language is used by humans for communication and recording information, while computers are incapable of interpreting natural language. Humans are naturally able to find linguistic patterns in text and understand the semantics of what is being said. Computers, on the other hand, face difficulties in interpreting variations in written text through spelling, colloquialism and also the general context of the text. Nonetheless, computers have what humans do not, that is, computers are much more capable of processing large datasets at very high speeds, particularly in comparison to the human being. Thus, the objective of text mining is to combine the best of these both by creating an application that can retrieve relevant documents and then apply linguistic patterns which may be rule-based, using human-defined rules, or taught by means of machine learning techniques. This project takes the rule-based approach and as such onlythese techniques will be discussed.
+There is however one key issue introduced by text mining; natural language is used by humans for communication and recording information, while computers are incapable of interpreting natural language. Humans are naturally able to find linguistic patterns in text and understand the semantics of what is being said. Computers, on the other hand, face difficulties in interpreting variations in written text through spelling, colloquialism and also the general context of the text. Nonetheless, computers have what humans do not, that is, computers are much more capable of processing large datasets at very high speeds, particularly in comparison to the human being. Thus, the objective of text mining is to combine the best of these both by creating an application that can retrieve relevant documents and then apply linguistic patterns which may be rule-based, using human-defined rules, or taught by means of machine learning techniques. This project takes the rule-based approach and as such only these techniques will be discussed.
 
 An example of the text mining process can be seen in Figure~\ref{fig:tm}.
-\begin{figure}
+\begin{figure}[b]
 \begin{center}
 \includegraphics[width=15cm]{tm}
 \end{center}
@@ -25,16 +25,21 @@ IR is the process of retrieving textual documents which may contain the answers 
 
 The IR tasks in this project will mainly be carried out on Twitter's systems, and as such, besides the core concept of IR, its internal specifics are not in the scope of this report.
 
-
-% MENTION MACHINE LEARNING V RULE/DICTIONARY BASED APPROACH
 \subsection[Natural Language Processing]{Natural Language Processing(NLP)}
+NLP, in the scope of this project, is the process of extracting information from natural language\cite{Healey98}, that is, any language written or spoken by humans. This involves parsing and processing unstructured text to be able to gain meaningful knowledge from it. Nowadays most natural language processing is done using machine learning techniques, however, in the past implementations were based on large sets of coded `rules'. These rules are used to define certain linguistic features in the text in order to understand the semantics behind it. NLP is a major field of research at present and also has applications in both information retrieval and information extraction.
+
+There are many methods involved in NLP tasks and some of these will now be further explored.
+
 \subsubsection{Tokenisation}
-\subsubsection{Part of Speech(POS)}
+
+\subsubsection{Part of Speech(POS) Tagging}
+
 \subsubsection{Lemmatisation}
-\subsubsection{Named Entity Recognition(NER)}
+
 
 \subsection[Information Extraction]{Information Extraction(IE)}
 
+\subsubsection{Named Entity Recognition(NER)}
 
 \section[Sentiment Analysis]{Sentiment Analysis and Opinion Mining}
 
