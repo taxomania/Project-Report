@@ -14,8 +14,10 @@
 \contentsline {subsection}{\numberline {2.1.1}Information Retrieval}{8}
 \contentsline {subsection}{\numberline {2.1.2}Natural Language Processing}{9}
 \contentsline {subsubsection}{Tokenisation}{9}
+\contentsline {subsubsection}{Normalisation}{10}
+\contentsline {subsubsection}{Stop Words}{10}
 \contentsline {subsubsection}{Part of Speech(POS) Tagging}{10}
-\contentsline {subsubsection}{Lemmatisation}{10}
+\contentsline {subsubsection}{Stemming and Lemmatisation}{10}
 \contentsline {subsection}{\numberline {2.1.3}Information Extraction}{10}
 \contentsline {subsubsection}{Named Entity Recognition(NER)}{10}
 \contentsline {section}{\numberline {2.2}Sentiment Analysis}{10}

@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.3-1.40.12 (TeX Live 2011/MacPorts 2011_5) (format=pdflatex 2012.4.6)  18 APR 2012 16:08
+This is pdfTeX, Version 3.1415926-2.3-1.40.12 (TeX Live 2011/MacPorts 2011_5) (format=pdflatex 2012.4.6)  18 APR 2012 20:58
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -511,7 +511,7 @@ LaTeX Font Info:    Font shape `T1/ptm/bx/n' in size <17.28> not available
 
  (./chapter2.tex
 Chapter 2.
-<tm.png, id=33, 707.64375pt x 157.58875pt>
+<tm.png, id=34, 707.64375pt x 157.58875pt>
 File: tm.png Graphic file (type png)
  <use tm.png>
 Package pdftex.def Info: tm.png used on input line 16.
@@ -526,7 +526,11 @@ Overfull \hbox (37.34076pt too wide) in paragraph at lines 28--29
 ng in-for-ma-tion from nat-u-ral language[[]],
  []
 
-(./tokenisation.tex) [9 <./tm.png>]) [10]
+(./tokenisation.tex)
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+[9 <./tm.png>]) [10]
 \openout2 = `chapter3.aux'.
 
  (./chapter3.tex
@@ -535,7 +539,7 @@ Chapter 3.
 
 
 
-] <design.png, id=47, 463.7325pt x 272.01625pt>
+] <design.png, id=48, 463.7325pt x 272.01625pt>
 File: design.png Graphic file (type png)
  <use design.png>
 Package pdftex.def Info: design.png used on input line 27.
@@ -618,10 +622,10 @@ Underfull \hbox (badness 1383) in paragraph at lines 87--91
 (./chapter3.aux) (./chapter4.aux) (./chapter5.aux) (./chapter6.aux)
 (./chapter7.aux) (./appendix1.aux)) ) 
 Here is how much of TeX's memory you used:
- 3733 strings out of 494770
- 50684 string characters out of 3171574
- 108278 words of memory out of 3000000
- 6811 multiletter control sequences out of 15000+200000
+ 3734 strings out of 494770
+ 50702 string characters out of 3171574
+ 108289 words of memory out of 3000000
+ 6812 multiletter control sequences out of 15000+200000
  37313 words of font info for 55 fonts, out of 3000000 for 9000
  134 hyphenation exceptions out of 8191
  38i,8n,32p,1087b,268s stack positions out of 5000i,500n,10000p,200000b,50000s
@@ -632,7 +636,7 @@ amsfonts/latxfont/linew10.pfb></opt/local/share/texmf-texlive-dist/fonts/type1/
 urw/courier/ucrr8a.pfb></opt/local/share/texmf-texlive-dist/fonts/type1/urw/tim
 es/utmb8a.pfb></opt/local/share/texmf-texlive-dist/fonts/type1/urw/times/utmr8a
 .pfb></opt/local/share/texmf-texlive-dist/fonts/type1/urw/times/utmri8a.pfb>
-Output written on report.pdf (24 pages, 166056 bytes).
+Output written on report.pdf (24 pages, 168423 bytes).
 PDF statistics:
  108 PDF objects out of 1000 (max. 8388607)
  73 compressed objects within 1 object stream
