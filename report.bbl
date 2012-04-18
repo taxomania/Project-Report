@@ -1,4 +1,4 @@
-\begin{thebibliography}{GBH09}
+\begin{thebibliography}{@tw12b}
 
 \bibitem[Alc11]{alchemyapi}
 AlchemyAPI.
@@ -15,6 +15,12 @@ CLiPS.
 \newblock Pattern.en sentiment.
 \newblock \url{http://www.clips.ua.ac.be/pages/pattern-en#sentiment}, April~6,
   2012.
+
+\bibitem[FD95]{feldman95KDT}
+R.~Feldman and I.~Dagan.
+\newblock Kdt - knowledge discovery in texts.
+\newblock In {\em Proc. of the First Int. Conf. on Knowledge Discovery (KDD)},
+  pages 112--117, 1995.
 
 \bibitem[GBH09]{Go_Bhayani_Huang_2009}
 Alec Go, Richa Bhayani, and Lei Huang.
@@ -33,16 +39,55 @@ Andreas Hotho, Andreas Nürnberger, and Gerhard Paaß.
 \newblock {\em LDV Forum - GLDV Journal for Computational Linguistics and
   Language Technology}, 20(1):19--62, May 2005.
 
+\bibitem[Hun07]{Hunter:2007}
+John~D. Hunter.
+\newblock Matplotlib: A 2d graphics environment.
+\newblock {\em Computing In Science \& Engineering}, 9(3):90--95, May-Jun 2007.
+
+\bibitem[KV05]{Krallinger2005}
+M.~Krallinger and A.~Valencia.
+\newblock Text-mining and information-retrieval services for molecular biology.
+\newblock {\em Genome Biol}, 6(7), 2005.
+
+\bibitem[MRS08]{manning2008}
+C.~D. Manning, P.~Raghavan, and H.~Schütze.
+\newblock {\em Introduction to Information Retrieval}.
+\newblock Cambridge University Press, 2008.
+
+\bibitem[PD11]{PaulD11}
+Michael~J. Paul and Mark Dredze.
+\newblock You are what you tweet: Analyzing twitter for public health.
+\newblock In Lada~A. Adamic, Ricardo~A. Baeza-Yates, and Scott Counts, editors,
+  {\em ICWSM}. The AAAI Press, 2011.
+
 \bibitem[Pol06]{Polajnar2006}
 Tamara Polajnar.
 \newblock Survey of text mining of biomedical corpora.
 \newblock June 2006.
 
-\bibitem[@tw12]{twitterblog}
+\bibitem[PP10]{Pak10}
+Alexander Pak and Patrick Paroubek.
+\newblock Twitter as a corpus for sentiment analysis and opinion mining.
+\newblock In {\em Proceedings of the Seventh conference on International
+  Language Resources and Evaluation (LREC'10)}, Valletta, Malta, May 2010.
+  European Language Resources Association (ELRA).
+
+\bibitem[Ski08]{Skib08}
+Diane~J. Skiba.
+\newblock Nursing education 2.0: Twitter \& tweets.
+\newblock {\em Nursing Education Perspectives}, 29(2):p110 -- 112, 2008.
+
+\bibitem[@tw12a]{twitterblog}
 @twitter.
 \newblock Twitter turns six.
 \newblock \url{http://blog.twitter.com/2012/03/twitter-turns-six.html},
   March~21, 2012.
+
+\bibitem[@tw12b]{twitterstreamingapi}
+@twitterapi.
+\newblock Streaming api concepts.
+\newblock \url{https://dev.twitter.com/docs/streaming-api/concepts}, April~2,
+  2012.
 
 \bibitem[WH98]{Healey98}
 Mark Warschauer and Deborah Healey.

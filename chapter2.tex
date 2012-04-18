@@ -11,14 +11,13 @@ Text mining is fundamentally different from standard web searching in that web s
 There is however one key issue introduced by text mining; natural language is used by humans for communication and recording information, while computers are incapable of interpreting natural language. Humans are naturally able to find linguistic patterns in text and understand the semantics of what is being said. Computers, on the other hand, face difficulties in interpreting variations in written text through spelling, colloquialism and also the general context of the text. Nonetheless, computers have what humans do not, that is, computers are much more capable of processing large datasets at very high speeds, particularly in comparison to the human being. Thus, the objective of text mining is to combine the best of these both by creating an application that can retrieve relevant documents and then apply linguistic patterns which may be rule-based, using human-defined rules, or taught by means of machine learning techniques. This project takes the rule-based approach and as such only these techniques will be discussed.
 
 An example of the text mining process can be seen in Figure~\ref{fig:tm}.
-\begin{figure}[b]
+\begin{figure}[t]
 \begin{center}
 \includegraphics[width=15cm]{tm}
 \end{center}
 \caption{The text mining process\cite{Gupta_Lehal_2009}}
 \label{fig:tm}
 \end{figure}
-
 
 \subsection[Information Retrieval]{Information Retrieval(IR)}
 IR is the process of retrieving textual documents which may contain the answers to questions but do not answer these themselves\cite{hotho-etal-ldv-2005}. Information retrieval is fundamentally a web search working off user queries representing an information need. The process works by searching a collection of documents, and then retrieving those matching a user query depending on relevance. The approach to calculating relevance is dependent upon the actual IR engine itself, generally working on the frequency of specific key terms in each of these documents, and usually assigns a relevance rank to each document. This allows a sorting amongst the results and gives improved results, especially when given a limited number of results.
@@ -31,7 +30,11 @@ NLP, in the scope of this project, is the process of extracting information from
 There are many methods involved in NLP tasks and some of these will now be further explored.
 
 \subsubsection{Tokenisation}
+Tokenisation is the process of splitting a stream of text into singular words or phrases, otherwise known as tokens. These tokens usually form the basis of further NLP work. While it can be a straightforward process when using Standard English, the definition of a word, from the tokeniser's point of view, can be somewhat ambiguous. For example, in the case of word ``don't", which of the following would be the best way to tokenise it?
 
+\begin{figure}[h!]
+  \input{tokenisation}
+\end{figure}
 \subsubsection{Part of Speech(POS) Tagging}
 
 \subsubsection{Lemmatisation}

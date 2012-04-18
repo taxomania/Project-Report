@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.3-1.40.12 (TeX Live 2011/MacPorts 2011_5) (format=pdflatex 2012.4.6)  17 APR 2012 17:31
+This is pdfTeX, Version 3.1415926-2.3-1.40.12 (TeX Live 2011/MacPorts 2011_5) (format=pdflatex 2012.4.6)  18 APR 2012 16:08
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -521,12 +521,12 @@ Package pdftex.def Info: tm.png used on input line 16.
 
 
 ]
-Overfull \hbox (37.34076pt too wide) in paragraph at lines 29--30
+Overfull \hbox (37.34076pt too wide) in paragraph at lines 28--29
 \T1/ptm/m/n/12 NLP, in the scope of this project, is the pro-cess of ex-tract-i
 ng in-for-ma-tion from nat-u-ral language[[]],
  []
 
-) [9 <./tm.png>] [10]
+(./tokenisation.tex) [9 <./tm.png>]) [10]
 \openout2 = `chapter3.aux'.
 
  (./chapter3.tex
@@ -585,37 +585,43 @@ Chapter 7.
 
 
 ] (./report.bbl
-Underfull \hbox (badness 5064) in paragraph at lines 4--7
+Underfull \hbox (badness 4001) in paragraph at lines 4--7
 []\T1/ptm/m/n/12 AlchemyAPI.  Sen-ti-ment anal-y-sis.  $\T1/pcr/m/n/12 http : /
  / www . alchemyapi . com / api /
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 14--18
+Underfull \hbox (badness 7888) in paragraph at lines 14--18
 []\T1/ptm/m/n/12 CLiPS.  Pat-tern.en sen-ti-ment.  $\T1/pcr/m/n/12 http : / / w
 ww . clips . ua . ac . be / pages /
  []
 
+[21
 
-Underfull \hbox (badness 10000) in paragraph at lines 42--46
+
+]
+Underfull \hbox (badness 10000) in paragraph at lines 81--85
 []\T1/ptm/m/n/12 @twitter.  Twit-ter turns six.  $\T1/pcr/m/n/12 http : / / blo
 g . twitter . com / 2012 / 03 /
  []
 
-) [21
 
+Underfull \hbox (badness 1383) in paragraph at lines 87--91
+[]\T1/ptm/m/n/12 @twitterapi.  Stream-ing api con-cepts.  $\T1/pcr/m/n/12 https
+ : / / dev . twitter . com / docs /
+ []
 
-]
+) [22]
 \openout2 = `appendix1.aux'.
 
  (./appendix1.tex) (./report.aux (./chapter1.aux) (./chapter2.aux)
 (./chapter3.aux) (./chapter4.aux) (./chapter5.aux) (./chapter6.aux)
 (./chapter7.aux) (./appendix1.aux)) ) 
 Here is how much of TeX's memory you used:
- 3722 strings out of 494770
- 50537 string characters out of 3171574
- 108224 words of memory out of 3000000
- 6803 multiletter control sequences out of 15000+200000
+ 3733 strings out of 494770
+ 50684 string characters out of 3171574
+ 108278 words of memory out of 3000000
+ 6811 multiletter control sequences out of 15000+200000
  37313 words of font info for 55 fonts, out of 3000000 for 9000
  134 hyphenation exceptions out of 8191
  38i,8n,32p,1087b,268s stack positions out of 5000i,500n,10000p,200000b,50000s
@@ -626,10 +632,10 @@ amsfonts/latxfont/linew10.pfb></opt/local/share/texmf-texlive-dist/fonts/type1/
 urw/courier/ucrr8a.pfb></opt/local/share/texmf-texlive-dist/fonts/type1/urw/tim
 es/utmb8a.pfb></opt/local/share/texmf-texlive-dist/fonts/type1/urw/times/utmr8a
 .pfb></opt/local/share/texmf-texlive-dist/fonts/type1/urw/times/utmri8a.pfb>
-Output written on report.pdf (23 pages, 160216 bytes).
+Output written on report.pdf (24 pages, 166056 bytes).
 PDF statistics:
- 105 PDF objects out of 1000 (max. 8388607)
- 71 compressed objects within 1 object stream
+ 108 PDF objects out of 1000 (max. 8388607)
+ 73 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
  11 words of extra memory for PDF output out of 10000 (max. 10000000)
 
