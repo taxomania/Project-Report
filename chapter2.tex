@@ -50,7 +50,20 @@ Stop words are very commonly used words like \emph{a}, \emph{and} or \emph{the}.
 \subsubsection{Part of Speech(POS) Tagging}
 
 \subsubsection{Stemming and Lemmatisation}
+Documents contain many different derivations of words, such as \emph{normalise} and \emph{normalisation}, and differing forms of the same word due to its usage or tense, for example, \emph{walked} or \emph{walking}. An information extraction tool should ideally see these as somewhat equivalent terms; this is where stemming and lemmatisation come in. The following example, taken from \cite{manning2008}, shows how these techniques can map text:
 
+\begin{quote}
+am, are, is \begin{math}\Rightarrow\end{math} be 
+\newline
+car, cars, car's, cars' \begin{math}\Rightarrow\end{math} car
+\newline
+\newline
+the boy's cars are different colors  \begin{math}\Rightarrow \end{math}
+\newline
+the boy car be differ color
+\end{quote}
+
+While stemming is a heuristic process hoping to achieve this goal, lemmatisation utilises a more sophisticated approach in that it uses a vocabulary and morphological analysis of words.
 
 \subsection[Information Extraction]{Information Extraction(IE)}
 
