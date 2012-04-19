@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.3-1.40.12 (TeX Live 2011/MacPorts 2011_5) (format=pdflatex 2012.4.6)  18 APR 2012 23:11
+This is pdfTeX, Version 3.1415926-2.3-1.40.12 (TeX Live 2011/MacPorts 2011_5) (format=pdflatex 2012.4.6)  19 APR 2012 13:37
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -419,24 +419,24 @@ Package: listings 2007/02/22 1.4 (Carsten Heinz)
 (./appendix1.aux))
 \openout1 = `report.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 86.
-LaTeX Font Info:    ... okay on input line 86.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 86.
-LaTeX Font Info:    ... okay on input line 86.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 86.
-LaTeX Font Info:    ... okay on input line 86.
-LaTeX Font Info:    Checking defaults for OMS/pzccm/m/n on input line 86.
-LaTeX Font Info:    Try loading font information for OMS+pzccm on input line 86
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 59.
+LaTeX Font Info:    ... okay on input line 59.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 59.
+LaTeX Font Info:    ... okay on input line 59.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 59.
+LaTeX Font Info:    ... okay on input line 59.
+LaTeX Font Info:    Checking defaults for OMS/pzccm/m/n on input line 59.
+LaTeX Font Info:    Try loading font information for OMS+pzccm on input line 59
 .
 
 (/opt/local/share/texmf-texlive-dist/tex/latex/psnfss/omspzccm.fd
 File: omspzccm.fd 2000/01/03 Fontinst v1.801 font definitions for OMS/pzccm.
 )
-LaTeX Font Info:    ... okay on input line 86.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 86.
-LaTeX Font Info:    ... okay on input line 86.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 86.
-LaTeX Font Info:    ... okay on input line 86.
+LaTeX Font Info:    ... okay on input line 59.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 59.
+LaTeX Font Info:    ... okay on input line 59.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 59.
+LaTeX Font Info:    ... okay on input line 59.
 
 (/opt/local/share/texmf-texlive-dist/tex/context/base/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
@@ -500,16 +500,16 @@ e
 ))
 \c@lstlisting=\count115
 LaTeX Font Info:    Font shape `T1/ptm/bx/n' in size <14.4> not available
-(Font)              Font shape `T1/ptm/b/n' tried instead on input line 89.
+(Font)              Font shape `T1/ptm/b/n' tried instead on input line 62.
 
 [1
 
 {/opt/local/var/db/texmf/fonts/map/pdftex/updmap/pdftex.map}]
 LaTeX Font Info:    Font shape `T1/ptm/bx/n' in size <12> not available
-(Font)              Font shape `T1/ptm/b/n' tried instead on input line 89.
+(Font)              Font shape `T1/ptm/b/n' tried instead on input line 62.
  (./abstract.tex) [1]
 LaTeX Font Info:    Font shape `T1/ptm/bx/n' in size <24.88> not available
-(Font)              Font shape `T1/ptm/b/n' tried instead on input line 92.
+(Font)              Font shape `T1/ptm/b/n' tried instead on input line 65.
  (./report.toc
 LaTeX Font Info:    Try loading font information for OT1+ptmcm on input line 2.
 
@@ -578,22 +578,16 @@ Package pdftex.def Info: tm.png used on input line 16.
 
 
 
-]
-Overfull \hbox (37.34076pt too wide) in paragraph at lines 28--29
-\T1/ptm/m/n/12 NLP, in the scope of this project, is the pro-cess of ex-tract-i
-ng in-for-ma-tion from nat-u-ral language[[]],
- []
-
-(./tokenisation.tex)
+] (./tokenisation.tex)
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-[9 <./tm.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 56--64
+[9 <./tm.png>] [10]
+Underfull \hbox (badness 10000) in paragraph at lines 68--76
 
  []
 
-) [10] [11]
+) [11]
 \openout2 = `chapter3.aux'.
 
  (./chapter3.tex
@@ -652,13 +646,13 @@ Chapter 7.
 
 
 ] (./report.bbl
-Underfull \hbox (badness 4001) in paragraph at lines 4--7
+Underfull \hbox (badness 2970) in paragraph at lines 4--7
 []\T1/ptm/m/n/12 AlchemyAPI.  Sen-ti-ment anal-y-sis.  $\T1/pcr/m/n/12 http : /
  / www . alchemyapi . com / api /
  []
 
 
-Underfull \hbox (badness 7888) in paragraph at lines 14--18
+Underfull \hbox (badness 6252) in paragraph at lines 26--30
 []\T1/ptm/m/n/12 CLiPS.  Pat-tern.en sen-ti-ment.  $\T1/pcr/m/n/12 http : / / w
 ww . clips . ua . ac . be / pages /
  []
@@ -667,15 +661,9 @@ ww . clips . ua . ac . be / pages /
 
 
 ]
-Underfull \hbox (badness 10000) in paragraph at lines 81--85
+Underfull \hbox (badness 7081) in paragraph at lines 112--116
 []\T1/ptm/m/n/12 @twitter.  Twit-ter turns six.  $\T1/pcr/m/n/12 http : / / blo
 g . twitter . com / 2012 / 03 /
- []
-
-
-Underfull \hbox (badness 1383) in paragraph at lines 87--91
-[]\T1/ptm/m/n/12 @twitterapi.  Stream-ing api con-cepts.  $\T1/pcr/m/n/12 https
- : / / dev . twitter . com / docs /
  []
 
 ) [23]
@@ -685,10 +673,10 @@ Underfull \hbox (badness 1383) in paragraph at lines 87--91
 (./chapter3.aux) (./chapter4.aux) (./chapter5.aux) (./chapter6.aux)
 (./chapter7.aux) (./appendix1.aux)) ) 
 Here is how much of TeX's memory you used:
- 4328 strings out of 494770
- 57454 string characters out of 3171574
- 118756 words of memory out of 3000000
- 7390 multiletter control sequences out of 15000+200000
+ 4333 strings out of 494770
+ 57534 string characters out of 3171574
+ 118793 words of memory out of 3000000
+ 7395 multiletter control sequences out of 15000+200000
  37313 words of font info for 55 fonts, out of 3000000 for 9000
  134 hyphenation exceptions out of 8191
  38i,8n,32p,1087b,273s stack positions out of 5000i,500n,10000p,200000b,50000s
@@ -699,7 +687,7 @@ amsfonts/latxfont/linew10.pfb></opt/local/share/texmf-texlive-dist/fonts/type1/
 urw/courier/ucrr8a.pfb></opt/local/share/texmf-texlive-dist/fonts/type1/urw/tim
 es/utmb8a.pfb></opt/local/share/texmf-texlive-dist/fonts/type1/urw/times/utmr8a
 .pfb></opt/local/share/texmf-texlive-dist/fonts/type1/urw/times/utmri8a.pfb>
-Output written on report.pdf (25 pages, 169735 bytes).
+Output written on report.pdf (25 pages, 172769 bytes).
 PDF statistics:
  112 PDF objects out of 1000 (max. 8388607)
  76 compressed objects within 1 object stream

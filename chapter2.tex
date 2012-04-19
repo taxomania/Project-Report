@@ -20,12 +20,12 @@ An example of the text mining process can be seen in Figure~\ref{fig:tm}.
 \end{figure}
 
 \subsection[Information Retrieval]{Information Retrieval(IR)}
-IR is the process of retrieving textual documents which may contain the answers to questions but do not answer these themselves\cite{hotho-etal-ldv-2005}. Information retrieval is fundamentally a web search working off user queries representing an information need. The process works by searching a collection of documents, and then retrieving those matching a user query depending on relevance. The approach to calculating relevance is dependent upon the actual IR engine itself, generally working on the frequency of specific key terms in each of these documents, and usually assigns a relevance rank to each document. This allows a sorting amongst the results and gives improved results, especially when given a limited number of results.
+IR is the process of retrieving textual documents which may contain the answers to questions but do not answer these themselves\cite{Hearst:1999}. Information retrieval is fundamentally a web search working off user queries representing an information need. The process works by searching a collection of documents, and then retrieving those matching a user query depending on relevance. The approach to calculating relevance is dependent upon the actual IR engine itself, generally working on the frequency of specific key terms in each of these documents, and usually assigns a relevance rank to each document. This allows a sorting amongst the results and gives improved results, especially when given a limited number of results.
 
 The IR tasks in this project will mainly be carried out on Twitter's systems, and as such, besides the core concept of IR, its internal specifics are not in the scope of this report.
 
 \subsection[Natural Language Processing]{Natural Language Processing(NLP)}
-NLP, in the scope of this project, is the process of extracting information from natural language\cite{Healey98}, that is, any language written or spoken by humans. This involves parsing and processing unstructured text to be able to gain meaningful knowledge from it. Nowadays most natural language processing is done using machine learning techniques, however, in the past implementations were based on large sets of coded `rules'. These rules are used to define certain linguistic features in the text in order to understand the semantics behind it. NLP is a major field of research at present and also has applications in both information retrieval and information extraction.
+NLP, in the scope of this project, is the process of extracting information from natural language \cite{Healey98}, that is, any language written or spoken by humans. This involves parsing and processing unstructured text to be able to gain meaningful knowledge from it. Nowadays most natural language processing is done using machine learning techniques, however, in the past implementations were based on large sets of coded `rules'. These rules are used to define certain linguistic features in the text in order to understand the semantics behind it. NLP is a major field of research at present and also has applications in both information retrieval and information extraction.
 
 There are many methods involved in NLP tasks and some of these will now be further explored.
 
@@ -48,6 +48,17 @@ Once text has been tokenised, these words may need normalising. Normalisation ac
 Stop words are very commonly used words like \emph{a}, \emph{and} or \emph{the}. By creating a list of these terms, a \emph{stop list}, a natural language parser can remove these terms from the source text as they hold little or no value in matching queries to documents. In modern systems, however, stop lists are not widely used as they provide little gain in terms of efficiency\cite{manning2008}.
 
 \subsubsection{Part of Speech(POS) Tagging}
+POS tagging is a process carried out after tokenisation. Its task is to assign tags to words, for their corresponding grammatical parts of speech, based on both the word's definition, and its context. This is essentially identifying words as nouns, verbs, adjectives, etc.
+
+However, the process is more complicated than it may first seem. The main issue is that most words do not just have one part of speech, they can have many. For example, \emph{can} could be a noun or a verb, depending on the context it is being used in. Thus, when tagging words, it is important to analyse a whole phrase or sentence. Analysing a word out of context could have significant repercussions. In the context of this project, taking the Microsoft software \emph{Paint} as an example, if someone were to tweet:
+\begin{quote}
+Microsoft Paint has seen some major improvements in its latest release!
+\end{quote}
+This would differ from, say,
+\begin{quote}
+Paint something now.
+\end{quote}
+where \emph{paint} is being used as an imperative verb. In the first example, seeing that \emph{Paint} is followed by \emph{seen}, a verb, suggests it is unlikely \emph{Paint} is being used as verb.  This would be the difference in this project between discovering a piece of software and totally missing it, and thus highlights the importance of context and semantics when analysing text.
 
 
 \subsubsection{Stemming and Lemmatisation}

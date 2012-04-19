@@ -1,4 +1,4 @@
-\begin{thebibliography}{@tw12b}
+\begin{thebibliography}{CCMS10}
 
 \bibitem[Alc11]{alchemyapi}
 AlchemyAPI.
@@ -10,11 +10,28 @@ Steven Bird, Edward Loper, and Ewan Klein.
 \newblock {\em Natural Language Processing with Python}.
 \newblock O'Reilly Media Inc, 2009.
 
+\bibitem[CCMS10]{Corley_Cook_Mikler_Singh_2010}
+Courtney~D Corley, Diane~J Cook, Armin~R Mikler, and Karan~P Singh.
+\newblock Text and structural data mining of influenza mentions in web and
+  social media.
+\newblock {\em International Journal of Environmental Research and Public
+  Health}, 7(2):596--615, 2010.
+
+\bibitem[Cha97]{Charniak97}
+Eugene Charniak.
+\newblock Statistical techniques for natural language parsing.
+\newblock {\em AI Magazine}, 18:33--44, 1997.
+
 \bibitem[CLi12]{pattern}
 CLiPS.
 \newblock Pattern.en sentiment.
 \newblock \url{http://www.clips.ua.ac.be/pages/pattern-en#sentiment}, April~6,
   2012.
+
+\bibitem[Cul10]{culotta10}
+Aron Culotta.
+\newblock Detecting influenza outbreaks by analyzing twitter messages.
+\newblock {\em CoRR}, abs/1007.4748, 2010.
 
 \bibitem[FD95]{feldman95KDT}
 R.~Feldman and I.~Dagan.
@@ -33,6 +50,13 @@ Vishal Gupta and Gurpreet~S Lehal.
 \newblock {\em Journal of Emerging Technologies in Web Intelligence},
   1(1):60--76, 2009.
 
+\bibitem[Hea99]{Hearst:1999}
+Marti~A. Hearst.
+\newblock Untangling text data mining.
+\newblock In {\em Proceedings of the 37th annual meeting of the Association for
+  Computational Linguistics on Computational Linguistics}, ACL '99, pages
+  3--10, Stroudsburg, PA, USA, 1999. Association for Computational Linguistics.
+
 \bibitem[HNP05]{hotho-etal-ldv-2005}
 Andreas Hotho, Andreas Nürnberger, and Gerhard Paaß.
 \newblock A brief survey of text mining.
@@ -48,6 +72,13 @@ John~D. Hunter.
 M.~Krallinger and A.~Valencia.
 \newblock Text-mining and information-retrieval services for molecular biology.
 \newblock {\em Genome Biol}, 6(7), 2005.
+
+\bibitem[LMRS07]{Litwin:2007}
+Witold Litwin, Riad Mokadem, Philippe Rigaux, and Thomas Schwarz.
+\newblock Fast ngram-based string search over data encoded using algebraic
+  signatures.
+\newblock In {\em Proceedings of the 33rd international conference on Very
+  large data bases}, VLDB '07, pages 207--218. VLDB Endowment, 2007.
 
 \bibitem[MRS08]{manning2008}
 C.~D. Manning, P.~Raghavan, and H.~Schütze.
