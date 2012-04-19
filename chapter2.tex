@@ -39,7 +39,7 @@ Tokenisation is the process of splitting a stream of text into singular words or
     \label{fig:tokenisation}}
 \end{figure}
 
-These variations can be problematic in terms of the results being output for certain user queries. For example, in the case of these differing tokenisations of \emph{don't}, a user search for the word \emph{don} would return true twice, but should be false in the actual context. The importance of normalisations is highlighted tokenising tweets because a lot of users do not use apostrophes, either due to ease when typing, or in order to reduce the number of characters being used. Thus, varying spellings of the terms should not be tokenised differently.
+These variations can be problematic in terms of the results being output for certain user queries. For example, in the case of these differing tokenisations of \emph{don't}, a user search for the word \emph{don} would return true twice, but should be false in its actual context. The importance of normalisation is highlighted when tokenising tweets because a lot of users do not use apostrophes, either due to ease when typing, or in order to reduce the number of characters being used. Thus, varying spellings of the terms should not be tokenised differently.
 
 \subsubsection{Normalisation}
 Once text has been tokenised, these words may need normalising. Normalisation accounts for the several variations in spelling. For example, if you want to search for \emph{Mozilla~Firefox} you would want an IR engine to return not only documents containing the exact query but also those containing terms such as \emph{Firefox}, \emph{firefox} or \emph{mozilla~firefox}. Not doing this would obviously yield fewer results, or in the case of information extraction, it may suggest that \emph{Mozilla~Firefox} and \emph{mozilla~firefox} are two different things. Thus, normalisation is required to successfully map equivalent classes of terms.
@@ -48,6 +48,7 @@ Once text has been tokenised, these words may need normalising. Normalisation ac
 Stop words are very commonly used words like \emph{a}, \emph{and} or \emph{the}. By creating a list of these terms, a \emph{stop list}, a natural language parser can remove these terms from the source text as they hold little or no value in matching queries to documents. In modern systems, however, stop lists are not widely used as they provide little gain in terms of efficiency\cite{manning2008}.
 
 \subsubsection{Part of Speech(POS) Tagging}
+
 
 \subsubsection{Stemming and Lemmatisation}
 Documents contain many different derivations of words, such as \emph{normalise} and \emph{normalisation}, and differing forms of the same word due to its usage or tense, for example, \emph{walked} or \emph{walking}. An information extraction tool should ideally see these as somewhat equivalent terms; this is where stemming and lemmatisation come in. The following example, taken from \cite{manning2008}, shows how these techniques can map text:
@@ -63,7 +64,7 @@ the boy's cars are different colors  \begin{math}\Rightarrow \end{math}
 the boy car be differ color
 \end{quote}
 
-While stemming is a heuristic process hoping to achieve this goal, lemmatisation utilises a more sophisticated approach in that it uses a vocabulary and morphological analysis of words.
+While stemming is a heuristic process hoping to achieve this goal, lemmatisation utilises a more sophisticated approach in that it uses a vocabulary and morphological analysis of words, in order to return to the true base form of a word that may be found in a dictionary.
 
 \subsection[Information Extraction]{Information Extraction(IE)}
 
