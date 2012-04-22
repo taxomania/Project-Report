@@ -14,6 +14,18 @@ Without tweets, there is no work to be done, and so retrieving tweets can be reg
 The Streaming API allows the system to fulfill the requirements of having a fully automated system that constantly monitors Twitter for software-related posts. 
 
 The implementation at this stage utilises Twitter's filtering URL at \url{https://stream.twitter.com/1/statuses/filter.json} and passes it a set of dictionary terms and keywords to filter tweets by. This dictionary consists of a list of software, companies, operating systems and programming languages. The set of keywords contains words like \emph{release} or \emph{version}, which may be associated with software and are likely to be mentioned in software-related tweets. The full list of these dictionary items and keywords can be seen in Appendix~\ref{app:dictionary}.
+
+This implementation could have been done using the \emph{Twitter4J}\footnote{\url{http://twitter4j.org/}} Java library for Twitter integration, however most of the functions appear unnecessary and excessive in the scope of this project. For this reason, the Twitter Streaming API integration was implemented from scratch.
+
+Upon retrieving these filter terms from the database, the application creates and starts three new Thread objects, a \emph{DatabaseThread} which will carry out all database operations, a \emph{StreamParseThread} which parses the stream of responses sent back from the Twitter server, and a \emph{ScannerThread}, which monitors the running state of the program, so as to allow a clean exit when the user wishes to quit. This scanner thread simply monitors the console input for users to type the exit command, upon which all connections are dropped and final parsing and database operations are carried out before closing the application. This high level control flow can be seen in Figure~\ref{fig:tweetir}. 
+
+\begin{figure}[h]
+\begin{center}
+\includegraphics[width=13cm]{tweetir}
+\end{center}
+\caption{Control flow for tweet retrieval subsystem}
+\label{fig:tweetir}
+\end{figure}
 % MORE DETAIL HERE
 
 \subsection{Searching Twitter}
