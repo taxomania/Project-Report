@@ -32,7 +32,6 @@ As previously explained, the system design follows a 3-stage approach, these bei
 \end{figure}
 
 \subsection{Retrieving Tweets}
-\label{sec:arc1}
 The first stage involves retrieving tweets from Twitter. The design for this stage follows the same concepts for each of the use cases defined. This can then be split further as seen in Figure~\ref{fig:phase1}. The program should retrieve a set of search terms from a dictionary along with some keywords that may be associated with software. These are to be used to form a request for tweets from Twitter. Twitter will respond with the corresponding tweets and data, which are to be checked for language, to ensure they are in English. The remaining set of English tweets are then to be further parsed to extract the required information for storing these tweets in the database.
 
 \begin{figure}[h]
@@ -42,11 +41,17 @@ The first stage involves retrieving tweets from Twitter. The design for this sta
     \label{fig:phase1}}
 \end{figure}
 
-% DB DESIGN HERE
+This returned information will be stored in a relational database and its design is shown below in Figure~\ref{fig:db}. Tweets will not be stored alone but also with simple user information to allow for future user profiling for a more targetted approach to tweet retrieval. The actual tweet information to be stored is its id on the Twitter platform - allowing for cases where users delete their tweets - its text content, time of creation, user id and the keyword used to find it, where one was used. There will also be fields for sentiment, i.e. positive, negative or neutral, and sentiment strength, where weightings have been used. These fields should default to \texttt{null} as their values will be computed at a later time. Finally, there is a \emph{tagged} boolean flag which signifies the given tweet has been processed, and the feature extraction process has been carried out on it. 
 
+\begin{figure}[h]
+\begin{center}
+\includegraphics[width=12cm]{db}
+\end{center}
+\caption{Database design for storing tweets}
+\label{fig:db}
+\end{figure}
 
 \subsection{Feature Extraction}
-\label{sec:arc2}
 The feature extraction stage will execute the task of extracting information from tweets. This will involve the stages described in \ref{sec:textmining} and its general design can be seen in Figure~\ref{fig:phase2}. The main aim of this stage is to take the tweets previously stored in the database and find the softwares mentioned in them.
 
 \begin{figure}[h]
@@ -57,7 +62,5 @@ The feature extraction stage will execute the task of extracting information fro
 \end{figure}
 
 Due to the volatile nature of the information being extracted from these tweets, this data should be stored in a NoSQL-type database, that is, a schema-less design that diverges from the traditional relational database model. As a result, there is no formal design for this database structure, however, it is required of the system to at this stage store any features it has managed to extract along with the key information associated with the tweet that had been stored in the tweet retrieval stage, such as its unique id and text content.
-% DB DESIGN HERE
 
 \subsection{Visualisation}
-\label{sec:arc3}
