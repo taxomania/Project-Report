@@ -14,45 +14,45 @@ Database file #1: refs.bib
 A bad cross reference---entry "PaulD11"
 refers to entry "conf/icwsm/2011", which doesn't exist
 Warning--empty journal in Polajnar2006
-You've used 22 entries,
+You've used 25 entries,
             2543 wiz_defined-function locations,
-            724 strings with 8252 characters,
-and the built_in function-call counts, 8290 in all, are:
-= -- 830
-> -- 367
-< -- 14
-+ -- 122
-- -- 119
-* -- 561
-:= -- 1362
-add.period$ -- 70
-call.type$ -- 22
-change.case$ -- 128
-chr.to.int$ -- 21
-cite$ -- 23
-duplicate$ -- 344
-empty$ -- 629
-format.name$ -- 151
-if$ -- 1715
+            744 strings with 8728 characters,
+and the built_in function-call counts, 9389 in all, are:
+= -- 941
+> -- 413
+< -- 15
++ -- 136
+- -- 133
+* -- 635
+:= -- 1543
+add.period$ -- 80
+call.type$ -- 25
+change.case$ -- 145
+chr.to.int$ -- 24
+cite$ -- 26
+duplicate$ -- 390
+empty$ -- 717
+format.name$ -- 169
+if$ -- 1941
 int.to.chr$ -- 2
 int.to.str$ -- 0
-missing$ -- 20
-newline$ -- 113
-num.names$ -- 68
-pop$ -- 135
+missing$ -- 23
+newline$ -- 129
+num.names$ -- 77
+pop$ -- 149
 preamble$ -- 1
-purify$ -- 152
+purify$ -- 172
 quote$ -- 0
-skip$ -- 292
+skip$ -- 329
 stack$ -- 0
-substring$ -- 393
-swap$ -- 52
-text.length$ -- 14
-text.prefix$ -- 10
+substring$ -- 454
+swap$ -- 56
+text.length$ -- 15
+text.prefix$ -- 11
 top$ -- 0
-type$ -- 168
+type$ -- 192
 warning$ -- 1
-while$ -- 79
-width$ -- 26
-write$ -- 286
+while$ -- 90
+width$ -- 29
+write$ -- 326
 (There was 1 error message)

@@ -50,6 +50,12 @@ Vishal Gupta and Gurpreet~S Lehal.
 \newblock {\em Journal of Emerging Technologies in Web Intelligence},
   1(1):60--76, 2009.
 
+\bibitem[GS96]{grishman96muc}
+Ralph Grishman and Beth Sundheim.
+\newblock Message understanding conference - 6: A brief history.
+\newblock In {\em Proceedings of the International Conference on Computational
+  Linguistics}, 1996.
+
 \bibitem[Hea99]{Hearst:1999}
 Marti~A. Hearst.
 \newblock Untangling text data mining.
@@ -91,6 +97,12 @@ Michael~J. Paul and Mark Dredze.
 \newblock In Lada~A. Adamic, Ricardo~A. Baeza-Yates, and Scott Counts, editors,
   {\em ICWSM}. The AAAI Press, 2011.
 
+\bibitem[PL08]{Pang+Lee}
+Bo~Pang and Lillian Lee.
+\newblock Opinion mining and sentiment analysis.
+\newblock {\em Foundations and Trends in Information Retrieval}, 2(1-2):1--135,
+  2008.
+
 \bibitem[Pol06]{Polajnar2006}
 Tamara Polajnar.
 \newblock Survey of text mining of biomedical corpora.
@@ -107,6 +119,13 @@ Alexander Pak and Patrick Paroubek.
 Diane~J. Skiba.
 \newblock Nursing education 2.0: Twitter \& tweets.
 \newblock {\em Nursing Education Perspectives}, 29(2):p110 -- 112, 2008.
+
+\bibitem[Sod99]{soderland99}
+Stephen Soderland.
+\newblock Learning information extraction rules for semi-structured and free
+  text.
+\newblock {\em Machine Learning}, 34:233--272, 1999.
+\newblock 10.1023/A:1007562322031.
 
 \bibitem[@tw12a]{twitterblog}
 @twitter.

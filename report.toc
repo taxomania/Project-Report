@@ -20,38 +20,43 @@
 \contentsline {subsubsection}{Stemming and Lemmatisation}{11}
 \contentsline {subsection}{\numberline {2.1.3}Information Extraction}{11}
 \contentsline {subsubsection}{Named Entity Recognition(NER)}{11}
-\contentsline {section}{\numberline {2.2}Sentiment Analysis}{11}
-\contentsline {section}{\numberline {2.3}Twitter Mining}{11}
-\contentsline {chapter}{\numberline {3}Design}{12}
-\contentsline {section}{\numberline {3.1}Methodology}{12}
-\contentsline {section}{\numberline {3.2}Use Cases}{12}
-\contentsline {subsection}{\numberline {3.2.1}Use Case 1}{12}
-\contentsline {subsection}{\numberline {3.2.2}Use Case 2}{13}
-\contentsline {section}{\numberline {3.3}General Architecture}{13}
-\contentsline {subsection}{\numberline {3.3.1}Retrieving Tweets}{14}
-\contentsline {subsection}{\numberline {3.3.2}Feature Extraction}{14}
-\contentsline {subsection}{\numberline {3.3.3}Visualisation}{14}
-\contentsline {chapter}{\numberline {4}Implementation}{15}
-\contentsline {section}{\numberline {4.1}Tweet Retrieval}{15}
-\contentsline {subsection}{\numberline {4.1.1}Twitter API}{15}
-\contentsline {subsubsection}{Streaming API}{15}
-\contentsline {subsubsection}{Search and REST APIs}{15}
-\contentsline {section}{\numberline {4.2}Feature Extraction}{16}
-\contentsline {subsection}{\numberline {4.2.1}Sentiment Analysis}{16}
-\contentsline {subsection}{\numberline {4.2.2}URL Extraction}{17}
-\contentsline {subsection}{\numberline {4.2.3}Tokenisation}{17}
-\contentsline {subsection}{\numberline {4.2.4}Price Extraction}{17}
-\contentsline {subsection}{\numberline {4.2.5}Part-of-speech (POS) Tagging}{17}
-\contentsline {subsection}{\numberline {4.2.6}N-Gram Tagging}{17}
-\contentsline {subsection}{\numberline {4.2.7}Software Verification}{18}
-\contentsline {section}{\numberline {4.3}Visualisation}{18}
-\contentsline {subsection}{\numberline {4.3.1}Aggregation}{18}
-\contentsline {subsection}{\numberline {4.3.2}Web Application}{18}
-\contentsline {chapter}{\numberline {5}Testing and Results}{19}
-\contentsline {section}{\numberline {5.1}Testing}{19}
-\contentsline {section}{\numberline {5.2}Results}{19}
-\contentsline {subsection}{\numberline {5.2.1}GUI}{19}
-\contentsline {subsection}{\numberline {5.2.2}Discussion}{19}
-\contentsline {chapter}{\numberline {6}Evaluation}{20}
-\contentsline {chapter}{\numberline {7}Conclusions}{21}
-\contentsline {chapter}{\numberline {}Bibliography}{22}
+\contentsline {subsubsection}{Relationship Extraction}{12}
+\contentsline {section}{\numberline {2.2}Sentiment Analysis}{12}
+\contentsline {section}{\numberline {2.3}Twitter Mining}{12}
+\contentsline {section}{\numberline {2.4}Evaluation Measures}{12}
+\contentsline {subsection}{\numberline {2.4.1}Precision}{12}
+\contentsline {subsection}{\numberline {2.4.2}Recall}{12}
+\contentsline {subsection}{\numberline {2.4.3}F-Measure}{12}
+\contentsline {chapter}{\numberline {3}Design}{13}
+\contentsline {section}{\numberline {3.1}Methodology}{13}
+\contentsline {section}{\numberline {3.2}Use Cases}{13}
+\contentsline {subsection}{\numberline {3.2.1}Use Case 1}{13}
+\contentsline {subsection}{\numberline {3.2.2}Use Case 2}{14}
+\contentsline {section}{\numberline {3.3}General Architecture}{14}
+\contentsline {subsection}{\numberline {3.3.1}Retrieving Tweets}{15}
+\contentsline {subsection}{\numberline {3.3.2}Feature Extraction}{15}
+\contentsline {subsection}{\numberline {3.3.3}Visualisation}{15}
+\contentsline {chapter}{\numberline {4}Implementation}{16}
+\contentsline {section}{\numberline {4.1}Tweet Retrieval}{16}
+\contentsline {subsection}{\numberline {4.1.1}Twitter API}{16}
+\contentsline {subsubsection}{Streaming API}{16}
+\contentsline {subsubsection}{Search and REST APIs}{16}
+\contentsline {section}{\numberline {4.2}Feature Extraction}{17}
+\contentsline {subsection}{\numberline {4.2.1}Sentiment Analysis}{17}
+\contentsline {subsection}{\numberline {4.2.2}URL Extraction}{18}
+\contentsline {subsection}{\numberline {4.2.3}Tokenisation}{18}
+\contentsline {subsection}{\numberline {4.2.4}Price Extraction}{18}
+\contentsline {subsection}{\numberline {4.2.5}Part-of-speech (POS) Tagging}{18}
+\contentsline {subsection}{\numberline {4.2.6}N-Gram Tagging}{18}
+\contentsline {subsection}{\numberline {4.2.7}Software Verification}{19}
+\contentsline {section}{\numberline {4.3}Visualisation}{19}
+\contentsline {subsection}{\numberline {4.3.1}Aggregation}{19}
+\contentsline {subsection}{\numberline {4.3.2}Web Application}{19}
+\contentsline {chapter}{\numberline {5}Testing and Results}{20}
+\contentsline {section}{\numberline {5.1}Testing}{20}
+\contentsline {section}{\numberline {5.2}Results}{20}
+\contentsline {subsection}{\numberline {5.2.1}GUI}{20}
+\contentsline {subsection}{\numberline {5.2.2}Discussion}{20}
+\contentsline {chapter}{\numberline {6}Evaluation}{21}
+\contentsline {chapter}{\numberline {7}Conclusions}{22}
+\contentsline {chapter}{\numberline {}Bibliography}{23}

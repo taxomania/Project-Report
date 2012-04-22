@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.3-1.40.12 (TeX Live 2011/MacPorts 2011_5) (format=pdflatex 2012.4.6)  19 APR 2012 13:37
+This is pdfTeX, Version 3.1415926-2.3-1.40.12 (TeX Live 2011/MacPorts 2011_5) (format=pdflatex 2012.4.6)  22 APR 2012 11:58
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -587,26 +587,32 @@ Underfull \hbox (badness 10000) in paragraph at lines 68--76
 
  []
 
-) [11]
+LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <10> not available
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 81.
+LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <7.4> not available
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 81.
+LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <6> not available
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 81.
+[11]) [12]
 \openout2 = `chapter3.aux'.
 
  (./chapter3.tex
 Chapter 3.
-[12
+[13
 
 
 
-] <design.png, id=52, 463.7325pt x 272.01625pt>
+] <design.png, id=55, 463.7325pt x 272.01625pt>
 File: design.png Graphic file (type png)
  <use design.png>
 Package pdftex.def Info: design.png used on input line 27.
 (pdftex.def)             Requested size: 341.43306pt x 200.28026pt.
- [13 <./design.png>] (./stage1design.tex) (./stage2design.tex)) [14]
+ [14 <./design.png>] (./stage1design.tex) (./stage2design.tex)) [15]
 \openout2 = `chapter4.aux'.
 
  (./chapter4.tex
 Chapter 4.
-[15
+[16
 
 
 
@@ -616,12 +622,12 @@ Overfull \hbox (0.4797pt too wide) in paragraph at lines 58--58
 larity": 0 }[] 
  []
 
-[16] [17]) [18]
+[17] [18]) [19]
 \openout2 = `chapter5.aux'.
 
  (./chapter5.tex
 Chapter 5.
-) [19
+) [20
 
 
 
@@ -632,7 +638,7 @@ Chapter 5.
 Chapter 6.
 LaTeX Font Info:    Font shape `OMS/ptm/m/n' in size <12> not available
 (Font)              Font shape `OMS/pzccm/m/n' tried instead on input line 6.
-) [20
+) [21
 
 
 
@@ -641,7 +647,7 @@ LaTeX Font Info:    Font shape `OMS/ptm/m/n' in size <12> not available
 
  (./chapter7.tex
 Chapter 7.
-) [21
+) [22
 
 
 
@@ -657,27 +663,27 @@ Underfull \hbox (badness 6252) in paragraph at lines 26--30
 ww . clips . ua . ac . be / pages /
  []
 
-[22
+[23
 
 
 ]
-Underfull \hbox (badness 7081) in paragraph at lines 112--116
+Underfull \hbox (badness 7081) in paragraph at lines 131--135
 []\T1/ptm/m/n/12 @twitter.  Twit-ter turns six.  $\T1/pcr/m/n/12 http : / / blo
 g . twitter . com / 2012 / 03 /
  []
 
-) [23]
+) [24]
 \openout2 = `appendix1.aux'.
 
  (./appendix1.tex) (./report.aux (./chapter1.aux) (./chapter2.aux)
 (./chapter3.aux) (./chapter4.aux) (./chapter5.aux) (./chapter6.aux)
 (./chapter7.aux) (./appendix1.aux)) ) 
 Here is how much of TeX's memory you used:
- 4333 strings out of 494770
- 57534 string characters out of 3171574
- 118793 words of memory out of 3000000
- 7395 multiletter control sequences out of 15000+200000
- 37313 words of font info for 55 fonts, out of 3000000 for 9000
+ 4363 strings out of 494770
+ 57956 string characters out of 3171574
+ 118812 words of memory out of 3000000
+ 7422 multiletter control sequences out of 15000+200000
+ 53501 words of font info for 79 fonts, out of 3000000 for 9000
  134 hyphenation exceptions out of 8191
  38i,8n,32p,1087b,273s stack positions out of 5000i,500n,10000p,200000b,50000s
 {/opt/local/share/texmf-texlive-dist/fonts
@@ -687,10 +693,10 @@ amsfonts/latxfont/linew10.pfb></opt/local/share/texmf-texlive-dist/fonts/type1/
 urw/courier/ucrr8a.pfb></opt/local/share/texmf-texlive-dist/fonts/type1/urw/tim
 es/utmb8a.pfb></opt/local/share/texmf-texlive-dist/fonts/type1/urw/times/utmr8a
 .pfb></opt/local/share/texmf-texlive-dist/fonts/type1/urw/times/utmri8a.pfb>
-Output written on report.pdf (25 pages, 172769 bytes).
+Output written on report.pdf (26 pages, 176654 bytes).
 PDF statistics:
- 112 PDF objects out of 1000 (max. 8388607)
- 76 compressed objects within 1 object stream
+ 115 PDF objects out of 1000 (max. 8388607)
+ 78 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
  11 words of extra memory for PDF output out of 10000 (max. 10000000)
 

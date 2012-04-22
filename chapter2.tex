@@ -78,13 +78,48 @@ the boy car be differ color
 While stemming is a heuristic process hoping to achieve this goal, lemmatisation utilises a more sophisticated approach in that it uses a vocabulary and morphological analysis of words, in order to return to the true base form of a word that may be found in a dictionary.
 
 \subsection[Information Extraction]{Information Extraction(IE)}
+The goal of IE is to extract specific data from a given corpus\footnote{A collection of documents}. IE can be defined as the task of automatically extracting this structured information from unstructured or semi-structured machine-readable documents, generally done through the use of NLP techniques.
+
+In structured texts, information extraction can be fairly straightforward, as labels or tags may delimit strings that need to be extracted\cite{soderland99}. However, in unstructured texts, information is not as clearly understandable by computers and so IE requires techniques from other fields such as machine learning, statistical analysis or those previously discussed from natural language processing.
+
+Typical IE tasks include the following:
 
 \subsubsection{Named Entity Recognition(NER)}
+The aim of NER is to annotate a source text with markup tags in order to classify strings representing predefined categories such as names, companies, locations, dates and times. For example,
+\begin{quote}
+Cook named new Apple CEO.
+\end{quote}
+would yield the following annotations.
+\begin{quote}
+<ENAMEX TYPE="PERSON">Cook</ENAMEX> named new
+\newline
+<ENAMEX TYPE="ORGANIZATION">Apple</ENAMEX> CEO.
+\end{quote}
+
+This example is using the \emph{ENAMEX} tags defined at the Message Understanding Conference(MUC) in the 1990s\cite{grishman96muc}. From the source text it can be seen that \emph{Cook} has been identified as a person and \emph{Apple} as an organisation and structures this text in doing so.
+
+\subsubsection{Relationship Extraction}
+This works with entity extraction in that it works to identify relations between entities. Using the previous example, the relationship extraction process should be able to identify that,
+\begin{quote}
+PERSON named new ORGANISATION CEO.
+\end{quote}
+
+% OTHER SUB TASKS?
 
 \section[Sentiment Analysis]{Sentiment Analysis and Opinion Mining}
+Sentiment analysis, also known as opinion mining, refers to the NLP application of extracting subjective information in source texts. There are two use cases for sentiment analysis. The first of these is determining whether a text is subjective or objective, that is, whether the statement is factual or opinionated. This scenario is not currently in the scope of the project and leads to the second use case; sentiment analysis also aims to classify the \emph{polarity} of a given text\cite{Pang+Lee}. This, to the basic level, involves determining whether an expressed opinion is positive, negative or neutral, but can also be extended to more complex emotions such as happy or sad.
+
+Opinion mining can be done using a weighting system. This method assigns a positive or a negative weighting on a given scale such as -3 to +3. These are applied for each word in the text that relates to the core entity. The text is then given a total score which determines its polarity, and also the strength of the sentiment. In simpler systems the scale may only be from -1 to +1, essentially opting to ignore the strength of the sentiment and just asking for the general sentiment of the text.
+
+% More?
 
 \section{Twitter Mining}
 There has been several previous works on text mining Twitter posts, however, the bulk of these have focussed primarily on biomedicine and the financial sector.
 
+\section{Evaluation Measures}
+In text mining, there are several ways of evaluating the accuracy of a system.
 
+\subsection{Precision}
+\subsection{Recall}
+\subsection{F-Measure}
 % MOVE TWITTER API HERE? FROM IMPLEMENTATION CHAPTER
