@@ -1,5 +1,10 @@
 .DS_Store
 *.aux
 *.swp
+*.bbl
+*.blg
+*.lof
+*.log
+*.toc
 screen.ps
 when-changed.py
