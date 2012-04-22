@@ -7,16 +7,13 @@ This chapter outlines the main stages in implementating the designed system in c
 The system to be developed, as initially described in Figure~\ref{fig:general}, is fairly representative of a Question-Answering(QA) system. QAs are data mining systems which use Information Retrieval(IR) and Information Extraction(IE) techniques to answer user queries. As such, this project was implemented in 3 stages, each corresponding to these subsystems in QA systems. The first of these was retrieving tweets, the IR phase of this project. Upon successful retrieval, information, the required features in this case, must be extracted and finally, these results must be displayed to the user in a simple, straightforward fashion. These stages will be further explored as follows:
 
 \section{Tweet Retrieval}
-Without tweets, there is no work to be done, and so retrieving tweets can be regarded as the most important part of this project. The main objective of this stage is to retrieve as many relevant tweets from Twitter as possible. To do this, the system will interact with the set of public APIs Twitter provides in order to fulfill the requirements of each use case stated in Section~\ref{sec:uc}.
+Without tweets, there is no work to be done, and so retrieving tweets can be regarded as the most important part of this project. The main objective of this stage is to retrieve as many relevant tweets from Twitter as possible. To do this, the system will interact with the set of public APIs Twitter provides in order to fulfill the requirements of each use case stated in Section~\ref{sec:uc}. The system is designed to use all of these to fulfill the requirements of each use case. This subsystem in the project is implemented in Java. This is because of its strong object oriented nature and platform independency. Of course, there are other options such as Python, however Java is a simple programming language with relatively straightforward multithreading capabilities.
 
-% TWITTER API
-%The system is designed to use all of these to fulfill the requirements of each use case.
-
-\subsection{Streaming API}
+\subsection{Streaming Twitter}
 The Streaming API allows the system to fulfill the requirements of having a fully automated system that constantly monitors Twitter for software-related posts.
 % MORE DETAIL HERE
 
-\subsection{Search and REST APIs}
+\subsection{Searching Twitter}
 The Search and REST APIs will thus be used together to handle the alternative use case of the designed system.
 %MORE DETAIL HERE
 
