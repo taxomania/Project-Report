@@ -1,10 +1,10 @@
 \chapter{Background}
 \label{cha:background}
-This chapter provides an overview of the text mining field along with previous work in the area and all necessary background information required to understand the major tasks involved in this project.
+This chapter provides an overview of the text mining field along with previous work in the area and all necessary background information required to understand the major tasks involved in this project. This is followed up with an overview of the different APIs provided by Twitter to work with their platform.
 
 \section{Text Mining}
 \label{sec:textmining}
-The information available in the world is growing exponentially, and the majority of this information(widely estimated at roughly 80\%) is unstructured. This is where text mining comes in, also referred to as Knowledge Discovery from Text(KDT).
+The information available in the world is growing exponentially, and the majority of this information(widely estimated at roughly 80\%) is unstructured\cite{Grimes08}. This is where text mining comes in, also referred to as Knowledge Discovery from Text(KDT).
 ``Text mining is the process of extracting interesting information and knowledge from unstructured text''\cite{hotho-etal-ldv-2005} and its applications tend to work in two steps, first using an Information Retrieval(IR) application to narrow the search space, and then they extract significant parts of the retrieved texts\cite{Polajnar2006}. This general process usually involves structuring a source text by means of parsing and other linguistic analysis, then finding patterns in this structured data and then interpreting this output.
 
 Text mining is fundamentally different from standard web searching in that web searches rely primarily on information that is already known. However, the goal of text mining is to discover interesting, previously unknown information\cite{Gupta_Lehal_2009}.
@@ -44,7 +44,7 @@ These variations can be problematic in terms of the results being output for cer
 \subsubsection{Normalisation}
 Once text has been tokenised, these words may need normalising. Normalisation accounts for the several variations in spelling. For example, if you want to search for \emph{Mozilla~Firefox} you would want an IR engine to return not only documents containing the exact query but also those containing terms such as \emph{Firefox}, \emph{firefox} or \emph{mozilla~firefox}. Not doing this would obviously yield fewer results, or in the case of information extraction, it may suggest that \emph{Mozilla~Firefox} and \emph{mozilla~firefox} are two different things. Thus, normalisation is required to successfully map equivalent classes of terms.
 
-\subsubsection{Stop Words}
+\subsubsection{Stop Word Filtering}
 Stop words are very commonly used words like \emph{a}, \emph{and} or \emph{the}. By creating a list of these terms, a \emph{stop list}, a natural language parser can remove these terms from the source text as they hold little or no value in matching queries to documents. In modern systems, however, stop lists are not widely used as they provide little gain in terms of efficiency\cite{manning2008}.
 
 \subsubsection{Part of Speech(POS) Tagging}
@@ -60,7 +60,6 @@ Paint something now.
 \end{quote}
 where \emph{paint} is being used as an imperative verb. In the first example, seeing that \emph{Paint} is followed by \emph{seen}, a verb, suggests it is unlikely \emph{Paint} is being used as verb.  This would be the difference in this project between discovering a piece of software and totally missing it, and thus highlights the importance of context and semantics when analysing text.
 
-
 \subsubsection{Stemming and Lemmatisation}
 Documents contain many different derivations of words, such as \emph{normalise} and \emph{normalisation}, and differing forms of the same word due to its usage or tense, for example, \emph{walked} or \emph{walking}. An information extraction tool should ideally see these as somewhat equivalent terms; this is where stemming and lemmatisation come in. The following example, taken from \cite{manning2008}, shows how these techniques can map text:
 
@@ -75,7 +74,7 @@ the boy's cars are different colors  \begin{math}\Rightarrow \end{math}
 the boy car be differ color
 \end{quote}
 
-While stemming is a heuristic process hoping to achieve this goal, lemmatisation utilises a more sophisticated approach in that it uses a vocabulary and morphological analysis of words, in order to return to the true base form of a word that may be found in a dictionary.
+Stemming is a heuristic process hoping to achieve this goal by simply building basic forms of words by removing affixes like a plural `s' from nouns or the `ing' from verbs\cite{hotho-etal-ldv-2005}. However, these are not always correct terms. Lemmatisation on the other hand utilises a more sophisticated approach in that it uses a vocabulary and morphological analysis of words, in order to return to the true base form of a word that may be found in a dictionary. This process, however, is much more complex and time-consuming than the former.
 
 \subsection[Information Extraction]{Information Extraction(IE)}
 The goal of IE is to extract specific data from a given corpus\footnote{A collection of documents}. IE can be defined as the task of automatically extracting this structured information from unstructured or semi-structured machine-readable documents, generally done through the use of NLP techniques.
@@ -114,12 +113,27 @@ Opinion mining can be done using a weighting system. This method assigns a posit
 % More?
 
 \section{Twitter Mining}
-There has been several previous works on text mining Twitter posts, however, the bulk of these have focussed primarily on biomedicine and the financial sector.
+There has been several previous works on text mining Twitter posts, however, the bulk of these have focussed primarily on biomedicine and the financial sector. These works have shown the potential in Twitter has for providing valuable knowledge and information it is felt that software is a new area of interest where Twitter has not previously been used to analyse public opinion. Twitter's low character limit means users have to express their opinions explicitly and encourages the use of emoticons, such as :) or :(, which have been shown to work very well in sentiment analysis\cite{Read:2005}.
 
-\section{Evaluation Measures}
-In text mining, there are several ways of evaluating the accuracy of a system.
+% MORE
 
-\subsection{Precision}
-\subsection{Recall}
-\subsection{F-Measure}
-% MOVE TWITTER API HERE? FROM IMPLEMENTATION CHAPTER
+%\section{Evaluation Measures}
+%In text mining, there are several ways of evaluating the accuracy of a system.
+%\subsection{Precision}
+%\subsection{Recall}
+%\subsection{F-Measure}
+
+\section{Twitter API}
+Twitter provides three public APIs for developers to access their massive corpus of data. These are the REST, Search and Streaming APIs, and shall now be further explored.
+
+\subsection{Search API}
+The Search API is the simplest tool provided by Twitter. This API is designed to allow users to query for Twitter content and works very much like the search bar found on the Twitter website itself. This content may include a set of tweets with specific keywords or tweets to, from or mentioning a specific user. A simple search would yield up to 1500 of the latest tweets in the last 7 days, which have been cached over a 60 second period. There are, however, restrictions on the rate at which programs can utilise this API\cite{twitter}.
+
+\subsection{REST API}
+The REST API enables programs to access more of the core Twitter functions. This API retrieves not only the information taken from the Search API but also allows building timelines and retrieves more specific user information such as the user's name, profile avatar, tweet count and the number of followers and friends they have. The REST API also allows programs to post on Twitter and carry out other functions like retweeting or favouriting tweets. These extra functions, however, are not required in this project.
+
+\subsection{Streaming API}
+Twitter's Streaming API is a real-time sample of all public tweets posted on the sample. It allows filtering in various ways such as user id, keywords or even random sampling, and is regarded as the default option for data mining operations. This is because the Streaming API allows a long-lived HTTP connection unlike the other APIs and as such, programs can constantly remain connected so as to retrieve a running stream of tweets, as the name itself suggests. This removes the overheads associated with reconnecting every time you want to make a query and the API also removes all rate limitations so there is no worry of exceeding your quota. Unlike the other APIs, programs must be authenticated to use the Streaming API.
+
+
+
