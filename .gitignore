@@ -3,7 +3,9 @@
 *.swp
 *.bbl
 *.blg
+*.dvi
 *.lof
+*.lot
 *.log
 *.toc
 screen.ps
