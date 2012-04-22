@@ -8,9 +8,12 @@ The system to be developed, as initially described in Figure~\ref{fig:general}, 
 
 \section{Tweet Retrieval}
 Without tweets, there is no work to be done, and so retrieving tweets can be regarded as the most important part of this project. The main objective of this stage is to retrieve as many relevant tweets from Twitter as possible. To do this, the system will interact with the set of public APIs Twitter provides in order to fulfill the requirements of each use case stated in Section~\ref{sec:uc}. The system is designed to use all of these to fulfill the requirements of each use case. This subsystem in the project is implemented in Java. This is because of its strong object oriented nature and platform independency. Of course, there are other options such as Python, however Java is a simple programming language with relatively straightforward multithreading capabilities.
+% WHY JAVA
 
 \subsection{Streaming Twitter}
-The Streaming API allows the system to fulfill the requirements of having a fully automated system that constantly monitors Twitter for software-related posts.
+The Streaming API allows the system to fulfill the requirements of having a fully automated system that constantly monitors Twitter for software-related posts. 
+
+The implementation at this stage utilises Twitter's filtering URL at \url{https://stream.twitter.com/1/statuses/filter.json} and passes it a set of dictionary terms and keywords to filter tweets by. This dictionary consists of a list of software, companies, operating systems and programming languages. The set of keywords contains words like \emph{release} or \emph{version}, which may be associated with software and are likely to be mentioned in software-related tweets. The full list of these dictionary items and keywords can be seen in Appendix~\ref{app:dictionary}.
 % MORE DETAIL HERE
 
 \subsection{Searching Twitter}
@@ -19,7 +22,6 @@ The Search and REST APIs will thus be used together to handle the alternative us
 
 
 
-% WHY JAVA
 % HOW IMPLEMENTED
 % SHOW KEYWORDS + DICTIONARY IN APPENDIX
 % SHOW JSON RESPONSE IN APPENDIX
