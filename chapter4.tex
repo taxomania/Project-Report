@@ -36,23 +36,6 @@ The parser thread now assumes control of the processing to be done, while the ma
 
 This Tweet object is encapsulated in an \emph{InsertTask} object. This class is an implementation of the \emph{DatabaseTask} interface, which is used to perform the different database operations when used in conjunction with the different \emph{DatabaseConnector} classes. The hierarchy of these classes can be seen in Figures~\ref{fig:dbtask} and \ref{fig:dbcon} respectively.
 
-\begin{figure}[h]
-\begin{center}
-\includegraphics[width=7cm]{dbtask}
-\end{center}
-\caption{DatabaseTask class diagram}
-\label{fig:dbtask}
-\end{figure}
-
-\begin{figure}[h]
-\begin{center}
-\includegraphics[width=9cm]{dbcon}
-\end{center}
-\caption{DatabaseConnector class diagram}
-\label{fig:dbcon}
-\end{figure}
-
-
 The \emph{DatabaseThread} is then notified and 
 \begin{lstlisting}[caption=Tweet and User class properties, label=lst:tweetuser]
 public class Tweet {
@@ -70,6 +53,24 @@ public final class User {
     ...
 } // class User 
 \end{lstlisting}
+
+
+\begin{figure}[h]
+\begin{center}
+\includegraphics[width=7cm]{dbtask}
+\end{center}
+\caption{DatabaseTask class diagram}
+\label{fig:dbtask}
+\end{figure}
+
+\begin{figure}[h]
+\begin{center}
+\includegraphics[width=9cm]{dbcon}
+\end{center}
+\caption{DatabaseConnector class diagram}
+\label{fig:dbcon}
+\end{figure}
+
 
 
 
