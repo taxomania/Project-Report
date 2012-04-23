@@ -17,15 +17,72 @@ The implementation at this stage utilises Twitter's filtering URL at \url{https:
 
 This implementation could have been done using the \emph{Twitter4J}\footnote{\url{http://twitter4j.org/}} Java library for Twitter integration, however most of the functions appear unnecessary and excessive in the scope of this project. For this reason, the Twitter Streaming API integration was implemented from scratch.
 
-Upon retrieving these filter terms from the database, the application creates and starts three new Thread objects, a \emph{DatabaseThread} which will carry out all database operations, a \emph{StreamParseThread} which parses the stream of responses sent back from the Twitter server, and a \emph{ScannerThread}, which monitors the running state of the program, so as to allow a clean exit when the user wishes to quit. This scanner thread simply monitors the console input for users to type the exit command, upon which all connections are dropped and final parsing and database operations are carried out before closing the application. This high level control flow can be seen in Figure~\ref{fig:tweetir}. 
+Upon retrieving these filter terms from the database, the application formats this list into a string after which it creates three new Thread objects, a \emph{DatabaseThread} which will carry out all database operations, a \emph{StreamParseThread} which parses the stream of responses sent back from the Twitter server, and a \emph{ScannerThread}, which monitors the running state of the program, so as to allow a clean exit when the user wishes to quit. This scanner thread simply monitors the console input for users to type the exit command, upon which all connections are dropped and final parsing and database operations are carried out before closing the application. This high level control flow can be seen in Figure~\ref{fig:tweetir}.
+
+On initialising these threads, the application attempts to set up a secure connection to Twitter using the HTTPS protocol. It uses the POST method to write the string of filter terms to the server in order to being receiving tweets. Once this connection is fully set up, Twitter will return JavaScript Object Notation(JSON) strings for each tweet, and so a JSON parser is set up using the Google-Gson Java library\cite{gson}. The aforementioned threads are then started as the actual streaming process now begins.
+
+For every tweet returned by the API, the application adds this JSON response, as a \emph{JsonObject}, to a queue in the \emph{StreamParseThread} class, using the following simple method:
+\begin{lstlisting}[caption=Adding tweets to a parse queue]
+private final List<JsonObject> parseList = new ArrayList<JsonObject>();
+
+public boolean addTask(final JsonObject object) {
+    synchronized (parseList) {
+        return parseList.add(object);
+    } // synchronized
+} // addTask(JsonObject)
+\end{lstlisting}
+
+The parser thread now assumes control of the processing to be done, while the main thread continues to add to this \emph{parseList} queue. The parser thread has the sole task of parsing the information in this JSON object into a more meaningful \emph{Tweet} object. This class' properties can be seen in Listing~\ref{lst:tweetuser}. To do this, the JSON object first needs to be checked if it represents a tweet delete entity, that is, a object containing the ``delete'' key signifying a user has deleted their tweet. In such a case, Twitter requests that applications honour the user's requests and delete this tweet. If otherwise the JSON object is actually a tweet, the program extracts the Twitter user's details to check their locale. In cases where this is not English, a \texttt{null} value is returned and the tweet is ignored. If this test passes, all the remaining properties described in the \emph{Tweet} and \emph{User} classes are extracted and returned as a single Tweet object.
+
+This Tweet object is encapsulated in an \emph{InsertTask} object. This class is an implementation of the \emph{DatabaseTask} interface, which is used to perform the different database operations when used in conjunction with the different \emph{DatabaseConnector} classes. The hierarchy of these classes can be seen in Figures~\ref{fig:dbtask} and \ref{fig:dbcon} respectively.
 
 \begin{figure}[h]
 \begin{center}
-\includegraphics[width=13cm]{tweetir}
+\includegraphics[width=7cm]{dbtask}
+\end{center}
+\caption{DatabaseTask class diagram}
+\label{fig:dbtask}
+\end{figure}
+
+\begin{figure}[h]
+\begin{center}
+\includegraphics[width=9cm]{dbcon}
+\end{center}
+\caption{DatabaseConnector class diagram}
+\label{fig:dbcon}
+\end{figure}
+
+
+The \emph{DatabaseThread} is then notified and 
+\begin{lstlisting}[caption=Tweet and User class properties, label=lst:tweetuser]
+public class Tweet {
+    private final long tweetId;
+    private final String tweet;
+    private final String createdAt;
+    private final User user;
+    private String keyword = null; // Only used when filtering
+    ...
+} // class Tweet
+
+public final class User {
+    private final long id;
+    private final String username;
+    ...
+} // class User 
+\end{lstlisting}
+
+
+
+\begin{figure}[t]
+\begin{center}
+\includegraphics[width=12cm]{tweetir}
 \end{center}
 \caption{Control flow for tweet retrieval subsystem}
 \label{fig:tweetir}
 \end{figure}
+
+
+
 % MORE DETAIL HERE
 
 \subsection{Searching Twitter}

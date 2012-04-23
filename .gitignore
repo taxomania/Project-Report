@@ -6,6 +6,7 @@
 *.dvi
 *.lof
 *.lot
+*.lol
 *.log
 *.toc
 screen.ps
