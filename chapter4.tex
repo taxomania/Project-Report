@@ -79,18 +79,25 @@ public final class User {
 
 Class design aside, once this \emph{InsertKeywordTask} object has been created, it is added to the queue in the \emph{DatabaseThread}. The respective implementations of the \emph{doTask()} method in each of the DatabaseTask classes will be performed as this queue is emptied. In the case of InsertKeywordTask, this is simply \texttt{db.insertTweet(t)}, where \texttt{db} is the TweetDatabaseConnector passed to it in the \texttt{doTask()} method, and \texttt{t} is the Tweet object it was initialised with.
 
-This process is completed when the \emph{TweetDatabaseConnector} inserts the tweet into the database, in the current implementation using Java Database Connectivity(JDBC) to manipulate the MySQL server. 
+This process is completed when the \emph{TweetDatabaseConnector} inserts the tweet into the database, in the current implementation using Java Database Connectivity(JDBC) to manipulate the MySQL server.
 
 \subsection{Searching Twitter}
-The Search and REST APIs will thus be used together to handle the alternative use case of the designed system.
-%MORE DETAIL HERE
+The Search API will now be used to handle the alternative use case of the designed system. With the Search API not operating in real time, the realisation of this use case can afford to be a much simpler system. The levels of multithreading displayed in streaming Twitter will not be required, as interaction with the API is more of a serial communication as can be seen in Figure~\ref{fig:ucsearch}.
 
+\begin{figure}[h]
+\begin{center}
+\includegraphics[width=13cm]{ucsearch}
+\end{center}
+\caption{Searching Twitter sequence diagram}
+\label{fig:ucsearch}
+\end{figure}
 
+The implementation of the Twitter search use case utilises the Twitter Search API URL at \url{http://search.twitter.com/search.json}. The API also offers eXtensible Markup Language(XML) format responses, however, working with JSON allows consistency within the system. As with the implementation of the Twitter stream use case, the application begins with the initialision of a \emph{DatabaseThread} and is initially given a single keyword which will be searched for. This keyword is chosen by the end user. A simple HTTP GET request is then made to the above URL and Twitter then returns up to 1500 tweets from the last seven days corresponding to the search term.
 
-% HOW IMPLEMENTED
+The Search API returns a different JSON response to that of the Streaming API. Each JSON string contains an \texttt{iso\_language\_code}, and this will be used to filter tweets by language. Once the desired information has been extracted, i.e. the properties of the \emph{Tweet} class, the remaining operations are carried out just as they are in the realisation of the Twitter streaming use case, that is, the tweet is encapsulated in an \emph{InsertKeywordTask} object and this is added to a queue in the \emph{DatabaseThread} for the insert task to be carried out.
+
 % SHOW KEYWORDS + DICTIONARY IN APPENDIX
 % SHOW JSON RESPONSE IN APPENDIX
-% STORAGE MYSQL
 
 \section{Feature Extraction}
 Once tweets have been retrieved from Twitter and stored in the MySQL database, they are now available for feature extaction, which can be regarded as the core stage in implementing the system. This subsystem involves using NLP techniques to extract the information shown in Table~\ref{features} from each tweet. This subsystem is implemented in Python 2.7 due to the raw power it possesses and also due to the decision to use the Natural Language ToolKit(NLTK)\cite{NLTK}.
