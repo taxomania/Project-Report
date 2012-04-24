@@ -100,8 +100,7 @@ The Search API returns a different JSON response to that of the Streaming API. E
 % SHOW JSON RESPONSE IN APPENDIX
 
 \section{Feature Extraction}
-Once tweets have been retrieved from Twitter and stored in the MySQL database, they are now available for feature extaction, which can be regarded as the core stage in implementing the system. This subsystem involves using NLP techniques to extract the information shown in Table~\ref{features} from each tweet. This subsystem is implemented in Python 2.7 due to the raw power it possesses and also due to the decision to use the Natural Language ToolKit(NLTK)\cite{NLTK}.
-% NLTK GATE MINORTHIRD
+Once tweets have been retrieved from Twitter and stored in the MySQL database, they are now available for feature extaction, which can be regarded as the core stage in implementing the system. This subsystem involves using NLP techniques to extract the information shown in Table~\ref{features} from each tweet. This subsystem is implemented in Python 2.7 due to the raw power it possesses and also due to the decision to use the Natural Language ToolKit(NLTK)\cite{NLTK}. NLTK is an active, well documented Python toolkit project. Alternatives to NLTK include GATE\footnote{\url{http://gate.ac.uk/}} and Minor Third\footnote{\url{http://sourceforge.net/apps/trac/minorthird/wiki}}. GATE is equally well documented, however it appears to be a bulky library, and many of its features are not required in the scope of this project. Minor Third on the other hand, is not as well documented, at the time of development at least, and as such would be more difficult to integrate. These alternatives are also Java implementations and it was felt that Python's speed and text manipulation would allow for a better implementation of the system.
 
 There are many steps involved in implementing the feature extraction. These are explored in order of execution.
 
@@ -211,6 +210,10 @@ function bing_search(bing, term){
 If the number of results for software associated with the searched term is greater than corresponding results for films and music, the results are checked for identifiers of software in their headings. Therefore if any of the results suggests the searched term is a piece of software, that is assumed true.
 
 % BING.PY IN APPENDIX
+
+\section{Storing the Extracted Information}
+As the information being extracted is temporarily stored in a Python dictionary variable, it is essentially in the form of a JSON string. The database design for storing this information is also in the form of a NoSQL database. For this reason, a document-based database system seems to be the best approach. MongoDB\footnote{http://www.mongodb.org/} is a document-oriented NoSQL database, which stores JSON-style documents. By using MongoDB, it is easy to store the extracted information, as it is as straightforward as directly storing the string representation of this variable as a record in the database.
+
 
 \section[Visualisation]{Visualisation/Graphical User Interface(GUI)}
 The final stage of the project is to aggregate and present the results to the user in a GUI.
