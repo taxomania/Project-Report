@@ -8,7 +8,6 @@ The system to be developed, as initially described in Figure~\ref{fig:general}, 
 
 \section{Tweet Retrieval}
 Without tweets, there is no work to be done, and so retrieving tweets can be regarded as the most important part of this project. The main objective of this stage is to retrieve as many relevant tweets from Twitter as possible. To do this, the system will interact with the set of public APIs Twitter provides in order to fulfill the requirements of each use case stated in Section~\ref{sec:uc}. The system is designed to use all of these to fulfill the requirements of each use case. This subsystem in the project is implemented in Java. This is because of its strong object oriented nature and platform independency. Of course, there are other options such as Python, however Java is a simple programming language with relatively straightforward multithreading capabilities.
-% WHY JAVA
 
 \subsection{Streaming Twitter}
 The Streaming API allows the system to fulfill the requirements of having a fully automated system that constantly monitors Twitter for software-related posts. 
@@ -133,66 +132,85 @@ Using the previous example, the data is returned by the server in the following 
 Upon receipt of this response, the JSON formatted string is parsed and the corresponding record for the tweet previously stored in the MySQL database is updated with new values for sentiment score and the actual sentiment, using polarity and its semantic meaning respectively.
 
 \subsection{URL Extraction}
-Before extracting context and semantics from tweets, any URLs mentioned are found and removed. Assuming the tweet is software-related, these URLs are quite likely to be links to the software, or further reviews. This task is done using NLTK's \texttt{regexp\_tokenize} function with \url{http://}\verb/[^ ]+/ passed as the regular expression that finds URLs. If the tweet is later found not to contain any software, these URLs are discarded.
+Before extracting context and semantics from tweets, any URLs mentioned are found and removed. Assuming the tweet is software-related, these URLs are quite likely to be links to the software, or further reviews. This task is done using NLTK's \texttt{regexp\_tokenize()} function with \url{http://}\verb/[^ ]+/ passed as the regular expression that finds URLs. If the tweet is later found not to contain any software, these URLs are discarded. Potential issues with this implementation could be that a user may post a URL without the preceeding \url{http://} protocol prefix and these would not be found by this regular expression. However, Twitter automatically converts URLs to their \url{http://t.co/} domain and so this is resolved on the Twitter server side.
 %\subsection{Version}? OR LEAVE TILL NGRAM
 
 \subsection{Tokenisation}
-After URLs have been extracted and removed from the source text, the tweet is tokenised to produce an array of all the terms in the tweet. The tokenisation process is also done using NLTK's \texttt{regexp\_tokenize} function, passing it the regular expression - \verb/\w+([.,]\w+)*|\S+/. This expression returned superior results to alternation tokenisation functions provided by NLTK, such as \texttt{wordpunct\_tokenize} as it was capable of finding numbers and currencies without splitting them.
+After URLs have been extracted and removed from the source text, the tweet is tokenised to produce an array of all the terms in the tweet. The tokenisation process is also done using NLTK's \texttt{regexp\_tokenize()} function, passing it the regular expression - \verb/\w+([.,]\w+)*|\S+/. This expression returned superior results to alternation tokenisation functions provided by NLTK, such as \texttt{wordpunct\_tokenize()} as it was capable of finding numbers and currencies without splitting them. Using the above example,
+
+\begin{quote}
+I really hate the new Firefox
+\end{quote}
+this would be tokenised to the following:
+\begin{quote}
+[`I', `really', `hate', `the', `new', `Firefox']
+\end{quote}
+
+The following example shows a more complicated tokenisation process.
+\begin{quote}
+Norton Anti-Virus released for \$50 \#ripoff
+
+\begin{math}\Rightarrow\end{math}
+[`Norton', `Anti', `-Virus', `released', `for', `\$50', `\#ripoff']
+\end{quote}
 
 \subsection{Price Extraction}
-Continuing on from this tokenisation of the original source text, the current subsystem attempts to find prices in the array of terms. This is done using Python's built-in regular expression module,
- \texttt{re}. %, and its full implementation can be seen below.  in appendix
-A number of regular expressions are used to define patterns denoting numbers, currencies and quantifiers like `hundred' and `thousand'. As the form of prices vary, for example in the case of mobile apps you might find `£0.59', `59p' or even `59 pence', these combinations of tokens may be split across two tokens in the array returned from the tokenisation process. For this reason, it is necessary to iterate over all items in the list of tokens while remembering the previous one. This obviously means a less efficient system, however, it has produced the best results in such variable conditions.
-
-% MOVE TO APPENDIX
-%\begin{verbatim}
-%def find_price(tokens, pattern=r'^\$(\d*(\d\.?|\.\d{1,2}))$'):
-%    pattern = re.compile(pattern)
-%    number = re.compile(r'^\d+$')
-%    quantifier = re.compile(r'[mb]illion|thousand|hundred', re.IGNORECASE)
-%    currency = re.compile(r'^(dollars?|pounds?|cents?|pence|[cp])$', re.IGNORECASE)
-%    prices = []
-%    prev_is_price = False
-%    prev_is_number = False
-%    price = ""
-%    for token in tokens:
-%        if re.match(pattern, token):
-%            prices.append(token)
-%            prev_is_price = True
-%        elif re.match(number, token):
-%            price += token
-%            prev_is_number = True
-%        elif re.match(quantifier, token):
-%            if prev_is_price:
-%                price_ = prices.pop()
-%                prices.append(price_ + " " + token)
-%            elif prev_is_number:
-%                price += " " + token
-%        elif re.match(currency, token):
-%            try:
-%                if prev_is_price:
-%                    price_ = prices.pop()
-%                    prices.append(price_ + " " + token)
-%                elif prev_is_number:
-%                    price += " " + token
-%                    prices.append(price.strip())
-%                    price = ""
-%            except:
-%                pass
-%        else:
-%            prev_is_price = False
-%            prev_is_number = False
-%            price = ""
-%    return prices
-%\end{verbatim}
+Continuing on from this tokenisation of the original source text, the current subsystem attempts to find prices in the array of terms. This is done using Python's built-in regular expression module, \texttt{re}. A number of regular expressions are used to define patterns denoting numbers, currencies and quantifiers like `hundred' and `thousand'. As the form of prices vary, for example in the case of mobile apps you might find `£0.59', `59p' or even `59 pence', these combinations of tokens may be split across two tokens in the array returned from the tokenisation process. For this reason, it is necessary to iterate over all items in the list of tokens while remembering the previous one. This obviously means a less efficient system, however, it has produced the best results in such variable conditions.
 
 \subsection{Part-of-speech (POS) Tagging}
-The POS tagger used by this system is taken from the NLTK modules and uses the \texttt{pos\_tag} function which takes a tokenised sentence as its only argument.
+The POS tagger used by this system is taken from the NLTK modules and uses the \texttt{pos\_tag()} function which takes a tokenised sentence as its only argument. Continuing from the first example, this process tags as follows: 
+\begin{quote}
+[`I', `really', `hate', `the', `new', `Firefox']
 
-\subsection{N-Gram Tagging}
-The n-gram tagging process consists of the core functions of the proposed system. Its purpose is to extract all the features that have yet to be extracted, that is, software names and versions, companies, programming languages, operating systems and the reason behind the tweet. It also attempts to find any prices that may previously have been missed, and also has the task of discovering software that is not already in the dictionary.
+\begin{math}\Rightarrow\end{math}
+[(`I', `PRP'), (`really', `RB'), (`hate', `JJ'), (`the', `DT'), (`new', `JJ'), (`Firefox', `NNP')]
 
-% MONGO DB
+\begin{center}
+\begin{tabular}{ l | l }
+  \hline                        
+  PRP & Pronoun \\
+  RB & Adverb \\
+  JJ & Adjective \\
+  DT & Determiner \\
+  NNP & Proper Noun \\
+  \hline  
+\end{tabular}
+\end{center}
+\end{quote}
+
+\subsection{N-Grams}
+N-grams are sequences of n tokens from a given source text. The implementation of creating n-grams in this project is done using the \texttt{nltk.util.ngrams()} function. This process starts by creating a five-gram of the tweet tokens. This means a sequence of five tokens will be created from the array of tokens. Using the Firefox tweet as a running example, the outcome of this five-gram tagging can be seen below.
+
+\begin{quote}
+[`I', `really', `hate', `the', `new', `Firefox']
+
+\begin{math}\Rightarrow\end{math}
+
+[
+ ( (`I', `PRP'), (`really', `RB'), (`hate', `JJ'), (`the', `DT'), (`new', `JJ') ),
+
+ ( (`really', `RB'), (`hate', `JJ'), (`the', `DT'), (`new', `JJ'), (`Firefox', `NNP') )
+]
+\end{quote}
+
+\subsection{Main Feature Extraction}
+This tagging process consists of the core functions of the proposed system. Its purpose is to extract all the features that have yet to be extracted, that is, software names and versions, companies, programming languages, operating systems and the reason behind the tweet. It also attempts to find any prices that may previously have been missed, and also has the task of discovering software that is not already in the dictionary.
+
+
+\begin{verbatim}
+{
+  "_id" : ObjectId("4f7479eb891dd9414800000e"),
+  "programming_language_id" : "317",
+  "programming_language_name" : "python",
+  "software_id" : "159",
+  "software_name" : "moodle",
+  "tweet" : "Best Affordable Drupal, Python, Moodle Hosting: 
+             Top 3 Drupal, Python, Moodle Web Hosts http://t.co/0WHPTsns",
+  "tweet_db_id" : "440094",
+  "url" : "http://t.co/0WHPTsns"
+}
+\end{verbatim}
+
 \subsection{Software Verification}
 The feature extraction subsystem may discover new software, and as such needs to verify these are actually pieces of software and not something else. To do this the program utilises the Microsoft Bing API which returns web search queries. As the main tagging process checks the dictionary for matching software names, and the tweet retrieval engine uses both the dictionary and a set of keywords, there will be some pieces of software mentioned in the tweets that are not in the dictionary. As a result, these will be flagged as possible software names, and then queried on the Microsoft Bing search engine with the keywords ``movie'', ``music'', and ``software game''. These keywords were selected on the basis that the initial search key terms retrieved many tweets referring to music and films.
 \begin{verbatim}
@@ -213,7 +231,6 @@ If the number of results for software associated with the searched term is great
 
 \section{Storing the Extracted Information}
 As the information being extracted is temporarily stored in a Python dictionary variable, it is essentially in the form of a JSON string. The database design for storing this information is also in the form of a NoSQL database. For this reason, a document-based database system seems to be the best approach. MongoDB\footnote{http://www.mongodb.org/} is a document-oriented NoSQL database, which stores JSON-style documents. By using MongoDB, it is easy to store the extracted information, as it is as straightforward as directly storing the string representation of this variable as a record in the database.
-
 
 \section[Visualisation]{Visualisation/Graphical User Interface(GUI)}
 The final stage of the project is to aggregate and present the results to the user in a GUI.
