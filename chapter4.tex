@@ -135,7 +135,7 @@ Using the previous example, the data is returned by the server in the following 
 Upon receipt of this response, the JSON formatted string is parsed and the corresponding record for the tweet previously stored in the MySQL database is updated with new values for sentiment score and the actual sentiment, using polarity and its semantic meaning respectively.
 
 \subsection{URL Extraction}
-Before extracting context and semantics from tweets, any URLs mentioned are found and removed. Assuming the tweet is software-related, these URLs are quite likely to be links to the software, or further reviews. This task is done using NLTK's \texttt{regexp\_tokenize()} function with \url{http://}\verb/[^ ]+/ passed as the regular expression that finds URLs. If the tweet is later found not to contain any software, these URLs are discarded. Potential issues with this implementation could be that a user may post a URL without the preceeding \url{http://} protocol prefix and these would not be found by this regular expression. However, Twitter automatically converts URLs to their \url{http://t.co/} domain and so this is resolved on the Twitter server side.
+Before extracting context and semantics from tweets, any URLs mentioned are found and removed. Assuming the tweet is software-related, these URLs are quite likely to be links to the software, or further reviews. This task is done using NLTK's \texttt{regexp\_tokenize()} function with \url{http://}\verb/[^ ]+/ passed as the regular expression that finds URLs. If the tweet is later found not to contain any software, these URLs are discarded. Potential issues with this implementation could be that a user may post a URL without the preceding \url{http://} protocol prefix and these would not be found by this regular expression. However, Twitter automatically converts URLs to their \url{http://t.co/} domain and so this is resolved on the Twitter server side.
 %\subsection{Version}? OR LEAVE TILL NGRAM
 
 \subsection{Tokenisation}
@@ -199,8 +199,51 @@ N-grams are sequences of n tokens from a given source text. The implementation o
 \subsection{Main Feature Extraction}
 This tagging process consists of the core functions of the proposed system. Its purpose is to extract all the features that have yet to be extracted, that is, software names and versions, companies, programming languages and operating systems. It also attempts to find any prices that may previously have been missed, and also has the task of discovering software that is not already in the dictionary.
 
-Having created a set of five-gram sequences from the tweet, the application may now iterate through each of these in an attempt to find any information that has not yet been found.
+Having created a set of five-gram sequences from the tweet, the application may now iterate through each of these in an attempt to find any information that has not yet been found. For each of these sequences, the program iterates through each POS-tagged token in the sequence. The tagging process then proceeds as follows: 
+\newline
+\begin{algorithmic}
+\If {token is tagged as a noun}
+    \If {token is in dictionary of software, companies, os, programming languages}
+        \If {previous token not tagged as determiner or preposition}
+            \State Feature has been found
+        \EndIf
+    \EndIf
+\EndIf
+\end{algorithmic}
 
+This rule filters out linguistics of the form shown in Figure~\ref{fig:rule1}.
+\begin{figure}[h!]
+ \centering
+  \input{lingrule1}
+  \caption{A linguistic filter
+    \label{fig:rule1}}
+\end{figure}
+If however, these conditions fail, usually in the case where none of the tokens are in the dictionary of keywords used to retrieve these tweets, a regular expression is used to find clues to the presence of new software.
+
+\begin{quote}
+\verb~^download$|^get$~
+\end{quote}
+
+The above regular expression matches on the words \emph{download} and \emph{get}. This works on the basis that many tweets about software are usually posted to promote said software. This is generally done by urging others to download it, and that too by means of application stores like the App Store, or Google Play. This then allows the next token to be analysed to check if it is in fact a piece of software. This is done by checking that token's part of speech tag, adn if it is a noun, the following tokens are also assessed in case the name of the software is longer than one word. This possible software name is then noted and kept aside for verification by web search as discussed in Section~\ref{sec:bing}. This regular expression can be applied to the five-gram in conjunction with others in order to maximise information gain. The following expression could be used to find an operating system.
+
+\begin{quote}
+\verb~^on$|^for$~
+\end{quote}
+
+By applying these together in the form displayed in Figure~\ref{fig:rule2}, the system may be able to determine the platform upon which a piece of software runs.
+
+\begin{figure}[h!]
+ \centering
+  \input{lingrule2}
+  \caption{A linguistic rule to find software and the operating system it may run on
+    \label{fig:rule2}}
+\end{figure}
+
+\begin{itemize}
+\item \verb~^is$|^for$~
+\item \verb~^free$~
+\end{itemize}
+ 
 \begin{lstlisting}[caption=Example of some extracted features, label=lst:extr]
 {
   `programming_language_id' : `317',
@@ -215,6 +258,7 @@ Having created a set of five-gram sequences from the tweet, the application may 
 \end{lstlisting}
 
 \subsection{Software Verification}
+\label{sec:bing}
 The feature extraction subsystem may discover new software, and as such needs to verify these are actually pieces of software and not something else. To do this the program utilises the Microsoft Bing API which returns web search queries. As the main tagging process checks the dictionary for matching software names, and the tweet retrieval engine uses both the dictionary and a set of keywords, there will be some pieces of software mentioned in the tweets that are not in the dictionary. As a result, these will be flagged as possible software names, and then queried on the Microsoft Bing search engine with the keywords ``movie'', ``music'', and ``software game''. These keywords were selected on the basis that the initial search key terms retrieved many tweets referring to music and films.
 \begin{verbatim}
 function bing_search(bing, term){
