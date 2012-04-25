@@ -6,6 +6,7 @@ This chapter outlines the main stages in implementating the designed system in c
 
 The system to be developed, as initially described in Figure~\ref{fig:general}, is fairly representative of a Question-Answering(QA) system. QAs are data mining systems which use Information Retrieval(IR) and Information Extraction(IE) techniques to answer user queries. As such, this project was implemented in 3 stages, each corresponding to these subsystems in QA systems. The first of these was retrieving tweets, the IR phase of this project. Upon successful retrieval, information, the required features in this case, must be extracted and finally, these results must be displayed to the user in a simple, straightforward fashion. These stages will be further explored as follows:
 
+\java
 \section{Tweet Retrieval}
 Without tweets, there is no work to be done, and so retrieving tweets can be regarded as the most important part of this project. The main objective of this stage is to retrieve as many relevant tweets from Twitter as possible. To do this, the system will interact with the set of public APIs Twitter provides in order to fulfill the requirements of each use case stated in Section~\ref{sec:uc}. The system is designed to use all of these to fulfill the requirements of each use case. This subsystem in the project is implemented in Java. This is because of its strong object oriented nature and platform independency. Of course, there are other options such as Python, however Java is a simple programming language with relatively straightforward multithreading capabilities.
 
@@ -98,6 +99,8 @@ The Search API returns a different JSON response to that of the Streaming API. E
 % SHOW KEYWORDS + DICTIONARY IN APPENDIX
 % SHOW JSON RESPONSE IN APPENDIX
 
+
+\python
 \section{Feature Extraction}
 Once tweets have been retrieved from Twitter and stored in the MySQL database, they are now available for feature extaction, which can be regarded as the core stage in implementing the system. This subsystem involves using NLP techniques to extract the information shown in Table~\ref{features} from each tweet. This subsystem is implemented in Python 2.7 due to the raw power it possesses and also due to the decision to use the Natural Language ToolKit(NLTK)\cite{NLTK}. NLTK is an active, well documented Python toolkit project. Alternatives to NLTK include GATE\footnote{\url{http://gate.ac.uk/}} and Minor Third\footnote{\url{http://sourceforge.net/apps/trac/minorthird/wiki}}. GATE is equally well documented, however it appears to be a bulky library, and many of its features are not required in the scope of this project. Minor Third on the other hand, is not as well documented, at the time of development at least, and as such would be more difficult to integrate. These alternatives are also Java implementations and it was felt that Python's speed and text manipulation would allow for a better implementation of the system.
 
@@ -179,7 +182,7 @@ The POS tagger used by this system is taken from the NLTK modules and uses the \
 \end{quote}
 
 \subsection{N-Grams}
-N-grams are sequences of n tokens from a given source text. The implementation of creating n-grams in this project is done using the \texttt{nltk.util.ngrams()} function. This process starts by creating a five-gram of the tweet tokens. This means a sequence of five tokens will be created from the array of tokens. Using the Firefox tweet as a running example, the outcome of this five-gram tagging can be seen below.
+N-grams are sequences of n tokens from a given source text. The implementation of creating n-grams in this project is done using the \texttt{nltk.util.ngrams()} function. This process starts by creating a five-gram of the tweet tokens. This means a sequence of five tokens will be created from the array of tokens. The system utilises a five-gram sequence due to potentially long software names, basing this on the na\"{\i}ve assumption that these names will not exceed five words. This will allow for improved extraction of software names in the next stage. Using the Firefox tweet as a running example, the outcome of this five-gram modelling process can be seen below.
 
 \begin{quote}
 [`I', `really', `hate', `the', `new', `Firefox']
@@ -194,22 +197,22 @@ N-grams are sequences of n tokens from a given source text. The implementation o
 \end{quote}
 
 \subsection{Main Feature Extraction}
-This tagging process consists of the core functions of the proposed system. Its purpose is to extract all the features that have yet to be extracted, that is, software names and versions, companies, programming languages, operating systems and the reason behind the tweet. It also attempts to find any prices that may previously have been missed, and also has the task of discovering software that is not already in the dictionary.
+This tagging process consists of the core functions of the proposed system. Its purpose is to extract all the features that have yet to be extracted, that is, software names and versions, companies, programming languages and operating systems. It also attempts to find any prices that may previously have been missed, and also has the task of discovering software that is not already in the dictionary.
 
+Having created a set of five-gram sequences from the tweet, the application may now iterate through each of these in an attempt to find any information that has not yet been found.
 
-\begin{verbatim}
+\begin{lstlisting}[caption=Example of some extracted features, label=lst:extr]
 {
-  "_id" : ObjectId("4f7479eb891dd9414800000e"),
-  "programming_language_id" : "317",
-  "programming_language_name" : "python",
-  "software_id" : "159",
-  "software_name" : "moodle",
-  "tweet" : "Best Affordable Drupal, Python, Moodle Hosting: 
-             Top 3 Drupal, Python, Moodle Web Hosts http://t.co/0WHPTsns",
-  "tweet_db_id" : "440094",
-  "url" : "http://t.co/0WHPTsns"
+  `programming_language_id' : `317',
+  `programming_language_name' : `python',
+  `software_id' : `159',
+  `software_name' : `moodle',
+  `tweet' : `Best Affordable Drupal, Python, Moodle Hosting: 
+             Top 3 Drupal, Python, Moodle Web Hosts http://t.co/0WHPTsns',
+  `tweet_db_id' : `440094',
+  `url' : `http://t.co/0WHPTsns'
 }
-\end{verbatim}
+\end{lstlisting}
 
 \subsection{Software Verification}
 The feature extraction subsystem may discover new software, and as such needs to verify these are actually pieces of software and not something else. To do this the program utilises the Microsoft Bing API which returns web search queries. As the main tagging process checks the dictionary for matching software names, and the tweet retrieval engine uses both the dictionary and a set of keywords, there will be some pieces of software mentioned in the tweets that are not in the dictionary. As a result, these will be flagged as possible software names, and then queried on the Microsoft Bing search engine with the keywords ``movie'', ``music'', and ``software game''. These keywords were selected on the basis that the initial search key terms retrieved many tweets referring to music and films.

@@ -57,7 +57,7 @@ Collecting tweets is a core task in this project as all work will be based on tw
 The main idea at this stage is to collect tweets from Twitter based on a set of key words and software names, games, programming languages, or company names stored in a dictionary in order to retrieve relevant, software-related tweets.
 
 \subsection{Feature Extraction}
-Feature extracting is the core functionality set out to be achieved in this project. Using rule-based text mining techniques, the aim of this task will be to retrieve up to nine features from every tweet, which are shown in Table~\ref{features}.
+Feature extracting is the core functionality set out to be achieved in this project. Using rule-based text mining techniques, the aim of this task will be to retrieve up to eight features from every tweet, which are shown in Table~\ref{features}.
 
 \begin{table}
 \begin{center}
@@ -70,14 +70,13 @@ Feature extracting is the core functionality set out to be achieved in this proj
 5&Operating system\\
 6&Price\\
 7&Relevant URLs\\
-8&Tweet sentiment\\
-9&Purpose of the tweet, e.g. marketing, review\\\hline\hline
+8&Tweet sentiment\\\hline\hline
 \end{tabular}
 \end{center}
 \caption{Features to be extracted from tweets}\label{features}
 \end{table}
 
-% WHY THESE FEATURES
+These features have been selected in order to find useful information from tweets to be displayed to users. The \textbf{software name} is of course vital, in that this discovery is the main purpose of the project. The \textbf{version} of this software is important because major changes may have been made over the course of a few releases and so it is necessary to note which release people are referring to. The \textbf{company name} is not a major feature, however it may be interesting to know who developed a certain piece of software. It may also be used in a different scenario where a user of this system wishes to find public sentiment towards a company as opposed to some specific software. The \textbf{programming language} feature ideally signifies the language or languages in which the found software was developed in. However, as with the company field, this may be used to find sentiment towards specific programming languages or practices. The \textbf{operating system} field works in a similar fashion, in that its expected use is to find the operating systems upon which the found software runs, but it can also be used to find the sentiment towards a specific operating system. \textbf{Price} and \textbf{URL} extraction are geared towards retrieving slightly for information about the product for the user. The \textbf{tweet sentiment} aims to find the general sentiment towards a piece of software, and will be used in the aggregation process in the final stages when trying to establish public perception of the software.
 
 \subsection{Analyse Tweet Sentiment}
 Sentiment analysis is another of the more important tasks in this project. This is where tweets are analysed for subjectivity, i.e. whether the tweet is positive, negative or neutral, and this will be used to show the general user perception of each piece of software.
@@ -92,9 +91,9 @@ Visualising the data is a fairly low priority task in that the system first need
 The final evaluation of the produced system will be key in determining the success of this project. The system will be evaluated on the basis of the accuracy of retrieved results, the relevance and novelty of information and general usability.
 
 \section{Report Structure}
-This report documents the implementation of a text mining system that is set out to achieve the previously stated goals. The remainder of this report has been split into 6 chapters. Chapter~\ref{cha:background} details the general background of this project and previous work in the area.
+This report documents the implementation of a text mining system that is set out to achieve the previously stated goals. The remainder of this report has been split into 6 chapters.
+Chapter~\ref{cha:background} details the general background of this project and previous work in the area.
 Chapter~\ref{cha:design} goes into the design of the software implementation including use case analysis, the architecture of the system and the software engineering methodologies used.
-% requirements analysis, class diagrams
 Chapter~\ref{cha:impl} details the process of implementing each stage of the project and goes into details of how specific aspects such as the Twitter API integration and feature extraction work.
 Chapter~\ref{cha:results} details the testing methods, results and final outcomes of the project with any meaningful information gained.
 Chapter~\ref{cha:eval} provides the general evaluation of the finished project, also outlining the successes and failures of the task at hand.
