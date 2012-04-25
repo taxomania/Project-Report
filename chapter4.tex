@@ -158,6 +158,7 @@ Norton Anti-Virus released for \$50 \#ripoff
 \end{quote}
 
 \subsection{Price Extraction}
+\label{sec:price}
 Continuing on from this tokenisation of the original source text, the current subsystem attempts to find prices in the array of terms. This is done using Python's built-in regular expression module, \texttt{re}. A number of regular expressions are used to define patterns denoting numbers, currencies and quantifiers like `hundred' and `thousand'. As the form of prices vary, for example in the case of mobile apps you might find `£0.59', `59p' or even `59 pence', these combinations of tokens may be split across two tokens in the array returned from the tokenisation process. For this reason, it is necessary to iterate over all items in the list of tokens while remembering the previous one. This obviously means a less efficient system, however, it has produced the best results in such variable conditions.
 
 \subsection{Part-of-speech (POS) Tagging}
@@ -239,42 +240,65 @@ By applying these together in the form displayed in Figure~\ref{fig:rule2}, the 
     \label{fig:rule2}}
 \end{figure}
 
-\begin{itemize}
-\item \verb~^is$|^for$~
-\item \verb~^free$~
-\end{itemize}
- 
+Once software has been found in the tweet, a search for its version number begins. This essentially works on the assumption that once software has been named, if a version number is to appear, it will be stated either immediately afterwards, or after the word \emph{version}, or some derivative, such as \emph{ver} or \emph{v}.
+
+Finally, this section of the implementation does one more check for prices, this is mainly for free software, as the word \emph{free} would not be found at the price extraction stage explored in Section~\ref{sec:price}. 
+\begin{quote}
+\verb~^is$|^for$~
+\newline
+\verb~^free$~
+\end{quote}
+
+The above regular expressions are used similarly to the usage of the expression finding operating systems that software may run on. If the first expression is matched in the text, it is likely the next token is a price. In cases where the next token is \emph{free}, it will match the second regular expression, thus signifying the price of the software. This is a na\"{i}ve approach but in most cases the prices will already have been extracted.
+
+This concludes the main feature extraction process leaving just the verification of new software names via a web search. Listings~\ref{lst:extr} and \ref{lst:extr2} show examples of the data structure storing these extracted features.
+
 \begin{lstlisting}[caption=Example of some extracted features, label=lst:extr]
 {
-  `programming_language_id' : `317',
-  `programming_language_name' : `python',
-  `software_id' : `159',
-  `software_name' : `moodle',
-  `tweet' : `Best Affordable Drupal, Python, Moodle Hosting: 
-             Top 3 Drupal, Python, Moodle Web Hosts http://t.co/0WHPTsns',
-  `tweet_db_id' : `440094',
-  `url' : `http://t.co/0WHPTsns'
+  "company_id" : "23",
+  "company_name" : "apple",
+  "os_id" : "9",
+  "os_name" : "ios",
+  "software_name" : "ios",
+  "tweet" : "There are some new wallpaper in Apple iOS 5.1. Check them out!",
+  "tweet_db_id" : "439640",
+  "version" : "5.1",
+  "sentiment": "positive"
+}
+\end{lstlisting}
+
+\begin{lstlisting}[caption=Another example of some extracted features, label=lst:extr2]
+{
+  "price" : "free",
+  "software_id" : "159",
+  "software_name" : "moodle",
+  "tweet" : "Training hundreds or thousands of staff?? If you want easy, affordable
+             e-learning training then download moodle free http://t.co/beZgqaOd",
+  "tweet_db_id" : "440065",
+  "url" : "http://t.co/beZgqaOd"
 }
 \end{lstlisting}
 
 \subsection{Software Verification}
 \label{sec:bing}
-The feature extraction subsystem may discover new software, and as such needs to verify these are actually pieces of software and not something else. To do this the program utilises the Microsoft Bing API which returns web search queries. As the main tagging process checks the dictionary for matching software names, and the tweet retrieval engine uses both the dictionary and a set of keywords, there will be some pieces of software mentioned in the tweets that are not in the dictionary. As a result, these will be flagged as possible software names, and then queried on the Microsoft Bing search engine with the keywords ``movie'', ``music'', and ``software game''. These keywords were selected on the basis that the initial search key terms retrieved many tweets referring to music and films.
-\begin{verbatim}
-function bing_search(bing, term){
-    music = bing.search(term, music)
-    movie = bing.search(term, movie)
-    software = bing.search(term, software game)
-
-    if size(software) greater than size(movie) and size(music)
-        if references to software in title and description
-            return True
-    return False
-}
-\end{verbatim}
+The feature extraction subsystem may discover new software, and as such needs to verify these are actually pieces of software and not something else. To do this the program utilises the Microsoft Bing API which returns web search queries. As the main tagging process checks the dictionary for matching software names, and the tweet retrieval engine uses both the dictionary and a set of keywords, there will be some pieces of software mentioned in the tweets that are not in the dictionary. As a result, these will be flagged as possible software names, and then queried on the Microsoft Bing search engine with the keywords ``movie'', ``music'', and ``software game''. These keywords were selected on the basis that the initial search key terms retrieved many tweets referring to music and films. The implementation of the Bing API integration can be seen in Appendix~\ref{app:bing}.
+\newline
+\begin{algorithmic}
+\Function {bing\_search}{bing, term}
+    \State music = bing.search(term, music)
+    \State movie = bing.search(term, movie)
+    \State software = bing.search(term, software game)
+    \newline
+    \If {size(software) greater than size(movie) and size(music)}
+        \If {references to software in title and description}
+            \State \Return True
+        \EndIf
+    \EndIf
+    \newline
+    \State \Return False
+\EndFunction
+\end{algorithmic}
 If the number of results for software associated with the searched term is greater than corresponding results for films and music, the results are checked for identifiers of software in their headings. Therefore if any of the results suggests the searched term is a piece of software, that is assumed true.
-
-% BING.PY IN APPENDIX
 
 \section{Storing the Extracted Information}
 As the information being extracted is temporarily stored in a Python dictionary variable, it is essentially in the form of a JSON string. The database design for storing this information is also in the form of a NoSQL database. For this reason, a document-based database system seems to be the best approach. MongoDB\footnote{http://www.mongodb.org/} is a document-oriented NoSQL database, which stores JSON-style documents. By using MongoDB, it is easy to store the extracted information, as it is as straightforward as directly storing the string representation of this variable as a record in the database.
