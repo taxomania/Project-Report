@@ -9,5 +9,7 @@
 *.lol
 *.log
 *.toc
+*.class
+*.txt
 screen.ps
 when-changed.py
