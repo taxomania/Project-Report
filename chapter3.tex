@@ -13,6 +13,7 @@ There are two main use cases for the proposed system. The following use case def
 The first use case for the system requires a tool capable of continuously monitoring public tweets and storing these in a database. These tweets should be filtered by language and relevance, that is, tweets should be related to software. These tweets need to be filtered by language to counter any issues faced in the feature extraction stage due to the complexities involved in NLP. This use case will thus be referred to as streaming Twitter as that is its principle aim.
 
 \subsection[Use Case 2]{UC2 - Searching Twitter}
+\label{sec:uc2}
 The second use case for the proposed system requires the ability to search Twitter for tweets concerning user-specified key terms, and as such will henceforth be referred to as searching Twitter. These key terms should also be related to software. The returned tweets will also be filtered by language as in the streaming use case to counter the NLP complexities. An extra function required here should be to see which software tools have been mentioned most often, and these should be displayed to the users with the option to search again, or see the full analysis of these tools.
 
 
@@ -72,12 +73,39 @@ The visualisation stage has the task of displaying all the gained information an
 
 There are two parts to this phase of project. Firstly, the data gathered must be \emph{aggregated} so that meaningful knowledge can ultimately be represented. Upon completing this task, a \emph{graphical user interface} (GUI) must be designed for users to interact with the system, perform their own queries, and look at what information has been found.
 
-\subsection{Aggregation}
-Aggregating the results is the process of bringing together all the different data sources for data on a single output entity such as a piece of software. This aggregated data can then be used easily by the GUI to display understandable information to the user.
+\subsubsection{Aggregation}
+Aggregating the results is the process of bringing together all ofthe different data sources for data on a single output entity such as a piece of software. This aggregated data can then be used easily by the GUI to display understandable information to the user. In this project, this task will entail grouping the stored documents by software or other similar information such as company or operating system. Once this information has been retrieved, statistics and charts can be derived. The main task here is to create pie charts for each piece of software to show the sentiment of the tweets mentioning them. Other details include the most tweeted pieces of software.
 
-\subsection[Graphical User Interface]{Graphical User Interface (GUI)}
-The GUI of choice is a web application as opposed to a desktop application, as it allows for a more centralised system that users can easily connect to. It is also a more scalable solution as updates would not need to be pushed out to all users.
+\subsubsection[Graphical User Interface]{Graphical User Interface (GUI)}
+Upon the completion of the aggregation tasks, these charts and statistics need to be passed to a GUI. The GUI of choice for this system is a web application, as opposed to a desktop application. This is a more extensible solution as changes would not need to be pushed out to all users.
 
+There will be three actions for users to carry out on this GUI. These will relate to use case 2 of this system, as seen in Section~\ref{sec:uc2}. The first action to carry out will be searching for tweets posted on Twitter. A mockup of this action can be seen in Figure~\ref{fig:guiwire2}. Once these tweets have been retrieved from the Twitter Search API, they will be displayed on the web page, and in turn features will be extracted, and again displayed to the user.
 
-% WIRE FRAMES?
+After this, there will be an analysis page. This page will show a list of software or operating systems, from which a user can select to view charts and a list of tweets. These charts will have been creating in the aggregation stage, but should be dynamically created. This page is shown in Figure~\ref{fig:guiwire3}.
+
+Finally, once a number of tools, that is, software, operating systems etc. have been found in tweets, the home page should display a list of the most tweeted of these items. Clicking on an item in this list should offer the option of searching again for it, in order to update information, or to view its charts and sentiment information. This should look as the wireframe in Figure~\ref{fig:guiwire1}.
+
+\begin{figure}[h]
+\begin{center}
+\includegraphics[width=10cm]{guiwire1}
+\end{center}
+\caption{A mockup of the website's home page}
+\label{fig:guiwire1}
+\end{figure}
+
+\begin{figure}[h]
+\begin{center}
+\includegraphics[width=10cm]{guiwire2}
+\end{center}
+\caption{A mockup of the website's search page}
+\label{fig:guiwire2}
+\end{figure}
+
+\begin{figure}[h]
+\begin{center}
+\includegraphics[width=10cm]{guiwire3}
+\end{center}
+\caption{A mockup of the website's analysis page}
+\label{fig:guiwire3}
+\end{figure}
 
