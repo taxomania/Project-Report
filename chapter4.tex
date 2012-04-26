@@ -82,6 +82,7 @@ Class design aside, once this \emph{InsertKeywordTask} object has been created, 
 This process is completed when the \emph{TweetDatabaseConnector} inserts the tweet into the database, in the current implementation using Java Database Connectivity(JDBC) to manipulate the MySQL server.
 
 \subsection{Searching Twitter}
+\label{sec:searchjava}
 The Search API will now be used to handle the alternative use case of the designed system. With the Search API not operating in real time, the realisation of this use case can afford to be a much simpler system. The levels of multithreading displayed in streaming Twitter will not be required, as interaction with the API is more of a serial communication as can be seen in Figure~\ref{fig:ucsearch}.
 
 \begin{figure}[h]
@@ -102,6 +103,7 @@ The Search API returns a different JSON response to that of the Streaming API. E
 
 \python
 \section{Feature Extraction}
+\label{sec:fe}
 Once tweets have been retrieved from Twitter and stored in the MySQL database, they are now available for feature extaction, which can be regarded as the core stage in implementing the system. This subsystem involves using NLP techniques to extract the information shown in Table~\ref{features} from each tweet. This subsystem is implemented in Python 2.7 due to the raw power it possesses and also due to the decision to use the Natural Language ToolKit(NLTK)\cite{NLTK}. NLTK is an active, well documented Python toolkit project. Alternatives to NLTK include GATE\footnote{\url{http://gate.ac.uk/}} and Minor Third\footnote{\url{http://sourceforge.net/apps/trac/minorthird/wiki}}. GATE is equally well documented, however it appears to be a bulky library, and many of its features are not required in the scope of this project. Minor Third on the other hand, is not as well documented, at the time of development at least, and as such would be more difficult to integrate. These alternatives are also Java implementations and it was felt that Python's speed and text manipulation would allow for a better implementation of the system.
 
 There are many steps involved in implementing the feature extraction. These are explored in order of execution.
@@ -335,7 +337,14 @@ The above function returns a list of items grouped by a given \texttt{key}. The 
 \label{sec:webapp}
 The web application is required to work with both the Python and the Java code in this project. As such, a static web page is far from the desired solution. This leaves the options of a Java web servlet or a Python web application. Both of these are good options, however, running a Python interpreter inside the Java Virtual Machine(JVM) is a much slower process than invoking Java classes from Python. This can be done using Jython, a Python implementation for Java that allows developers to both invoke Java from Python and vice versa\cite{Juneau:2010}. An alternative solution is to run shell commands directly through the Python interpreter in order to run the Java classes. This is the chosen route of action because no information needs to be passed between the two platforms that cannot be sent as command-line arguments when running the Java code.
 
-Now that this has been decided, a Python web framework must be chosen for the development of this GUI. The CherryPy web framework was selected ahead of the likes of Django and Pylons due to its simplicity and pythonic interface\cite{cherrypy}.
+Now that this has been decided, a Python web framework must be chosen for the development of this GUI. The CherryPy web framework was selected ahead of the likes of Django and Pylons due to its simplicity and pythonic interface\cite{cherrypy}. For an appealing web design that is easy to create, a templating language must be used to embed Python code. This will be done using the Mako template library\footnote{\url{http://www.makotemplates.org/}}. Mako is a leading templating library that is used by some major websites, such as \url{python.org} itself. Mako was chosen ahead of others such as Genshi, which is an XML-based templating engine, as its syntax is much more similar to that of normal Python code. Mako templates also support inheritance as can be seen in Listing~\ref{lst:mako} provided in Appendix~\ref{app:webapp}. HTML5, CSS and the JavaScript library jQuery make up the rest of the web development environment.
 
-%Screenshots in results section
-% cherry py impl here
+
+As designed, the web application has to carry out three functions. Users must be able to \textbf{search} Twitter, \textbf{analyse} stored results and \textbf{view} the top tweeted operating systems and software. The first of these tasks, the search, is carried out using the Java implementation of integrating Twitter's Search API. Python's \texttt{subprocess} module allows shell commands to be executed inside the Python interpreter. This feature is exploited to run the \\\texttt{uk.ac.manchester.cs.patelt9.twitter.SearchAPI} class, its implementation details explored in Section~\ref{sec:searchjava}, and check its output in the shell. This output is piped through to the web application and finally displayed on the web page. This is shown in Chapter~\ref{cha:results} when discussing the results of the project.
+
+The user may then opt to follow through the entire feature extraction process. By restricting the search to a fairly small number of tweets, this process is heavy in terms of time consumption. By opting to do so, the user allows the application to check the sentiment of each of the tweets, and then follow through the feature extraction process described in Section~\ref{sec:fe}. At the end of this extraction, all the new information is returned in the form of a list, ready for display on the web page.
+
+The next task is to show the user the results that have already been stored in the database. As per the design, this is done by showing the user a drop down menu consisting of all of the software that exists in the database. Upon selecting from the list, the application uses the aggregation methods in the previous section to retrieve sentiment data. These are then used as input to the Google Chart Tools API, which creates pie charts displaying percentages for each distinct sentiment value.
+
+Finally, the web application's home page shows a list of the top ten most tweet operating systems and software as links to the charts of these tools. This is again done using the aggregation methods set up in the previous stage of implementation.
+
