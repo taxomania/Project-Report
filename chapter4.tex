@@ -300,16 +300,42 @@ The feature extraction subsystem may discover new software, and as such needs to
 If the number of results for software associated with the searched term is greater than corresponding results for films and music, the results are checked for identifiers of software in their headings. Therefore if any of the results suggests the searched term is a piece of software, that is assumed true.
 
 \section{Storing the Extracted Information}
-As the information being extracted is temporarily stored in a Python dictionary variable, it is essentially in the form of a JSON string. The database design for storing this information is also in the form of a NoSQL database. For this reason, a document-based database system seems to be the best approach. MongoDB\footnote{http://www.mongodb.org/} is a document-oriented NoSQL database, which stores JSON-style documents. By using MongoDB, it is easy to store the extracted information, as it is as straightforward as directly storing the string representation of this variable as a record in the database.
+As the information being extracted is temporarily stored in a Python dictionary variable, it is essentially in the form of a JSON string. The database design for storing this information is also in the form of a NoSQL database. For this reason, a document-based database system seems to be the best approach. MongoDB\footnote{\url{http://www.mongodb.org/}} is a document-oriented NoSQL database, which stores JSON-style documents. By using MongoDB, it is easy to store the extracted information, as it is as straightforward as directly storing the string representation of this variable as a record in the database. Once this information has been successfully stored in MongoDB, the boolean \emph{tagged} flag is set to True for the corresponding tweet in the MySQL database.
 
 \section[Visualisation]{Visualisation/Graphical User Interface(GUI)}
 The final stage of the project is to aggregate and present the results to the user in a GUI.
 
 \subsection{Aggregation}
+The aggregation process has been implemented in Python because the MongoDB wrapper class has already been written and due to the simple mapping between Python dict types and MongoDB's stored documents.
 
-% SHOW MONGO FUNCTIONS
+This stage involes two processes. The first of these is finding the general sentiment towards a particular piece of software from all of the tweets mentioning said software. This is a simple \emph{find} query and the command and syntax for carrying out this task in Python is equivalent to its MongoDB counterpart. The following command would retrieve documents containing the key-value pair of \texttt{software\_name=firefox}, given the collection, MongoDB's equivalent of a table in a relational database, is named \texttt{tagged\_tweets}.
+\begin{quote} 
+\begin{lstlisting}
+db.tagged_tweets.find( { `software_name': `firefox' } )
+\end{lstlisting}
+\end{quote}
+
+Upon retrieving these documents, the application extracts the distinct values from the \texttt{sentiment} field of each document, which can be \emph{positive}, \emph{negative} or \emph{neutral}. For each of these values that appears, its appearance count is calculated using a looping function and these counts are used to make charts in the web application, the topic of discussion in Section~\ref{sec:webapp}.
+
+The second task is to find the top tweeted software and also includes operating systems in the final implementation. This is completed using a grouping function defined in the Python MongoDB driver module.
+
+\begin{quote}
+\begin{lstlisting}
+def _group(self, key):
+        return self.tags.group(key=[key],
+                               condition={key:{`\$ne':None}},
+                               initial={`count':0},
+                               reduce=`function(obj,prev) { prev.count += 1;}')
+\end{lstlisting}
+\end{quote}
+
+The above function returns a list of items grouped by a given \texttt{key}. The items in the list are also given a \texttt{count} value which is the number of times that software name will have appeared in the database collection. This list is then sorted in descending order and a slice of the top ten of these results are returned to be displayed to the user.
+
 \subsection{Web Application}
-The web application available to users is a Python application running the CherryPy web framework.
+\label{sec:webapp}
+The web application is required to work with both the Python and the Java code in this project. As such, a static web page is far from the desired solution. This leaves the options of a Java web servlet or a Python web application. Both of these are good options, however, running a Python interpreter inside the Java Virtual Machine(JVM) is a much slower process than invoking Java classes from Python. This can be done using Jython, a Python implementation for Java that allows developers to both invoke Java from Python and vice versa\cite{Juneau:2010}. An alternative solution is to run shell commands directly through the Python interpreter in order to run the Java classes. This is the chosen route of action because no information needs to be passed between the two platforms that cannot be sent as command-line arguments when running the Java code.
+
+Now that this has been decided, a Python web framework must be chosen for the development of this GUI. The CherryPy web framework was selected ahead of the likes of Django and Pylons due to its simplicity and pythonic interface\cite{cherrypy}.
 
 %Screenshots in results section
 % cherry py impl here
