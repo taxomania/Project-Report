@@ -117,11 +117,42 @@ There has been several previous works on text mining Twitter posts, however, the
 
 % MORE
 
-%\section{Evaluation Measures}
-%In text mining, there are several ways of evaluating the accuracy of a system.
-%\subsection{Precision}
-%\subsection{Recall}
-%\subsection{F-Measure}
+\section{Evaluation Measures}
+In text mining, there are several ways of evaluating the accuracy of a system. Before discussing the different measures, few key prediction outcomes must first be defined.
+
+\textbf{True Positive $tp$} - an entity is predicted to have a certain property, and it in fact does
+
+\textbf{False Positive $fp$} - an entitiy is predicted to have a certain propery but it does not
+
+\textbf{True Negative $tn$} - an entity is correctly predicted to not have a certain property
+
+\textbf{False Negative $fn$} - an entity is incorrectly predicted to not have a certain property
+
+The main measures to be used in the scope of this project are described below.
+
+\subsection{Precision}
+Precision is the fraction of retrieved documents that are relevant to the search. This is the number of correct results divided by the total number of results.
+\begin{quote}
+$\mathrm{Precision}=\frac{tp}{tp+fp}$
+\end{quote}
+
+\subsection{Recall}
+Recall is the fraction of relevant documents that are successfully retrieved. This means it is a measure of the number of correct results that were retrieved out of all of the results that should have been returned. This is the number of correct results returned divided by the total number of all correct results.
+\begin{quote}
+$\mathrm{Recall}=\frac{tp}{tp+fn}$
+\end{quote}
+
+\subsection{Specificity}
+Specificity is also known as the True Negative Rate. It is the measure aiming to find the accuracy of a system in identifying negative results. This is the number of identified negative results divided by the total number of negative results.
+\begin{quote}
+$\mathrm{Specificity}=\frac{tn}{tn+fp}$
+\end{quote}
+
+\subsection{F-Measure}
+The F-measure combines precision and recall to find a weighted average of the two measures.
+\begin{quote}
+$F = 2 \cdot \frac{\mathrm{precision} \cdot \mathrm{recall}}{\mathrm{precision} + \mathrm{recall}}$
+\end{quote}
 
 \section{Twitter API}
 Twitter provides three public APIs for developers to access their massive corpus of data. These are the REST, Search and Streaming APIs, and shall now be further explored.
