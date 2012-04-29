@@ -8,7 +8,8 @@ The information available in the world is growing exponentially, and the majorit
 ``Text mining is the process of extracting interesting information and knowledge from unstructured text''\cite{hotho-etal-ldv-2005} and its applications tend to work in two steps. The first stage uses an Information Retrieval(IR) application to narrow the search space, and the second then extracts significant parts of the retrieved texts\cite{Polajnar2006}. This general process usually involves structuring a source text by means of parsing and other linguistic analysis, then finding patterns in this structured data and then interpreting this output.
 
 Text mining is fundamentally different from standard web searching in that web searches rely primarily on information that is already known. On the other hand, the goal of text mining is to discover interesting, previously unknown information\cite{Gupta_Lehal_2009}.
-There is, however, one key issue introduced by text mining; natural language is used by humans for communication and recording information, while computers are incapable of interpreting natural language. Humans are naturally able to find linguistic patterns in text and understand the semantics of what is being said. Computers, on the other hand, face difficulties in interpreting variations in written text through spelling, colloquialism and also the general context of the text. Nonetheless, computers have what humans do not, that is, computers are much more capable of processing large datasets at very high speeds, particularly in comparison to the human being. Thus, the objective of text mining is to combine the best of these both by creating an application that can retrieve relevant documents and then apply linguistic patterns which may be rule-based, using human-defined rules, or taught by means of machine learning techniques. This project takes the rule-based approach and as such only these techniques will be discussed.
+There is, however, one key issue introduced by text mining; natural language is used by humans for communication and recording information, while computers are incapable of interpreting natural language. Humans are naturally able to find linguistic patterns in text and understand the semantics of what is being said. Computers, on the other hand, face difficulties in interpreting variations in written text through spelling, colloquialism and also the general context of the text. Nonetheless, computers are much more capable of processing large datasets at very high speeds, particularly in comparison to humans. 
+Thus, the objective of text mining is to create an application that is able to apply human-defined rules to large datasets  in order to extract linguistic patterns. Machine learning techniques could also be applied, however these are not in the scope of the project as a rule-based approach has been taken.
 
 An example of the text mining process can be seen in Figure~\ref{fig:tm}.
 \begin{figure}[t]
@@ -20,12 +21,12 @@ An example of the text mining process can be seen in Figure~\ref{fig:tm}.
 \end{figure}
 
 \subsection[Information Retrieval]{Information Retrieval(IR)}
-IR is the process of retrieving textual documents which may contain the answers to questions but do not answer these themselves\cite{Hearst:1999}. Information retrieval is fundamentally a web search working off user queries representing an information need. The process works by searching a collection of documents, and then retrieving those matching a user query depending on relevance. The approach to calculating relevance is dependent upon the actual IR engine itself, generally working on the frequency of specific key terms in each of these documents, and usually assigns a relevance rank to each document. This allows a sorting amongst the results and gives improved results, especially when given a limited number of results.
+IR is the process of retrieving textual documents which may contain the answers to questions but the process itself does not answer these questions\cite{Hearst:1999}. Information retrieval is fundamentally a web search working off user queries representing an information need. The process works by searching a collection of documents, and then retrieving those matching a user query depending on relevance. The approach to calculating relevance is dependent upon the actual IR engine itself. Generally, this works on the frequency of specific key terms in each of these documents, and usually assigns a relevance rank to each one. This allows for improved results through sorting, particularly when restrictions are placed on the number of results to return.
 
 The IR tasks in this project will mainly be carried out on Twitter's systems, and as such, besides the core concept of IR, its internal specifics are not in the scope of this report.
 
 \subsection[Natural Language Processing]{Natural Language Processing(NLP)}
-NLP, in the scope of this project, is the process of extracting information from natural language \cite{Healey98}, that is, any language written or spoken by humans. This involves parsing and processing unstructured text to be able to gain meaningful knowledge from it. Nowadays most natural language processing is done using machine learning techniques, however, in the past, implementations were based on large sets of coded `rules'. These rules are used to define certain linguistic features in the text in order to understand the semantics behind it. NLP is a major field of research at present and also has applications in both information retrieval and information extraction.
+NLP, in the scope of this project, is the process of extracting information from natural language \cite{Healey98}, that is, any language written or spoken by humans. This involves parsing and processing unstructured text to be able to gain meaningful knowledge from it. Nowadays most natural language processing is done using machine learning techniques. However, in the past, implementations were based on large sets of coded rules. These rules are used to define certain linguistic features in the text in order to understand the semantics behind it. NLP is a major field of research at present and also has applications in both information retrieval and extraction.
 
 There are many methods involved in NLP tasks and some of these will now be further explored.
 
@@ -42,10 +43,10 @@ Tokenisation is the process of splitting a stream of text into singular words or
 These variations can be problematic in terms of the results being output for certain user queries. For example, in the case of these differing tokenisations of \emph{don't}, a user search for the word \emph{don} would return true twice, but should be false in its actual context. The importance of normalisation is highlighted when tokenising tweets because a lot of users do not use apostrophes, either due to ease when typing, or in order to reduce the number of characters being used. Thus, varying spellings of the terms should not be tokenised differently.
 
 \subsubsection{Normalisation}
-Once text has been tokenised, these words may need normalising. Normalisation accounts for the several variations in spelling. For example, if you want to search for \emph{Mozilla~Firefox} you would want an IR engine to return not only documents containing the exact query but also those containing terms such as \emph{Firefox}, \emph{firefox} or \emph{mozilla~firefox}. Not doing this would obviously yield fewer results, or in the case of information extraction, it may suggest that \emph{Mozilla~Firefox} and \emph{mozilla~firefox} are two different things. Thus, normalisation is required to successfully map equivalent classes of terms.
+Once text has been tokenised, these words may need normalising. Normalisation accounts for the several variations in spelling. For example, if you want to search for \emph{Mozilla~Firefox} you would want an IR engine to return not only documents containing the exact query but also those containing terms such as \emph{Firefox}, \emph{firefox} and \emph{mozilla~firefox}. Not doing this would obviously yield fewer results, or in the case of information extraction, it may suggest that \emph{Mozilla~Firefox} and \emph{mozilla~firefox} are two different things. Thus, normalisation is required to successfully map equivalent classes of terms.
 
 \subsubsection{Stop Word Filtering}
-Stop words are very commonly used words like \emph{a}, \emph{and} or \emph{the}. By creating a list of these terms, a \emph{stop list}, a natural language parser can remove these terms from the source text as they hold little or no value in matching queries to documents. In modern systems, however, stop lists are not widely used as they provide little gain in terms of efficiency\cite{manning2008}.
+Stop words are very commonly used words like \emph{a}, \emph{I} and \emph{the}. By creating a list of these terms, a \emph{stop list}, a natural language parser can remove these terms from the source text as they hold little or no value in matching queries to documents. In modern systems, however, stop lists are not widely used as they provide little gain in terms of efficiency\cite{manning2008}.
 
 \subsubsection{Part of Speech(POS) Tagging}
 POS tagging is a process carried out after tokenisation. Its task is to assign tags to words, for their corresponding grammatical parts of speech, based on both the word's definition, and its context. This is essentially identifying words as nouns, verbs, adjectives, etc.
@@ -74,7 +75,7 @@ the boy's cars are different colors  \begin{math}\Rightarrow \end{math}
 the boy car be differ color
 \end{quote}
 
-Stemming is a heuristic process hoping to achieve this goal by simply building basic forms of words by removing affixes like a plural `s' from nouns or the `ing' from verbs\cite{hotho-etal-ldv-2005}. However, these are not always correct terms. Lemmatisation on the other hand utilises a more sophisticated approach in that it uses a vocabulary and morphological analysis of words, in order to return to the true base form of a word that may be found in a dictionary. This process, however, is much more complex and time-consuming than the former.
+Stemming is an heuristic process hoping to achieve this goal by simply building basic forms of words by removing affixes like a plural `s' from nouns or the `ing' from verbs\cite{hotho-etal-ldv-2005}. However, these are not always correct terms. Lemmatisation on the other hand utilises a more sophisticated approach in that it uses a vocabulary and morphological analysis of words, in order to return to the true base form of a word that may be found in a dictionary. This process, however, is much more complex and time-consuming than the former.
 
 \subsection[Information Extraction]{Information Extraction(IE)}
 The goal of IE is to extract specific data from a given corpus. IE can be defined as the task of automatically extracting this structured information from unstructured or semi-structured machine-readable documents, generally done through the use of NLP techniques.
@@ -112,11 +113,6 @@ Opinion mining can be done using a weighting system. This method assigns a posit
 
 % More?
 
-\section{Twitter Mining}
-There has been several previous works on text mining Twitter posts, however, the bulk of these have focussed primarily on biomedicine and the financial sector. These works have shown the potential in Twitter has for providing valuable knowledge and information it is felt that software is a new area of interest where Twitter has not previously been used to analyse public opinion. Twitter's low character limit means users have to express their opinions explicitly and encourages the use of emoticons, such as :) or :(, which have been shown to work very well in sentiment analysis\cite{Read:2005}.
-
-% MORE
-
 \section{Evaluation Measures}
 In text mining, there are several ways of evaluating the accuracy of a system. Before discussing the different measures, few key prediction outcomes must first be defined.
 
@@ -153,6 +149,11 @@ The F-measure combines precision and recall to find a weighted average of the tw
 \begin{quote}
 $F = 2 \cdot \frac{\mathrm{precision} \cdot \mathrm{recall}}{\mathrm{precision} + \mathrm{recall}}$
 \end{quote}
+
+\section{Twitter Mining}
+There has been several previous works on text mining Twitter posts, however, the bulk of these have focussed primarily on biomedicine and the financial sector. These works have shown the potential in Twitter has for providing valuable knowledge and information it is felt that software is a new area of interest where Twitter has not previously been used to analyse public opinion. Twitter's low character limit means users have to express their opinions explicitly and encourages the use of emoticons, such as :) or :(, which have been shown to work very well in sentiment analysis\cite{Read:2005}.
+
+% MORE
 
 \section{Twitter API}
 Twitter provides three public APIs for developers to access their massive corpus of data. These are the REST, Search and Streaming APIs, and shall now be further explored.
