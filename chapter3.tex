@@ -59,7 +59,7 @@ The system design follows a 3-stage approach, these being tweet retrieval, featu
 
 \begin{figure}[h]
 \begin{center}
-\includegraphics[width=12cm]{design}
+\includegraphics[width=10cm]{design}
 \end{center}
 \caption{General architecture of the SWOT system}
 \label{fig:general}
@@ -86,11 +86,11 @@ software&source code&version\\\hline
 \begin{table}[h]
 \begin{center}
 \begin{tabular}{|l|r|}\hline\hline
-Type&Count\\\hline
-Software&389\\\hline
-Operating System&12\\\hline
-Company&25\\\hline
-Programming Language&448\\\hline
+\textbf{Type}&\textbf{Count}\\\hline
+Software&389\\
+Operating System&12\\
+Company&25\\
+Programming Language&448\\
 Keywords&12\\\hline
 \textbf{Total}&\textbf{886}\\\hline\hline
 \end{tabular}
@@ -118,7 +118,20 @@ This returned information will be stored in a relational database and its design
 
 \subsection{Feature Extraction}
 \label{sec:arc2}
-The feature extraction stage will execute the task of extracting information from tweets. This will involve the stages described in \ref{sec:textmining} and its general design can be seen in Figure~\ref{fig:phase2}. The main aim of this stage is to take the tweets previously stored in the database and find the software mentioned in them.
+The feature extraction stage will execute the task of extracting information from tweets. The aim at this stage is to extract the following features:
+
+\begin{itemize}
+\item \textbf{Software name} - This discovery is the main purpose of the project and as such is vital.
+\item \textbf{Software version} - The version of the software is important because major changes may have been made over the course of a few releases, and so it is necessary to note which release people are referring to.
+\item \textbf{Company name} -  This is not a major feature, however it may be interesting to know who developed a certain piece of software. It may also be used where a user of the system wishes to find public sentiment towards a company as opposed to some specific software.
+\item \textbf{Programming language} - This feature ideally signifies the language or languages in which the found software was developed. However, as with the company field, this may be used to find sentiment towards specific programming languages or practices.
+\item \textbf{Operating system} - Operating system (OS) extraction works similarly to company and programming language extraction in that its expected use is to find the operating systems upon which the found software runs, but it can also be used to find the sentiment towards a specific OS.
+\item \textbf{Price} - This is geared towards retrieving information about the user.
+\item \textbf{Relevant URLs} - URLs are also extracted for extra information.
+\item \textbf{Tweet sentiment} - This is another important feature in terms of the overall project goals. The tweet sentiment aims to find the general sentiment towards a piece of software in a tweet. This will also be used in the final aggregation stages when trying to establish public perception of the software.
+\end{itemize}
+
+This will involve the stages described in \ref{sec:textmining} and its general design can be seen in Figure~\ref{fig:phase2}. The main aim of this stage is to take the tweets previously stored in the database and find the software mentioned in them.
 
 \begin{figure}[h]
   \centering

@@ -13,17 +13,6 @@ By text mining Twitter posts for software, users may be able to discover new too
 
 The aim of this project is to develop a system that text mines Twitter posts to find software or software development tools that have been mentioned by its users and to discover the general sentiment of users towards these software. This system will henceforth be called \textbf{SWOT} - Software on Twitter.
 
-\section{Challenges}
-There are many challenges facing Natural Language Processing(NLP)-oriented projects.
-
-With the millions of tweets posted every day on Twitter, one can safely presume that many of these will have no relevance to software or any of the other desired information. As such it will be vital to ensure only the most relevant tweets are extracted from Twitter for analysis so as not to waste resources.
-
-Another issue is the world-wide nature of the Internet and microblogging networks like Twitter. This means that several tweets will not be in English and for this reason it would be more difficult to extract features from these tweets. To counter this, it will be necessary to filter tweets not only based on key words but also on their language.
-
-A major issue in NLP research is that of text message shorthand. In a formal document, this problem becomes somewhat irrelevant due to proper usage of Standard English. However, when working with the Twitter platform, the service's 140 character limitation on tweets means users are generally more likely to abbreviate their text and this allows for a lot of ambiguity in the context of each word, and variability in how users may say the same thing.
-% EXAMPLE HERE
-%AGGREGATION?
-
 \section{Objectives}
 In order to successfully complete a project of this magnitude, the task at hand must be split into smaller steps.  These objectives are shown with their complexities and priorities in Table~\ref{objectives}.
 
@@ -48,27 +37,7 @@ Collecting tweets is a core task in this project as all the work will be based o
 The main idea at this stage is to collect tweets based on a set of keywords and software names, programming languages, or company names stored in a dictionary, in order to retrieve relevant, software-related tweets.
 
 \subsection{Feature Extraction}
-Feature extracting is the core functionality set out to be achieved in this project. Using rule-based text mining techniques, the aim of this task will be to retrieve up to eight features from every tweet, which are shown in Table~\ref{features}. Tweets will generally not contain all eight features and so the application cannot be expected to fill all of these fields for every tweet.
-
-\begin{table}
-\begin{center}
-\begin{tabular}{|r|l|}\hline\hline
-&Feature\\\hline
-1&Software name\\
-2&Software version\\
-3&Company or developer\\
-4&Programming language\\
-5&Operating system\\
-6&Price\\
-7&Relevant URLs\\
-8&Tweet sentiment\\\hline\hline
-\end{tabular}
-\end{center}
-\caption{Features to be extracted from tweets}\label{features}
-\end{table}
-
-% Remove this?
-These features have been selected in order to find useful information from tweets to be displayed to users. The \textbf{software name} is of course vital, in that this discovery is the main purpose of the project. The \textbf{version} of this software is important because major changes may have been made over the course of a few releases and so it is necessary to note which release people are referring to. The \textbf{company name} is not a major feature, however it may be interesting to know who developed a certain piece of software. It may also be used in a different scenario where a user of this system wishes to find public sentiment towards a company as opposed to some specific software. The \textbf{programming language} feature ideally signifies the language or languages in which the found software was developed in. However, as with the company field, this may be used to find sentiment towards specific programming languages or practices. The \textbf{operating system} field works in a similar fashion, in that its expected use is to find the operating systems upon which the found software runs, but it can also be used to find the sentiment towards a specific operating system. \textbf{Price} and \textbf{URL} extraction are geared towards retrieving information about the product for the user. 
+Feature extracting is the core functionality set out to be achieved in this project. Using rule-based text mining techniques, the aim of this task will be to retrieve up to eight features from every tweet. Tweets will generally not contain all eight features and so the application cannot be expected to fill all of these fields for every tweet. These features will include the software name and version, company name, any programming languages or operating systems, as well as prices, URLs and the sentiment towards the software.
 
 \subsection{Analyse Tweet Sentiment}
 Sentiment analysis is another of the more important tasks in this project. This is where tweets are analysed for subjectivity, i.e. whether the tweet is positive, negative or neutral. The \textbf{tweet sentiment} feature to be extracted aims to find the general sentiment towards a piece of software, and will be used in the aggregation process in the final stages when trying to establish public perception of the software.
@@ -81,6 +50,17 @@ Visualising the data is a fairly low priority task in that the system first need
 
 \subsection{Evaluate the System}
 The final evaluation of the produced system will be key in determining the success of this project. The system will be evaluated on the basis of the accuracy of retrieved results, the relevance and novelty of information, and general usability.
+
+\section{Challenges}
+There are many challenges facing Natural Language Processing(NLP)-oriented projects.
+
+With the millions of tweets posted every day on Twitter, one can safely presume that many of these will have no relevance to software or any of the other desired information. As such it will be vital to ensure only the most relevant tweets are extracted from Twitter for analysis so as not to waste resources.
+
+Another issue is the world-wide nature of the Internet and microblogging networks like Twitter. This means that several tweets will not be in English and for this reason it would be more difficult to extract features from these tweets. To counter this, it will be necessary to filter tweets not only based on key words but also on their language.
+
+A major issue in NLP research is that of text message shorthand. In a formal document, this problem becomes somewhat irrelevant due to proper usage of Standard English. However, when working with the Twitter platform, the service's 140 character limitation on tweets means users are generally more likely to abbreviate their text and this allows for a lot of ambiguity in the context of each word, and variability in how users may say the same thing.
+% EXAMPLE HERE
+%AGGREGATION?
 
 \section{Report Structure}
 This report documents the implementation of a text mining system that is set out to achieve the previously stated goals. The remainder of this report has been split into 6 chapters.
