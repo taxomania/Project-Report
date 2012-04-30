@@ -1,63 +1,54 @@
 \chapter{Introduction}
 \label{cha:intro}
-The success of a piece of software is based largely upon user opinion. Gathering such information is conventionally done through means of surveying groups of users. However, in the days of social media, people generally express their opinions on popular social networks or microblogging sites such as Facebook and Twitter. This means it is now much easier for companies to receive feedback on products they have developed by monitoring these networks.
 
-\section{Aim and Motivation}
+\section{Motivation}
+The success of a piece of software is based largely upon user opinion. Gathering such information is conventionally done through means of surveying groups of users. However, in the days of social media, people generally express their opinions on popular social networks or microblogging sites such as Facebook and Twitter. This means it is now much easier for companies to receive and collect feedback on products they have developed by monitoring these networks.
+
+Twitter has been at the core of many data mining projects in recent years and this is due to the sheer amount of data produced on a daily basis. Twitter users now post in excess of 340 million tweets every day~\cite{twitterblog} and as such Twitter provides a massive corpus\footnote{A collection of documents} for opinion mining and sentiment analysis.
+%MORE
+
+\section{Aim}
 \label{sec:aim}
-Twitter has been at the core of many data mining projects in recent years and this is due to the sheer amount of data produced on a daily basis. Twitter users now post in excess of 340 million tweets every day\cite{twitterblog} and as such Twitter provides a massive corpus\footnote{A collection of documents} for opinion mining and sentiment analysis.
+By text mining Twitter posts for software, users may be able to discover new tools or programs they have not come across before, as well as see reviews by other users.
 
-By text mining Twitter posts for software, users are able to discover new tools or programs they have not come across before, as well as see reviews by other users.
-
-Thus, the aim of this project is to develop a system that text mines Twitter posts to find software or software development tools that have been mentioned by its users and to discover the general sentiment of users towards these softwares.
+The aim of this project is to develop a system that text mines Twitter posts to find software or software development tools that have been mentioned by its users and to discover the general sentiment of users towards these software. This system will henceforth be called \textbf{SWOT} - Software on Twitter.
 
 \section{Challenges}
-There are many challenges facing Natural Language Processing(NLP)-oriented projects. Table~\ref{challenges} shows the key issues to be faced in achieving the main aim.
+There are many challenges facing Natural Language Processing(NLP)-oriented projects.
 
 With the millions of tweets posted every day on Twitter, one can safely presume that many of these will have no relevance to software or any of the other desired information. As such it will be vital to ensure only the most relevant tweets are extracted from Twitter for analysis so as not to waste resources.
 
 Another issue is the world-wide nature of the Internet and microblogging networks like Twitter. This means that several tweets will not be in English and for this reason it would be more difficult to extract features from these tweets. To counter this, it will be necessary to filter tweets not only based on key words but also on their language.
 
-A major issue in NLP research is that of text message shorthand. In a formal document this problem becomes somewhat irrelevant due to proper usage of Standard English. However, when working with the Twitter platform, the service's 140 character limitation on tweets means users are generally more likely to abbreviate their text and this allows for a lot of ambiguity in the context of each word, and variability in how users may say the same thing.
-
-% EXAMPLES GO HERE
-
-\begin{table}
-\begin{center}
-\begin{tabular}{|r|l|}\hline\hline
-&Challenges\\\hline
-1&Finding relevant tweets\\
-2&Non-English tweets\\
-3&Text message shorthand\\\hline\hline
-\end{tabular}
-\end{center}
-\caption{Challenges to be faced in this project}\label{challenges}
-\end{table}
+A major issue in NLP research is that of text message shorthand. In a formal document, this problem becomes somewhat irrelevant due to proper usage of Standard English. However, when working with the Twitter platform, the service's 140 character limitation on tweets means users are generally more likely to abbreviate their text and this allows for a lot of ambiguity in the context of each word, and variability in how users may say the same thing.
+% EXAMPLE HERE
+%AGGREGATION?
 
 \section{Objectives}
 In order to successfully complete a project of this magnitude, the task at hand must be split into smaller steps.  These objectives are shown with their complexities and priorities in Table~\ref{objectives}.
 
 \begin{table}
 \begin{center}
-\begin{tabular}{|r|c|c|c|}\hline\hline
-&Task&Complexity&Priority\\\hline
-1&Collect and filter tweets by keyword&Simple&High\\
-2&Feature extraction&Complex&High\\
-3&Analyse tweet sentiment&Intermediate&Medium\\
-4&Structure and integrate data&Intermediate&High\\
-5&Visualise data through GUI&Intermediate&Low\\
-6&Evaluate the system&Complex&High\\\hline\hline
+\begin{tabular}{|r|c|}\hline\hline
+&Task\\\hline
+1&Collect and filter tweets by keyword\\
+2&Feature extraction\\
+3&Analyse tweet sentiment\\
+4&Structure and integrate data\\
+5&Visualise data through GUI\\
+6&Evaluate the system\\\hline\hline
 \end{tabular}
 \end{center}
 \caption{Complexity and priority of project objectives}\label{objectives}
 \end{table}
 
-\subsection{Collect and Filter Tweets by Keyword}
+\subsection{Collect and Filter Tweets by Keywords}
 Collecting tweets is a core task in this project as all the work will be based on tweets stored in a database. Filtering through these is a relatively simple task in that it can be done using Twitter's APIs, but there are some complexities in ensuring they are all relevant.
 
-The main idea at this stage is to collect tweets based on a set of key words and software names, programming languages, or company names stored in a dictionary, in order to retrieve relevant, software-related tweets.
+The main idea at this stage is to collect tweets based on a set of keywords and software names, programming languages, or company names stored in a dictionary, in order to retrieve relevant, software-related tweets.
 
 \subsection{Feature Extraction}
-Feature extracting is the core functionality set out to be achieved in this project. Using rule-based text mining techniques, the aim of this task will be to retrieve up to eight features from every tweet, which are shown in Table~\ref{features}.
+Feature extracting is the core functionality set out to be achieved in this project. Using rule-based text mining techniques, the aim of this task will be to retrieve up to eight features from every tweet, which are shown in Table~\ref{features}. Tweets will generally not contain all eight features and so the application cannot be expected to fill all of these fields for every tweet.
 
 \begin{table}
 \begin{center}
@@ -76,13 +67,14 @@ Feature extracting is the core functionality set out to be achieved in this proj
 \caption{Features to be extracted from tweets}\label{features}
 \end{table}
 
-These features have been selected in order to find useful information from tweets to be displayed to users. The \textbf{software name} is of course vital, in that this discovery is the main purpose of the project. The \textbf{version} of this software is important because major changes may have been made over the course of a few releases and so it is necessary to note which release people are referring to. The \textbf{company name} is not a major feature, however it may be interesting to know who developed a certain piece of software. It may also be used in a different scenario where a user of this system wishes to find public sentiment towards a company as opposed to some specific software. The \textbf{programming language} feature ideally signifies the language or languages in which the found software was developed in. However, as with the company field, this may be used to find sentiment towards specific programming languages or practices. The \textbf{operating system} field works in a similar fashion, in that its expected use is to find the operating systems upon which the found software runs, but it can also be used to find the sentiment towards a specific operating system. \textbf{Price} and \textbf{URL} extraction are geared towards retrieving information about the product for the user. The \textbf{tweet sentiment} aims to find the general sentiment towards a piece of software, and will be used in the aggregation process in the final stages when trying to establish public perception of the software.
+% Remove this?
+These features have been selected in order to find useful information from tweets to be displayed to users. The \textbf{software name} is of course vital, in that this discovery is the main purpose of the project. The \textbf{version} of this software is important because major changes may have been made over the course of a few releases and so it is necessary to note which release people are referring to. The \textbf{company name} is not a major feature, however it may be interesting to know who developed a certain piece of software. It may also be used in a different scenario where a user of this system wishes to find public sentiment towards a company as opposed to some specific software. The \textbf{programming language} feature ideally signifies the language or languages in which the found software was developed in. However, as with the company field, this may be used to find sentiment towards specific programming languages or practices. The \textbf{operating system} field works in a similar fashion, in that its expected use is to find the operating systems upon which the found software runs, but it can also be used to find the sentiment towards a specific operating system. \textbf{Price} and \textbf{URL} extraction are geared towards retrieving information about the product for the user. 
 
 \subsection{Analyse Tweet Sentiment}
-Sentiment analysis is another of the more important tasks in this project. This is where tweets are analysed for subjectivity, i.e. whether the tweet is positive, negative or neutral, and this will be used to show the general user perception of each piece of software.
+Sentiment analysis is another of the more important tasks in this project. This is where tweets are analysed for subjectivity, i.e. whether the tweet is positive, negative or neutral. The \textbf{tweet sentiment} feature to be extracted aims to find the general sentiment towards a piece of software, and will be used in the aggregation process in the final stages when trying to establish public perception of the software.
 
 \subsection{Structure and Integrate Data}
-The data needs to be structured and aggregated to be able to provide any meaningful output for the user. Without this step, the system is producing no useful information.
+The data needs to be structured and aggregated to be able to provide any meaningful output for the user.
 
 \subsection{Visualise Data Through GUI}
 Visualising the data is a fairly low priority task in that the system first needs to gather the information. This project centres more around the core back-end development than user experience and as such only a simple user interface is needed in its initial stages.
