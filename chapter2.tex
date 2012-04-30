@@ -110,6 +110,10 @@ Sentiment analysis, also known as opinion mining, refers to the NLP application 
 
 Opinion mining can be done using a weighting system. This method assigns a positive or a negative weighting on a given scale such as -3 to +3. These are applied for each word in the text that relates to the core entity. The text is then given a total score which determines its polarity, and also the strength of the sentiment. In simpler systems the scale may only be from -1 to +1, essentially opting to ignore the strength of the sentiment and just asking for the general sentiment of the text.
 
+There are a number of public APIs and libraries available for sentiment analysis. SWOT will use the Sentiment140 Bulk Classification Service API\footnote{\url{http://help.sentiment140.com/api}} ahead of others such as AlchemyAPI~\cite{alchemyapi} and the CLiPS Pattern modules. 
+AlchemyAPI results are accurate, however with the massive number of tweets being streamed from the service it is not deemed feasible to continuously make calls to a web service to analyse them for sentiment, as the service only analyses individual tweets. As well as this, there is a limit of 10,000 tweets per day and with the large number of tweets posted on Twitter on the daily basis, this could also be an issue.
+
+While Pattern is an offline system, it states 72\% accuracy for movie reviews~\cite{pattern}, while the Sentiment140 API is optimised for tweets and boasts 83\% accuracy~\cite{Go_Bhayani_Huang_2009}. As well as this, the bulk classification service allows mass analysis with requests consisting of up to 10,000 tweets.
 % More?
 
 \section{Evaluation Measures}
@@ -126,13 +130,13 @@ In text mining, there are several ways of evaluating the accuracy of a system. B
 The main measures to be used in the scope of this project are described below.
 
 \subsection{Precision}
-Precision is the fraction of retrieved documents that are relevant to the search. This is the number of correct results divided by the total number of results.
+Precision is the fraction of retrieved instances that are relevant. This is the number of correct results divided by the total number of results.
 \begin{quote}
 $\mathrm{Precision}=\frac{tp}{tp+fp}$
 \end{quote}
 
 \subsection{Recall}
-Recall is the fraction of relevant documents that are successfully retrieved. This means it is a measure of the number of correct results that were retrieved out of all of the results that should have been returned. This is the number of correct results returned divided by the total number of all correct results.
+Recall is the fraction of relevant instances that are successfully retrieved. This means it is a measure of the number of correct results that were retrieved out of all of the results that should have been returned. This is the number of correct results returned divided by the total number of all correct results.
 \begin{quote}
 $\mathrm{Recall}=\frac{tp}{tp+fn}$
 \end{quote}
@@ -165,6 +169,10 @@ The REST API enables programs to access more of the core Twitter functions. This
 
 \subsection{Streaming API}
 Twitter's Streaming API is a real-time sample of all public tweets posted on the sample. It allows filtering in various ways such as user id, keywords or even random sampling, and is regarded as the default option for data mining operations. This is because the Streaming API allows a long-lived HTTP connection unlike the other APIs and as such, programs can constantly remain connected so as to retrieve a running stream of tweets, as the name itself suggests. This removes the overheads associated with reconnecting every time you want to make a query and the API also removes all rate limitations so there is no worry of exceeding your quota. Unlike the other APIs, programs must be authenticated to use the Streaming API.
+
+\section{Other Technologies}
+\subsection{JavaScript Object Notation}
+\subsection{MongoDB}
 
 
 \section{Summary}

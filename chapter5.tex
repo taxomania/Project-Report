@@ -3,7 +3,7 @@
 This chapter details the results of the project, along with views of the user interface and the final findings of the system.
 
 \section{Feature Extraction}
-The analysis of results is a semi-automated process carried out by checking which tweets were said to contain software and which did not. In total, 3268 tweets were retrieved from Twitter and stored in the MySQL database. These have all been through the feature extraction process, and 1168 of these are said to mention software or operating systems, leaving 2100 that do not. Of these tweets, roughly 10\%, i.e. 350, were manually tagged purely with software names. Comparing these results produces the accuracy measures shown in Tables~\ref{tbl:truefalse} and \ref{tbl:measures}.
+The analysis of results is a semi-automated process carried out by checking which tweets were said to contain software and which did not. In total, 3268 tweets were retrieved from Twitter and stored in the MySQL database. These have all been through the feature extraction process, and 1168 of these are said to mention software or operating systems, leaving 2100 that do not. Of these tweets, roughly 10\%, i.e. 350, were manually tagged purely with software names, for the purpose of evaluating the system. Comparing these results produces the accuracy measures shown in Tables~\ref{tbl:truefalse} and \ref{tbl:measures}. While 350 tweets were tagged, the Table~\ref{tbl:truefalse} states a total of 367. This is because many tweets contain more than one software name.
 
 \begin{table}[h]
 \begin{center}
@@ -56,7 +56,7 @@ The search page asks users to enter a single query term as shown in Figure~\ref{
 \label{fig:gui3}
 \end{figure}
 
-The final requirement is to show display the key information to the user. This involves displaying a pie chart representing the sentiment of tweets mentioning the selected software, and is shown in Figures~\ref{fig:gui4} and \ref{fig:gui5}.
+The final requirement is to display the key information to the user. This involves displaying a pie chart representing the sentiment of tweets mentioning the selected software, and is shown in Figures~\ref{fig:gui4} and \ref{fig:gui5}.
 
 \begin{figure}[h]
 \begin{center}
