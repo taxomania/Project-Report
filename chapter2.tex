@@ -150,7 +150,7 @@ This works with entity extraction in that it works to identify relations between
 PERSON named new ORGANISATION CEO.
 \end{quote}
 
-% OTHER SUB TASKS?
+% MORE
 
 \subsection{Evaluation Measures}
 In text mining, there are several ways of evaluating the accuracy of a system. Before discussing the different measures, few key prediction outcomes must first be defined.
@@ -199,11 +199,12 @@ There are a number of public APIs and libraries available for sentiment analysis
 AlchemyAPI results are accurate, however with the massive number of tweets being streamed from the service it is not deemed feasible to continuously make calls to a web service to analyse them for sentiment, as the service only analyses individual tweets. As well as this, there is a limit of 10,000 tweets per day and with the large number of tweets posted on Twitter on the daily basis, this could also be an issue.
 
 While Pattern is an offline system, it states 72\% accuracy for movie reviews~\cite{pattern}, while the Sentiment140 API is optimised for tweets and boasts 83\% accuracy~\cite{Go_Bhayani_Huang_2009}. As well as this, the bulk classification service allows mass analysis with requests consisting of up to 10,000 tweets.
-% More?
 
 \section{Twitter Mining}
 There has been several previous works on text mining Twitter posts, however, the bulk of these have focussed primarily on biomedicine and the financial sector. These works have shown the potential in Twitter has for providing valuable knowledge and information it is felt that software is a new area of interest where Twitter has not previously been used to analyse public opinion. Twitter's low character limit means users have to express their opinions explicitly and encourages the use of emoticons, such as :) or :(, which have been shown to work very well in sentiment analysis~\cite{Read:2005}.
 
+
+Linguamatics I2E text mining software analyses online media, such as Twitter and blogs, in order to extract reviews, customer comments or praise and any other information \cite{linguamatics}.
 % MORE
 
 \section{Twitter API}
@@ -234,7 +235,4 @@ JSON will be widely used in the implementation of the SWOT system due to its usa
 
 \subsection{MongoDB}
 MongoDB is a document-oriented NoSQL-type of database, that is, a schema-less design that diverges from the traditional relational database model. MongoDB stores structured data as JSON-style documents with dynamic schemas, thus allowing the integration of data simpler and faster~\cite{mongodb}.
-
-\section{Summary}
-
 

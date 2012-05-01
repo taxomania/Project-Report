@@ -1,26 +1,25 @@
 \chapter{Conclusions}
 \label{cha:conclusion}
-This chapter discusses the author's reflections on the success and conclusions of the project. The report concludes with Suggestions for further work.
+This chapter discusses the author's reflections on the success and conclusions of the project. The report concludes with suggestions for further work.
 
-\section{Achievements and Reflections}
-With respect to the initial aims and objectives of this project, the final outcome is fairly successful. The system has completed the objectives of retrieving tweets from Twitter, extracting features from them, and then displaying the aggregated results to the user.
+\section{Achievements}
+With respect to the initial aims and objectives of this project, the final outcome is fairly successful. The system has completed the objectives of retrieving tweets from Twitter, extracting the features detailed in Section~\ref{sec:arc2} from them, and then displaying the aggregated results to the user.
 
+SWOT scores an F-measure of 0.73, which is a fairly good score when considering the complexity of named entity recognition in the domain of software names.
+
+\section{Reflections}
 In terms of the overall progress made over the course of the year I feel this project has been a success. It has been a steep learning curve and on that basis some good results have been achieved. However, in absolute terms, I think results could have been slightly better and this may be because of some mistakes I have made in the way I went about working on the project over the year. This is down to a few key issues.
 
 \textbf{Time management} can be seen as one of the overriding causes of some of the shortfalls of this project. There were times when progress had completely stalled due to minor issues with implementation. I also feel I spent too much time on the first phase of the project. Priorities should have been placed on the second phase, where features were extracted from tweets.
-%eg dictionary
 
 I also feel as though my \textbf{preparation} may not have been sufficient, as I had overlooked a few key concepts when developing parts of the system. For example, I did not create a training set of data that would ultimately allow me to use a machine learning approach in my system and I think this may have resulted in a slightly lesser performing program, in terms of its accuracy.
 
-% MORE ISSUES HEE
 However, as previously stated, there have been major strides over the year. I feel I have a much greater grounding in the core object oriented design and programming principles. As well as this, I have developed skills in many new technologies and concepts. This was the first time I have had to develop a multithreaded desktop environment, and I had never previously worked with Python, JSON, MongoDB or the HTTPS protocol. As such I am happy with the general progress made in this project.
 
 \section{Future Work}
-With extra time for the project, a few more functions could be implemented. Firsty, an interesting feature to extract from tweets would be the underlying reason for posting said tweet. This could, for example, be for the purpose of marketing, or simply a user reviewing the software. The ratio of these purposes could return some interesting results as to who tweets about which software. 
+With extra time for the project, a few more functions could be implemented. Firstly, an interesting feature to extract from tweets would be the underlying reason for posting said tweet. This could, for example, be for the purpose of marketing, or simply a user reviewing the software. The ratio of these purposes could return some interesting results as to who tweets about which software. 
 
 Another function could be to associate certain words with software. For example, \emph{download} could be used in many tweets mentioning software. If associations with large support and confidence can be determined, these words could be added to the set of keywords and improve the overall relevancy of the tweets retrieved from Twitter's APIs.
 
 As well as this, some extra linguistic rules could be defined for the system to perform better in identifying software.
-
-\section{Overall Summary}
 
