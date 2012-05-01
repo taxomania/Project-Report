@@ -27,6 +27,8 @@ The IR tasks in this project will mainly be carried out on Twitter's systems, an
 \subsection{Natural Language Processing}
 Natural Language Processing (NLP), in the scope of this project, is the process of extracting information from natural language~\cite{Healey98}, that is, any language written or spoken by humans. This involves parsing and processing unstructured text to be able to gain meaningful knowledge from it. Nowadays natural language processing is done using machine learning techniques. However, in the past, implementations were based on large sets of coded rules. These rules are used to define certain linguistic features in the text in order to understand the semantics behind it. NLP is a major field of research at present and also has applications in both information retrieval and extraction.
 
+There are several public libraries available for NLP. One of these is the Natural Language Toolkit (NLTK), which is a set of Python modules for symbolic and statistical natural language processing \cite{NLTK}. It is an active, well documented project. Alternatives to NLTK include GATE\footnote{\url{http://gate.ac.uk/}} and Minor Third\footnote{\url{http://sourceforge.net/apps/trac/minorthird/wiki}}. GATE is equally well documented, however it appears to be a bulky library, and many of its features are not required in the scope of this project. Minor Third on the other hand, is not as well documented, at least at the time of development, and as such would be more difficult to integrate. These alternatives are also Java implementations and as such, may not possess the speed and text manipulation capabilties of Python.
+
 There are many methods involved in NLP tasks and some of these will now be further explored.
 
 \subsubsection{Tokenisation}
@@ -174,12 +176,15 @@ The REST API enables programs to access more of the core Twitter functions. This
 Twitter's Streaming API is a real-time sample of all public tweets posted on the sample. It allows filtering in various ways such as user id, keywords or even random sampling, and is regarded as the default option for data mining operations. This is because the Streaming API allows a long-lived HTTP connection unlike the other APIs and as such, programs can constantly remain connected so as to retrieve a running stream of tweets, as the name itself suggests. This removes the overheads associated with reconnecting every time you want to make a query and the API also removes all rate limitations so there is no worry of exceeding your quota. Unlike the other APIs, programs must be authenticated to use the Streaming API.
 
 \section{Other Technologies}
+The following sections describe some of the other technologies required in the development of the SWOT system.
 
 \subsection{JavaScript Object Notation}
+JavaScript Object Notation (JSON) is a lightweight data-interchange format that is both easy for humans to read and write and for machines to parse and generate~\cite{json}. JSON is built on two universal data structures; a collection of name/value pairs and an ordered list of values, equivalent to an array.
+
+JSON will be widely used in the implementation of the SWOT due to its usage in the Twitter APIs and compatibility with MongoDB. 
 
 \subsection{MongoDB}
-\subsection{Natural Language Toolkit}
-
+MongoDB is a document-oriented NoSQL-type of database, that is, a schema-less design that diverges from the traditional relational database model. MongoDB stores structured data as JSON-style documents with dynamic schemas, thus allowing the integration of data simpler and faster~\cite{mongodb}.
 
 \section{Summary}
 

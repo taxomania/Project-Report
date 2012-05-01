@@ -147,7 +147,7 @@ After extracting these two features, the tokens are to be tagged for their part 
 
 These candidates must be verified. If they belong in the dictionary, this is sufficient. However, in cases where the candidate is a new item, other means of verification are required. To do this, SWOT will use the Microsoft Bing API to query the web for these candidates. If the results suggest said candidate is in fact a piece of software, the system will tag these names as software and store the extracted features. In other cases, these features will be discarded.
 
-Due to the volatile nature of the information being extracted from these tweets, this data should be stored in a NoSQL-type database, that is, a schema-less design that diverges from the traditional relational database model. As a result, there is no formal design for this database structure, however, it is required of the system to at this stage store any features it has managed to extract along with the key information associated with the tweet that had been stored in the tweet retrieval stage, such as its unique id and text content.
+Due to the volatile nature of the information being extracted from these tweets, this data should be stored in a MongoDB database. As a result, there is no formal design for this database structure, however, it is required of the system to at this stage store any features it has managed to extract along with the key information associated with the tweet that had been stored in the tweet retrieval stage, such as its unique id and text content.
 
 \subsection{Aggregation and Visualisation}
 \label{sec:arc3}
