@@ -1,24 +1,6 @@
 \chapter{Design}
 \label{cha:design}
 
-
-%\begin{table}
-%\begin{center}
-%\begin{tabular}{|r|c|c|c|}\hline\hline
-%&Task&Complexity&Priority\\\hline
-%1&Collect and filter tweets by keyword&Simple&High\\
-%2&Feature extraction&Complex&High\\
-%3&Analyse tweet sentiment&Intermediate&Medium\\
-%4&Structure and integrate data&Intermediate&High\\
-%5&Visualise data through GUI&Intermediate&Low\\
-%6&Evaluate the system&Complex&High\\\hline\hline
-%\end{tabular}
-%\end{center}
-%\caption{Complexity and priority of project objectives}\label{objectives}
-%\end{table}
-
-
-
 This chapter details the overall design of the system to be developed in this project. The software engineering methodology to be used will first be discussed, along with use cases, requirements and the architecture of the system. This will be followed up with notes on the class and database design diagrams. The decisions made with regards to some design choices will also be discussed in more detail.
 
 \section{Software Engineering Methodology}
@@ -26,7 +8,22 @@ The software engineering methodology used in developing an application can have 
 
 \section{Use Cases}
 \label{sec:uc}
-To serve as a reminder, the aim of this project is to develop a system, SWOT, that text mines Twitter posts to find software or software development tools that have been mentioned by its users and to discover the general sentiment of users towards these software. 
+To serve as a reminder, the aim of this project is to develop a system, SWOT, that text mines Twitter posts to find software or software development tools that have been mentioned by its users and to discover the general sentiment of users towards these software. Table~\ref{tbl:objectives} revisits the project's objectives, with their respective complexities and priorities.
+
+\begin{table}
+\begin{center}
+\begin{tabular}{|r|c|c|c|}\hline\hline
+&Task&Complexity&Priority\\\hline
+1&Collect and filter tweets by keyword&Simple&High\\
+2&Feature extraction&Complex&High\\
+3&Analyse tweet sentiment&Intermediate&Medium\\
+4&Structure and integrate data&Intermediate&High\\
+5&Visualise data through GUI&Intermediate&Low\\
+6&Evaluate the system&Complex&High\\\hline\hline
+\end{tabular}
+\end{center}
+\caption{Complexity and priority of project objectives}\label{tbl:objectives}
+\end{table}
 
 In order to attain this goal, SWOT must satisfy four uses cases, as seen in Figure~\ref{fig:uc}, which have been described below.
 
@@ -131,7 +128,7 @@ The feature extraction stage will execute the task of extracting information fro
 \item \textbf{Tweet sentiment} - This is another important feature in terms of the overall project goals. The tweet sentiment aims to find the general sentiment towards a piece of software in a tweet. This will also be used in the final aggregation stages when trying to establish public perception of the software.
 \end{itemize}
 
-This will involve the stages described in \ref{sec:textmining} and its general design can be seen in Figure~\ref{fig:phase2}. The main aim of this stage is to take the tweets previously stored in the database and find the software mentioned in them.
+Extracting these features will involve the stages described in \ref{sec:textmining} and the general design of this process can be seen in Figure~\ref{fig:phase2}. 
 
 \begin{figure}[h]
   \centering
@@ -139,6 +136,16 @@ This will involve the stages described in \ref{sec:textmining} and its general d
   \caption{Design for feature extraction
     \label{fig:phase2}}
 \end{figure}
+
+Tweets will be analysed for sentiment after they have been retrieved from the tweet database. This is to be done using the Sentiment140 API, as previously discussed in Section~\ref{sec:back_sent}. As this is a bulk classification service, analysis is to be done on all the tweets retrieved at once, as opposed to individual tweets. This may seem inefficient in the sense that a tweet may be analysed even if it does not contain any references to software. However, using the bulk classification service allows the total number of web requests to be greatly reduced, thus also reducing the overhead when making each request. This will ultimately improve the efficiency of the system.
+
+After this step, URLs need to be extracted from each tweet. URLs provided in tweets related to software are likely to link to further reviews or the application's download page. These should then be removed from the text before further processing as it may cause conflicts when extracting other features.
+
+The text should then be tokenised in order to produce a list of tokens upon which the remaining processing will take place. Prices are the next feature to be extracted. The tokenisation process itself should be able to isolate prices of the form \emph{£10} or \emph{\$0.99} and so this stage will not require much extra processing of the text.
+
+After extracting these two features, the tokens are to be tagged for their part of speech. This will allow for improved entity recognition as linguistic patterns may be applied to the extraction process. The main feature extraction stage has the task of extracting all of the remaining features detailed above. This will require n-gram modelling and linguistic rules and patterns to be able to find candidates for software and other key entities in the text.
+
+These candidates must be verified. If they belong in the dictionary, this is sufficient. However, in cases where the candidate is a new item, other means of verification are required. To do this, SWOT will use the Microsoft Bing API to query the web for these candidates. If the results suggest said candidate is in fact a piece of software, the system will tag these names as software and store the extracted features. In other cases, these features will be discarded.
 
 Due to the volatile nature of the information being extracted from these tweets, this data should be stored in a NoSQL-type database, that is, a schema-less design that diverges from the traditional relational database model. As a result, there is no formal design for this database structure, however, it is required of the system to at this stage store any features it has managed to extract along with the key information associated with the tweet that had been stored in the tweet retrieval stage, such as its unique id and text content.
 

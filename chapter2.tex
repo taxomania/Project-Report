@@ -76,6 +76,8 @@ the boy car be differ color
 
 Stemming is an heuristic process hoping to achieve this goal by simply building basic forms of words by removing affixes like a plural `s' from nouns or the `ing' from verbs~\cite{hotho-etal-ldv-2005}. However, these are not always correct terms. Lemmatisation on the other hand utilises a more sophisticated approach in that it uses a vocabulary and morphological analysis of words, in order to return to the true base form of a word that may be found in a dictionary. This process, however, is much more complex and time-consuming than the former, and stemming may be sufficient for some applications.
 
+\subsubsection{N-Gram Modelling}
+
 \subsection{Information Extraction}
 The goal of Information Extraction (IE) is to extract specific data from a given corpus. IE can be defined as the task of automatically extracting structured information from unstructured or semi-structured machine-readable documents, generally done through the use of NLP techniques.
 
@@ -106,6 +108,7 @@ PERSON named new ORGANISATION CEO.
 % OTHER SUB TASKS?
 
 \section[Sentiment Analysis]{Sentiment Analysis and Opinion Mining}
+\label{sec:back_sent}
 Sentiment analysis, also known as opinion mining, refers to the NLP application of extracting subjective information in source texts. There are two use cases for sentiment analysis. The first of these is determining whether a text is subjective or objective, that is, whether the statement is factual or opinionated. This scenario is not currently in the scope of the project and leads to the second use case; sentiment analysis also aims to classify the \emph{polarity} of a given text~\cite{Pang+Lee}. This, to the basic level, involves determining whether an expressed opinion is positive, negative or neutral, but can also be extended to more complex emotions such as happy or sad.
 
 Opinion mining can be done using a weighting system. This method assigns a positive or a negative weighting on a given scale such as -3 to +3. These are applied for each word in the text that relates to the core entity. The text is then given a total score which determines its polarity, and also the strength of the sentiment. In simpler systems the scale may only be from -1 to +1, essentially opting to ignore the strength of the sentiment and just asking for the general sentiment of the text.
@@ -171,8 +174,11 @@ The REST API enables programs to access more of the core Twitter functions. This
 Twitter's Streaming API is a real-time sample of all public tweets posted on the sample. It allows filtering in various ways such as user id, keywords or even random sampling, and is regarded as the default option for data mining operations. This is because the Streaming API allows a long-lived HTTP connection unlike the other APIs and as such, programs can constantly remain connected so as to retrieve a running stream of tweets, as the name itself suggests. This removes the overheads associated with reconnecting every time you want to make a query and the API also removes all rate limitations so there is no worry of exceeding your quota. Unlike the other APIs, programs must be authenticated to use the Streaming API.
 
 \section{Other Technologies}
+
 \subsection{JavaScript Object Notation}
+
 \subsection{MongoDB}
+\subsection{Natural Language Toolkit}
 
 
 \section{Summary}
