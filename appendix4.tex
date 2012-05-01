@@ -1,0 +1,135 @@
+\chapter{JSON Responses from the Twitter APIs}
+\label{app:json}
+\python
+\begin{lstlisting}[caption=An example Twitter Search API response, label=lst:searchapi]
+{ "completed_in" : 0.20200000000000001,
+  "max_id" : 197437354393350145,
+  "max_id_str" : "197437354393350145",
+  "next_page" : "?page=2&max_id=197437354393350145&q=twitterapi&rpp=1",
+  "page" : 1,
+  "query" : "twitterapi",
+  "refresh_url" : "?since_id=197437354393350145&q=twitterapi",
+  "results" : [ { "created_at" : "Tue, 01 May 2012 21:28:28 +0000",
+        "from_user" : "loyisothevictor",
+        "from_user_id" : 193690663,
+        "from_user_id_str" : "193690663",
+        "from_user_name" : "Loyiso Twala",
+        "geo" : null,
+        "id" : 197437354393350145,
+        "id_str" : "197437354393350145",
+        "iso_language_code" : "en",
+        "metadata" : { "result_type" : "recent" },
+        "profile_image_url" : "http://a0.twimg.com/profile_images/2109840357/photo_normal.JPG",
+        "profile_image_url_https" : "https://si0.twimg.com/profile_images/2109840357/photo_normal.JPG",
+        "source" : "<a href="http://twitter.com/#!/download/iphone" rel="nofollow">Twitter for iPhone</a>",
+        "text" : "#IdeaEngineer @TwitterAds 8 new cases studies about Twitter's impact on websites & mobile apps https://t.co/n1cixHvS via @twitterapi",
+        "to_user" : null,
+        "to_user_id" : null,
+        "to_user_id_str" : null,
+        "to_user_name" : null
+      } ],
+  "results_per_page" : 1,
+  "since_id" : 0,
+  "since_id_str" : "0"
+}
+\end{lstlisting}
+\newpage
+\begin{lstlisting}[caption=An example Twitter Streaming API response, label=lst:streamingapi]
+{ "contributors" : null,
+  "coordinates" : null,
+  "created_at" : "Sat Sep 10 22:23:38 +0000 2011",
+  "entities" : { "hashtags" : [ { "indices" : [ 32,
+                42
+              ],
+            "text" : "tcdisrupt"
+          } ],
+      "urls" : [ { "display_url" : "instagr.am/p/MuW67/",
+            "expanded_url" : "http://instagr.am/p/MuW67/",
+            "indices" : [ 67,
+                86
+              ],
+            "url" : "http://t.co/6J2EgYM"
+          } ],
+      "user_mentions" : [ { "id" : 783214,
+            "id_str" : "783214",
+            "indices" : [ 0,
+                8
+              ],
+            "name" : "Twitter",
+            "screen_name" : "twitter"
+          },
+          { "id" : 14792670,
+            "id_str" : "14792670",
+            "indices" : [ 46,
+                58
+              ],
+            "name" : "Bosco So",
+            "screen_name" : "boscomonkey"
+          },
+          { "id" : 819797,
+            "id_str" : "819797",
+            "indices" : [ 59,
+                66
+              ],
+            "name" : "Taylor Singletary",
+            "screen_name" : "episod"
+          }
+        ]
+    },
+  "favorited" : false,
+  "geo" : null,
+  "id" : 112652479837110273,
+  "id_str" : "112652479837110273",
+  "in_reply_to_screen_name" : "twitter",
+  "in_reply_to_status_id" : null,
+  "in_reply_to_status_id_str" : null,
+  "in_reply_to_user_id" : 783214,
+  "in_reply_to_user_id_str" : "783214",
+  "place" : null,
+  "possibly_sensitive" : false,
+  "retweet_count" : 0,
+  "retweeted" : false,
+  "source" : "<a href=\"http://instagr.am\" rel=\"nofollow\">Instagram</a>",
+  "text" : "@twitter meets @seepicturely at #tcdisrupt cc.@boscomonkey @episod http://t.co/6J2EgYM",
+  "truncated" : false,
+  "user" : { "contributors_enabled" : false,
+      "created_at" : "Mon May 16 20:07:59 +0000 2011",
+      "default_profile" : false,
+      "default_profile_image" : false,
+      "description" : "Eoin's photography account. See @mceoin for tweets.",
+      "favourites_count" : 0,
+      "follow_request_sent" : null,
+      "followers_count" : 6,
+      "following" : null,
+      "friends_count" : 0,
+      "geo_enabled" : false,
+      "id" : 299862462,
+      "id_str" : "299862462",
+      "is_translator" : false,
+      "lang" : "en",
+      "listed_count" : 0,
+      "location" : "Twitter",
+      "name" : "Eoin McMillan ",
+      "notifications" : null,
+      "profile_background_color" : "131516",
+      "profile_background_image_url" : "http://a0.twimg.com/images/themes/theme14/bg.gif",
+      "profile_background_image_url_https" : "https://si0.twimg.com/images/themes/theme14/bg.gif",
+      "profile_background_tile" : true,
+      "profile_image_url" : "http://a0.twimg.com/profile_images/1380912173/Screen_shot_2011-06-03_at_7.35.36_PM_normal.png",
+      "profile_image_url_https" : "https://si0.twimg.com/profile_images/1380912173/Screen_shot_2011-06-03_at_7.35.36_PM_normal.png",
+      "profile_link_color" : "009999",
+      "profile_sidebar_border_color" : "EEEEEE",
+      "profile_sidebar_fill_color" : "EFEFEF",
+      "profile_text_color" : "333333",
+      "profile_use_background_image" : true,
+      "protected" : false,
+      "screen_name" : "imeoin",
+      "show_all_inline_media" : false,
+      "statuses_count" : 278,
+      "time_zone" : null,
+      "url" : "http://www.eoin.me",
+      "utc_offset" : null,
+      "verified" : false
+    }
+}
+\end{lstlisting}

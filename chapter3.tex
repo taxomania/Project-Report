@@ -54,7 +54,7 @@ The final use case for SWOT requires displaying to users the software tools that
 The system to be developed is fairly representative of a Question-Answering (QA) system. QAs are data mining systems which use Information Retrieval (IR) and Information Extraction (IE) techniques to answer user queries. As such, the SWOT system's design follows a 3-stage approach, each corresponding to these subsystems in QA systems. The first of these is retrieving tweets, the IR phase of this project. Upon successful retrieval, information, the required features in this case, must be extracted and finally, these results must be displayed to the user in a simple, straightforward fashion.
 These stages are shown in the general archicture model displayed in Figure~\ref{fig:general}. These will be further explored in Sections~\ref{sec:arc1}, \ref{sec:arc2} and \ref{sec:arc3} respectively.
 
-\begin{figure}[h]
+\begin{figure}[h!]
 \begin{center}
 \includegraphics[width=10cm]{design}
 \end{center}
@@ -66,6 +66,8 @@ These stages are shown in the general archicture model displayed in Figure~\ref{
 \label{sec:arc1}
 The first stage involves retrieving tweets from Twitter. The design for this stage follows the same concepts for each of the use cases defined. This can then be split further as seen in Figure~\ref{fig:phase1}. The program should retrieve a set of search terms from a dictionary along with some keywords that may be associated with software. This dictionary consists of a list of software, companies, operating systems and programming languages. The full list of keywords and dictionary items can be seen in Table~\ref{tbl:keywords} and Appendix~\ref{app:dictionary} respectively. The respective counts for each of these types of items is shown in Table~\ref{tbl:dict_types}.
 These are to be used to form a request for tweets from Twitter. Twitter will respond with the corresponding tweets and data, which are to be checked for language, to ensure they are in English. The remaining set of English tweets are then to be further parsed to extract the required information for storing these tweets in the database.
+
+In the case of the Twitter search use case (see Section~\ref{sec:uc2}), only a single query term will be used. This will follow the sequence diagram shown in Figure~\ref{fig:ucsearch}.
 
 \begin{table}[h]
 \begin{center}
@@ -102,6 +104,15 @@ Keywords&12\\\hline
   \caption{Design for tweet retrieval
     \label{fig:phase1}}
 \end{figure}
+
+\begin{figure}[h]
+\begin{center}
+\includegraphics[width=13cm]{ucsearch}
+\end{center}
+\caption{Searching Twitter sequence diagram}
+\label{fig:ucsearch}
+\end{figure}
+
 
 This returned information will be stored in a relational database and its design is shown below in Figure~\ref{fig:db}. Tweets will not be stored alone but also with simple user information to allow for future user profiling for a more targetted approach to tweet retrieval. The actual tweet information to be stored is its id on the Twitter platform - allowing for cases where users delete their tweets - its text content, time of creation, user id and the keyword used to find it, where one was used. There will also be fields for sentiment, i.e. positive, negative or neutral, and sentiment strength, where weightings have been used. These fields should default to \texttt{NULL} as their values will be computed at a later time. Finally, there is a \emph{tagged} boolean flag which signifies the given tweet has been processed, and the feature extraction process has been carried out on it. This is to work in conjunction with the \emph{found} boolean flag which indicates whether or not software has been found in the tweet. This is to be implemented in MySQL due to its simplicity, compatibility with the design and also because it is readily available on the university computers where data can be easily accessed both locally and remotely.
 
@@ -143,7 +154,7 @@ After this step, URLs need to be extracted from each tweet. URLs provided in twe
 
 The text should then be tokenised in order to produce a list of tokens upon which the remaining processing will take place. Prices are the next feature to be extracted. The tokenisation process itself should be able to isolate prices of the form \emph{£10} or \emph{\$0.99} and so this stage will not require much extra processing of the text.
 
-After extracting these two features, the tokens are to be tagged for their part of speech. This will allow for improved entity recognition as linguistic patterns may be applied to the extraction process. The main feature extraction stage has the task of extracting all of the remaining features detailed above. This will require n-gram modelling and linguistic rules and patterns to be able to find candidates for software and other key entities in the text.
+After extracting these two features, the tokens are to be tagged for their part of speech. This will allow for improved entity recognition as linguistic patterns may be applied to the extraction process. The main feature extraction stage has the task of extracting all of the remaining features detailed above. It also attempts to find any prices that may previously have been missed, and also has the task of discovering software that is not already in the dictionary. This will require n-gram modelling and linguistic rules and patterns to be able to find candidates for software and other key entities in the text.
 
 These candidates must be verified. If they belong in the dictionary, this is sufficient. However, in cases where the candidate is a new item, other means of verification are required. To do this, SWOT will use the Microsoft Bing API to query the web for these candidates. If the results suggest said candidate is in fact a piece of software, the system will tag these names as software and store the extracted features. In other cases, these features will be discarded.
 

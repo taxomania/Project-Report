@@ -1,6 +1,14 @@
 \chapter{Implementation}
 \label{cha:impl}
-This chapter outlines the main stages in implementating the designed system in code.
+This chapter outlines the main stages in implementating the designed system in code. Figure~\ref{fig:impl} shows how the different parts of the implemented system interact with each other. The specifics of the components of this diagram are discussed in the remainder of this chapter.
+
+\begin{figure}[h]
+\begin{center}
+\includegraphics[width=12cm]{impl}
+\end{center}
+\caption{Interaction between different parts of SWOT system}
+\label{fig:impl}
+\end{figure}
 
 
 \java
@@ -82,20 +90,26 @@ This process is completed when the \emph{TweetDatabaseConnector} inserts the twe
 \label{sec:searchjava}
 The Search API will now be used to handle use case 2 of the designed system, as described in Section~\ref{sec:uc2}. With the Search API not operating in real time, the realisation of this use case can afford to be a much simpler system. The levels of multithreading displayed in streaming Twitter will not be required, as interaction with the API is more of a serial communication as can be seen in Figure~\ref{fig:ucsearch}.
 
-\begin{figure}[h]
-\begin{center}
-\includegraphics[width=13cm]{ucsearch}
-\end{center}
-\caption{Searching Twitter sequence diagram}
-\label{fig:ucsearch}
-\end{figure}
+The implementation of the Twitter search use case utilises the Twitter Search API URL at \url{http://search.twitter.com/search.json}. The API also offers eXtensible Markup Language (XML) format responses, however, working with JSON allows consistency within the system. As with the implementation of the Twitter stream use case, the application begins with the initialision of a \emph{DatabaseThread} and is initially given a single keyword which will be searched for. This keyword is chosen by the end user. A simple HTTP GET request is then made to the above URL, as seen in Listing~\ref{lst:httpget}, and Twitter then returns up to 1500 tweets from the last seven days corresponding to the search term.
 
-The implementation of the Twitter search use case utilises the Twitter Search API URL at \url{http://search.twitter.com/search.json}. The API also offers eXtensible Markup Language (XML) format responses, however, working with JSON allows consistency within the system. As with the implementation of the Twitter stream use case, the application begins with the initialision of a \emph{DatabaseThread} and is initially given a single keyword which will be searched for. This keyword is chosen by the end user. A simple HTTP GET request is then made to the above URL and Twitter then returns up to 1500 tweets from the last seven days corresponding to the search term.
-
-The Search API returns a different JSON response to that of the Streaming API. Each JSON string contains an \texttt{iso\_language\_code}, and this will be used to filter tweets by language. Once the desired information has been extracted, i.e. the properties of the \emph{Tweet} class, the remaining operations are carried out just as they are in the realisation of the Twitter streaming use case, that is, the tweet is encapsulated in an \emph{InsertKeywordTask} object and this is added to a queue in the \emph{DatabaseThread} for the insert task to be carried out.
-
-% SHOW JSON RESPONSE IN APPENDIX
-
+The Search API returns a different JSON response to that of the Streaming API. These are both shown in Appendix~\ref{app:json}. Each JSON string contains an \texttt{iso\_language\_code}, and this will be used to filter tweets by language. Once the desired information has been extracted, i.e. the properties of the \emph{Tweet} class, the remaining operations are carried out just as they are in the realisation of the Twitter streaming use case, that is, the tweet is encapsulated in an \emph{InsertKeywordTask} object and this is added to a queue in the \emph{DatabaseThread} for the insert task to be carried out.
+\newline
+\begin{lstlisting}[caption=A HTTP GET request implemented in Java, label=lst:httpget]
+private HttpResponse performSearch() {
+    final HttpClient client = new DefaultHttpClient();
+    try {
+        final HttpGet getMethod = new HttpGet(this.url);
+        try {
+            return client.execute(getMethod);
+        } catch (final IOException e) {
+            e.printStackTrace();
+        } // catch
+    } catch (final IllegalArgumentException e) {
+        System.out.println("Could not parse URL");
+    } // catch
+    return null;
+} // performSearch()
+\end{lstlisting}
 
 \python
 \section{Feature Extraction}
@@ -192,8 +206,6 @@ The implementation of creating n-grams in this project is done using the \texttt
 \end{quote}
 
 \subsection{Main Feature Extraction}
-This tagging process consists of the core functions of the proposed system. Its purpose is to extract all the features that have yet to be extracted, that is, software names and versions, companies, programming languages and operating systems. It also attempts to find any prices that may previously have been missed, and also has the task of discovering software that is not already in the dictionary.
-
 Having created a set of five-gram sequences from the tweet, the application may now iterate through each of these in an attempt to find any information that has not yet been found. For each of these sequences, the program iterates through each POS-tagged token in the sequence. The tagging process then proceeds as follows: 
 \newline
 \begin{algorithmic}
@@ -204,13 +216,14 @@ Having created a set of five-gram sequences from the tweet, the application may 
         \EndIf
     \EndIf
 \EndIf
+\newline
 \end{algorithmic}
 
 This rule filters out linguistics of the form shown in Figure~\ref{fig:rule1}.
 \begin{figure}[h!]
  \centering
   \input{lingrule1}
-  \caption{A linguistic filter
+  \caption{A linguistic filter, where candidate is a potential software name
     \label{fig:rule1}}
 \end{figure}
 If however, these conditions fail, usually in the case where none of the tokens are in the dictionary of keywords used to retrieve these tweets, a regular expression is used to find clues to the presence of new software.
@@ -225,7 +238,7 @@ The above regular expression matches on the words \emph{download} or \emph{get}.
 \verb~^on$|^for$~
 \end{quote}
 
-By applying these together in the form displayed in Figure~\ref{fig:rule2}, the system may be able to determine the platform upon which a piece of software runs.
+By applying these together in the form displayed in Figure~\ref{fig:rule2}, the system may be able to determine the platform upon which a piece of software runs. The latter of these regular expressions is only used in the case displayed in Figure~\ref{fig:rule2}, as otherwise it is too generic. If it were used in all cases, accuracy would be compromised.
 
 \begin{figure}[h!]
  \centering
@@ -275,6 +288,8 @@ This concludes the main feature extraction process leaving just the verification
 \subsection{Software Verification}
 \label{sec:bing}
 The feature extraction subsystem may discover new software, and as such needs to verify these are actually pieces of software and not something else. To do this the program utilises the Microsoft Bing API which returns web search queries. As the main tagging process checks the dictionary for matching software names, and the tweet retrieval engine uses both the dictionary and a set of keywords, there will be some pieces of software mentioned in the tweets that are not in the dictionary. As a result, these will be flagged as possible software names, and then queried on the Microsoft Bing search engine with the keywords ``movie'', ``music'', and ``software game''. These keywords were selected on the basis that the initial search key terms retrieved many tweets referring to music and films. The implementation of the Bing API integration can be seen in Appendix~\ref{app:bing}.
+
+The following pseudocode represents the process of verifying software.
 \newline
 \begin{algorithmic}
 \Function {bing\_search}{bing, term}
@@ -290,6 +305,7 @@ The feature extraction subsystem may discover new software, and as such needs to
     \newline
     \State \Return False
 \EndFunction
+\newline
 \end{algorithmic}
 If the number of results for software associated with the searched term is greater than corresponding results for films and music, the results are checked for identifiers of software in their headings. Therefore if any of the results suggests the searched term is a piece of software, that is assumed true.
 
