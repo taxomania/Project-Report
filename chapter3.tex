@@ -1,6 +1,5 @@
 \chapter{Design}
 \label{cha:design}
-
 This chapter details the overall design of the system to be developed in this project. The software engineering methodology to be used will first be discussed, along with use cases, requirements and the architecture of the system. This will be followed up with notes on the class and database design diagrams. The decisions made with regards to some design choices will also be discussed in more detail.
 
 \section{Software Engineering Methodology}
@@ -13,7 +12,7 @@ To serve as a reminder, the aim of this project is to develop a system, SWOT, th
 \begin{table}
 \begin{center}
 \begin{tabular}{|r|c|c|c|}\hline\hline
-&Task&Complexity&Priority\\\hline
+&\textbf{Task}&\textbf{Complexity}&\textbf{Priority}\\\hline
 1&Collect and filter tweets by keyword&Simple&High\\
 2&Feature extraction&Complex&High\\
 3&Analyse tweet sentiment&Intermediate&Medium\\
@@ -156,7 +155,7 @@ The visualisation stage has the task of displaying all the gained information an
 There are two parts to this phase of project. Firstly, the data gathered must be \emph{aggregated} so that meaningful knowledge can ultimately be represented. Upon completing this task, a \emph{graphical user interface} must be designed for users to interact with the system, perform their own queries, and look at what information has been found.
 
 \subsubsection{Aggregation}
-Aggregating the results is the process of bringing together all of the different data sources for data on a single output entity such as a piece of software. This aggregated data can then be used easily by the GUI to display information to the user. In this project, this task will entail grouping the stored documents by software or other similar information such as company or operating system. Once this information has been retrieved, statistics and charts can be derived. The main task here is to create pie charts for each piece of software to show the sentiment of the tweets mentioning them. Other details include the most tweeted pieces of software.
+Aggregating the results is the process of bringing together all of the different data sources for data on a single output entity such as a piece of software. This aggregated data can then be used easily by the GUI to display information to the user. In this project, this task will entail grouping the stored documents by software or other similar information such as company or operating system. Once this information has been retrieved, statistics and charts expressing sentiment can be derived. The main task here is to create pie charts for each piece of software to show the sentiment of the tweets mentioning them. Other details include the most tweeted pieces of software.
 
 \subsubsection{Graphical User Interface}
 \label{sec:guid}

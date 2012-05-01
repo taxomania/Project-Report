@@ -180,7 +180,7 @@ The POS tagger used by this system is taken from the NLTK modules and uses the \
 \end{quote}
 
 \subsection{N-Grams}
-N-grams are sequences of n tokens from a given source text. The implementation of creating n-grams in this project is done using the \texttt{nltk.util.ngrams()} function. This process starts by creating a five-gram of the tweet tokens. This means a sequence of five tokens will be created from the array of tokens. The system utilises a five-gram sequence due to potentially long software names, basing this on the na\"{\i}ve assumption that these names will not exceed five words. This will allow for improved extraction of software names in the next stage. Using the Firefox tweet as a running example, the outcome of this five-gram modelling process can be seen below.
+The implementation of creating n-grams in this project is done using the \texttt{nltk.util.ngrams()} function. This process starts by creating a five-gram of the tweet tokens. This means a sequence of five tokens will be created from the array of tokens. The system utilises a five-gram sequence due to potentially long software names, basing this on the na\"{\i}ve assumption that these names will not exceed five words. This will allow for improved extraction of software names in the next stage. Using the Firefox tweet as a running example, the outcome of this five-gram modelling process can be seen below.
 
 \begin{quote}
 [`I', `really', `hate', `the', `new', `Firefox']

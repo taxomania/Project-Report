@@ -58,9 +58,43 @@ Microsoft Paint has seen some major improvements in its latest release!
 \end{quote}
 This would differ from, say,
 \begin{quote}
-Paint something now.
+I want to paint something.
 \end{quote}
-where \emph{paint} is being used as an imperative verb. In the first example, seeing that \emph{Paint} is followed by \emph{seen}, a verb, suggests it is unlikely \emph{Paint} is being used as verb.  This would be the difference in this project between discovering a piece of software and totally missing it, and thus highlights the importance of context and semantics when analysing text.
+where \emph{paint} is being used as a verb. In the first example, seeing that \emph{Paint} is followed by \emph{seen}, a verb, suggests it is unlikely \emph{Paint} is being used as verb.  This would be the difference in this project between discovering a piece of software and totally missing it, and thus highlights the importance of context and semantics when analysing text.
+
+The following displays the output of these examples when used with NLTK's POS tagger.
+\begin{quote}
+[(`Microsoft', `NNP'), (`Paint', `NNP'), (`has', `VBZ'), (`seen', `VBN'), (`some', `DT'), (`major', `JJ'), (`improvements', `NNS'), (`in', `IN'), (`its', `PRP\$'), (`latest', `JJS'), (`release', `NN')]
+\newline
+\newline
+[(`I', `PRP'), (`want', `VBP'), (`to', `TO'), (`paint', `VB'), (`something', `NN')]
+\end{quote}
+\begin{minipage}[b]{0.5\linewidth}\centering
+\begin{tabular}{l | l}
+\hline
+  NNP&Proper noun, singular\\
+  VBZ&3rd person singular verb, present\\
+  VBN&Verb, past participle\\
+  DT&Determiner\\
+  JJ&Adjective\\
+  NNS&Noun, plural\\
+  IN&Preposition\\
+\hline
+\end{tabular}
+\end{minipage}
+\begin{minipage}[b]{0.5\linewidth}\centering
+\begin{tabular}{l | l}
+\hline
+  PRP\$&Possessive pronoun\\
+  JJS&Adjective, superlative\\
+  NN&Noun, singular\\
+  PRP&Pronoun\\
+  VBP&Non-3rd person present singular verb\\
+  TO&\emph{to}\\
+  VB&Base verb\\
+\hline
+\end{tabular}
+\end{minipage}
 
 \subsubsection{Stemming and Lemmatisation}
 Documents contain many different derivations of words, such as \emph{normalise} and \emph{normalisation}, and differing forms of the same word due to its usage or tense, for example, \emph{walked} or \emph{walking}. An information extraction tool should ideally see these as somewhat equivalent terms; this is where stemming and lemmatisation come in. The following example, taken from \cite{manning2008}, shows how these techniques should map text:
@@ -78,7 +112,16 @@ the boy car be differ color
 
 Stemming is an heuristic process hoping to achieve this goal by simply building basic forms of words by removing affixes like a plural `s' from nouns or the `ing' from verbs~\cite{hotho-etal-ldv-2005}. However, these are not always correct terms. Lemmatisation on the other hand utilises a more sophisticated approach in that it uses a vocabulary and morphological analysis of words, in order to return to the true base form of a word that may be found in a dictionary. This process, however, is much more complex and time-consuming than the former, and stemming may be sufficient for some applications.
 
-\subsubsection{N-Gram Modelling}
+\subsubsection{N-Grams}
+N-grams are sequences of n items from a given source text. These items are dependent on the application but are generally letters or words. An n-gram of size 1 is referred to as a \emph{unigram}, while n-grams of size 2 or 3 are \emph{bigrams} and \emph{trigrams} respectively. Larger n-grams are sometimes referred to by the value of \emph{n}, e.g. \emph{four-gram}.
+
+Using the latter of the previous \emph{Paint} examples, the trigram process would yield:
+\begin{quote}
+I want to paint something.
+
+\begin{math}\Rightarrow\end{math}
+[(`I', `want', `to'), (`want', `to', `paint'), (`to', `paint', `something')]
+\end{quote}
 
 \subsection{Information Extraction}
 The goal of Information Extraction (IE) is to extract specific data from a given corpus. IE can be defined as the task of automatically extracting structured information from unstructured or semi-structured machine-readable documents, generally done through the use of NLP techniques.
@@ -109,19 +152,7 @@ PERSON named new ORGANISATION CEO.
 
 % OTHER SUB TASKS?
 
-\section[Sentiment Analysis]{Sentiment Analysis and Opinion Mining}
-\label{sec:back_sent}
-Sentiment analysis, also known as opinion mining, refers to the NLP application of extracting subjective information in source texts. There are two use cases for sentiment analysis. The first of these is determining whether a text is subjective or objective, that is, whether the statement is factual or opinionated. This scenario is not currently in the scope of the project and leads to the second use case; sentiment analysis also aims to classify the \emph{polarity} of a given text~\cite{Pang+Lee}. This, to the basic level, involves determining whether an expressed opinion is positive, negative or neutral, but can also be extended to more complex emotions such as happy or sad.
-
-Opinion mining can be done using a weighting system. This method assigns a positive or a negative weighting on a given scale such as -3 to +3. These are applied for each word in the text that relates to the core entity. The text is then given a total score which determines its polarity, and also the strength of the sentiment. In simpler systems the scale may only be from -1 to +1, essentially opting to ignore the strength of the sentiment and just asking for the general sentiment of the text.
-
-There are a number of public APIs and libraries available for sentiment analysis. SWOT will use the Sentiment140 Bulk Classification Service API\footnote{\url{http://help.sentiment140.com/api}} ahead of others such as AlchemyAPI~\cite{alchemyapi} and the CLiPS Pattern modules. 
-AlchemyAPI results are accurate, however with the massive number of tweets being streamed from the service it is not deemed feasible to continuously make calls to a web service to analyse them for sentiment, as the service only analyses individual tweets. As well as this, there is a limit of 10,000 tweets per day and with the large number of tweets posted on Twitter on the daily basis, this could also be an issue.
-
-While Pattern is an offline system, it states 72\% accuracy for movie reviews~\cite{pattern}, while the Sentiment140 API is optimised for tweets and boasts 83\% accuracy~\cite{Go_Bhayani_Huang_2009}. As well as this, the bulk classification service allows mass analysis with requests consisting of up to 10,000 tweets.
-% More?
-
-\section{Evaluation Measures}
+\subsection{Evaluation Measures}
 In text mining, there are several ways of evaluating the accuracy of a system. Before discussing the different measures, few key prediction outcomes must first be defined.
 
 \textbf{True Positive $tp$} - an entity is predicted to have a certain property, and it in fact does
@@ -134,29 +165,41 @@ In text mining, there are several ways of evaluating the accuracy of a system. B
 
 The main measures to be used in the scope of this project are described below.
 
-\subsection{Precision}
+\subsubsection{Precision}
 Precision is the fraction of retrieved instances that are relevant. This is the number of correct results divided by the total number of results.
 \begin{quote}
 $\mathrm{Precision}=\frac{tp}{tp+fp}$
 \end{quote}
 
-\subsection{Recall}
+\subsubsection{Recall}
 Recall is the fraction of relevant instances that are successfully retrieved. This means it is a measure of the number of correct results that were retrieved out of all of the results that should have been returned. This is the number of correct results returned divided by the total number of all correct results.
 \begin{quote}
 $\mathrm{Recall}=\frac{tp}{tp+fn}$
 \end{quote}
 
-\subsection{Specificity}
+\subsubsection{Specificity}
 Specificity is also known as the True Negative Rate. It is the measure aiming to find the accuracy of a system in identifying negative results. This is the number of identified negative results divided by the total number of negative results.
 \begin{quote}
 $\mathrm{Specificity}=\frac{tn}{tn+fp}$
 \end{quote}
 
-\subsection{F-Measure}
+\subsubsection{F-Measure}
 The F-measure combines precision and recall to find a weighted average of the two measures.
 \begin{quote}
 $F = 2 \cdot \frac{\mathrm{precision} \cdot \mathrm{recall}}{\mathrm{precision} + \mathrm{recall}}$
 \end{quote}
+
+\section[Sentiment Analysis]{Sentiment Analysis and Opinion Mining}
+\label{sec:back_sent}
+Sentiment analysis, also known as opinion mining, refers to the NLP application of extracting subjective information in source texts. There are two use cases for sentiment analysis. The first of these is determining whether a text is subjective or objective, that is, whether the statement is factual or opinionated. This scenario is not currently in the scope of the project and leads to the second use case; sentiment analysis also aims to classify the \emph{polarity} of a given text~\cite{Pang+Lee}. This, to the basic level, involves determining whether an expressed opinion is positive, negative or neutral, but can also be extended to more complex emotions such as happy or sad.
+
+Opinion mining can be done using a weighting system. This method assigns a positive or a negative weighting on a given scale such as -3 to +3. These are applied for each word in the text that relates to the core entity. The text is then given a total score which determines its polarity, and also the strength of the sentiment. In simpler systems the scale may only be from -1 to +1, essentially opting to ignore the strength of the sentiment and just asking for the general sentiment of the text.
+
+There are a number of public APIs and libraries available for sentiment analysis. SWOT will use the Sentiment140 Bulk Classification Service API\footnote{\url{http://help.sentiment140.com/api}} ahead of others such as AlchemyAPI~\cite{alchemyapi} and the CLiPS Pattern modules. 
+AlchemyAPI results are accurate, however with the massive number of tweets being streamed from the service it is not deemed feasible to continuously make calls to a web service to analyse them for sentiment, as the service only analyses individual tweets. As well as this, there is a limit of 10,000 tweets per day and with the large number of tweets posted on Twitter on the daily basis, this could also be an issue.
+
+While Pattern is an offline system, it states 72\% accuracy for movie reviews~\cite{pattern}, while the Sentiment140 API is optimised for tweets and boasts 83\% accuracy~\cite{Go_Bhayani_Huang_2009}. As well as this, the bulk classification service allows mass analysis with requests consisting of up to 10,000 tweets.
+% More?
 
 \section{Twitter Mining}
 There has been several previous works on text mining Twitter posts, however, the bulk of these have focussed primarily on biomedicine and the financial sector. These works have shown the potential in Twitter has for providing valuable knowledge and information it is felt that software is a new area of interest where Twitter has not previously been used to analyse public opinion. Twitter's low character limit means users have to express their opinions explicitly and encourages the use of emoticons, such as :) or :(, which have been shown to work very well in sentiment analysis~\cite{Read:2005}.
@@ -179,9 +222,15 @@ Twitter's Streaming API is a real-time sample of all public tweets posted on the
 The following sections describe some of the other technologies required in the development of the SWOT system.
 
 \subsection{JavaScript Object Notation}
-JavaScript Object Notation (JSON) is a lightweight data-interchange format that is both easy for humans to read and write and for machines to parse and generate~\cite{json}. JSON is built on two universal data structures; a collection of name/value pairs and an ordered list of values, equivalent to an array.
+JavaScript Object Notation (JSON) is a lightweight data-interchange format that is both easy for humans to read and write and for machines to parse and generate~\cite{json}. JSON is built on two universal data structures; a collection of name/value pairs and an ordered list of values, equivalent to an array. A basic JSON document may look as follows.
 
-JSON will be widely used in the implementation of the SWOT due to its usage in the Twitter APIs and compatibility with MongoDB. 
+\begin{quote}
+\begin{verbatim}
+{ "foo" : "bar", "id" : 1 }
+\end{verbatim}
+\end{quote}
+
+JSON will be widely used in the implementation of the SWOT system due to its usage in the Twitter APIs and compatibility with MongoDB. 
 
 \subsection{MongoDB}
 MongoDB is a document-oriented NoSQL-type of database, that is, a schema-less design that diverges from the traditional relational database model. MongoDB stores structured data as JSON-style documents with dynamic schemas, thus allowing the integration of data simpler and faster~\cite{mongodb}.
