@@ -1,9 +1,11 @@
 \chapter{Results}
 \label{cha:results}
-This chapter details the results of the project, along with views of the user interface and the final findings of the system.
+This chapter details the results of the project, in terms of the accuracy of the feature extraction, along with views of the user interface.
 
 \section{Feature Extraction}
 The analysis of results is a semi-automated process carried out by checking which tweets were said to contain software and which did not. In total, 3268 tweets were retrieved from Twitter and stored in the MySQL database. These have all been through the feature extraction process, and 1168 of these are said to mention software or operating systems, leaving 2100 that do not. Of these tweets, roughly 10\%, i.e. 350, were manually tagged purely with software names, for the purpose of evaluating the system. Comparing these results produces the accuracy measures shown in Tables~\ref{tbl:truefalse} and \ref{tbl:measures}. While 350 tweets were tagged, the Table~\ref{tbl:truefalse} states a total of 367. This is because many tweets contain more than one software name.
+
+A precision of 79\% is reasonable as this means that 79\% tweets were correctly found to have contained software. 68\% recall is fairly low as this means 32\% of the tweets retrieved from Twitter are actually irrelevant in the sense that they are actually unrelated to software. This could well be an issue with the keywords used, but also perhaps more likely due to the ambiguity associated with many software names, such as \emph{Blender}, which is a 3D computer graphics product as well as a kitchen appliance. The 84\% specificity suggests SWOT is quite successful at identifying negative software matches when processing tweets.
 
 \begin{table}[h]
 \begin{center}
